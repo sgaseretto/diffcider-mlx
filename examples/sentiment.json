@@ -1,0 +1,8 @@
+{
+  "state": "I loved the movie. The acting was wonderful.",
+  "question": {
+    "type": "choice",
+    "instructions": "Classify the sentiment of this review.",
+    "criteria": ["negative", "neutral", "positive"]
+  }
+}
