@@ -14,22 +14,46 @@ is needed. Downloads use fixed revisions and the standard Hugging Face cache.
 ## Measured results
 
 Measured October 5, 2026 on an **M1 Max, 32 GPU cores, 64 GiB memory**,
-using MLX 0.32.3, PyTorch 2.14.1, and Transformers 4.57.6. Both backends use
-the GPU, the same checkpoint weights, and the precision shown below.
+using MLX 0.32.3, PyTorch 2.14.1, and Transformers 4.57.6. These results use
+the optimized generation loop. Both backends use the GPU, the same checkpoint
+weights, and the precision shown below.
 
 | Workload | Precision | Output agreement | PyTorch MPS | MLX Metal | Speedup |
 |---|---|---|---:|---:|---:|
-| S1 decisions | float32 | 60/60 decisions | 86.3 ms | 65.5 ms | 1.32× |
-| S1 decisions | BF16 | 60/60 decisions | 104.8 ms | 55.2 ms | 1.90× |
-| MDLM, 32 tokens / 32 steps | float32 | 4/4 exact token sequences | 1.479 s | 1.014 s | 1.46× |
-| MDLM, 32 tokens / 32 steps | BF16 | 4/4 exact token sequences | 1.743 s | 0.888 s | 1.96× |
-| MDLM, 128 tokens / 128 steps | float32 | 2/2 exact token sequences | 9.713 s | 8.846 s | 1.10× |
+| S1 decisions | float32 | 60/60 decisions | 91.2 ms | 69.3 ms | 1.32× |
+| S1 decisions | BF16 | 60/60 decisions | 109.6 ms | 58.3 ms | 1.88× |
+| MDLM, 32 tokens / 32 steps | float32 | 4/4 exact token sequences | 1.502 s | 0.879 s | 1.71× |
+| MDLM, 32 tokens / 32 steps | BF16 | 4/4 exact token sequences | 1.791 s | 0.778 s | 2.30× |
+| MDLM, 128 tokens / 128 steps | float32 | 2/2 exact token sequences | 10.211 s | 7.741 s | 1.32× |
+| MDLM, 128 tokens / 128 steps | BF16 | 1/2 exact token sequences | 12.329 s | 5.865 s | 2.10× |
+
+A separate same-process comparison against the previous MLX sampler
+(`2d49097`) measured **9–10% lower latency for 32-token generation** and
+**17–18% lower latency for 128-token generation**, across float32 and BF16.
+It used one prompt per length, one warmup, three measured repetitions, and
+rotating variant order. All runs produced identical tokens to the previous
+sampler. The [ablation report](reports/generation-optimization-ablation.json)
+separates block projection from asynchronous dispatch and retains raw timings
+and peak active MLX memory. These paired measurements isolate the optimization
+more reliably than comparing timings from separate historical runs.
+See the [optimization notes](docs/generation-optimization.md) for each change's
+measured contribution, memory usage, implementation details, and validation.
 
 The S1 sample contains 20 choice, 20 binary, and 20 ordinal decisions,
 73–818 input tokens, and 1–120 masks. All 60 prompts, token IDs, and mask
 positions were also checked against the original upstream preprocessing.
 The PyTorch sampler's AST was checked against the pinned model card: only
-docstrings and the explicit tokenizer argument differ.
+docstrings and the explicit tokenizer argument differ. The S1 scoring path
+and PyTorch reference algorithms are unchanged by these optimizations.
+
+**Long BF16 generation is not always equivalent to PyTorch.** The 128-token
+coding example diverges at output token index 23 (zero-based), with 43/128 token
+positions matching; its visible text also differs. Rerunning the previous MLX
+sampler reproduced exactly the optimized MLX output on both long examples, so
+this mismatch predates the optimization. The
+[baseline validation](reports/bfloat16-long-baseline-validation.json) retains
+those token IDs. All six float32 generation cases match PyTorch exactly;
+use float32 when reference agreement is the priority.
 
 **Probabilities are close, not bit-identical.** Maximum absolute probability
 error was **0.0000237 in float32** and **0.0278 in BF16**, despite identical
@@ -38,13 +62,17 @@ matters. These samples do not guarantee identical outputs on all inputs,
 especially near tied logits or confidence scores. BF16 performance here is
 specific to this Mac and these backends.
 
-The longer generation run uses the original model card's coding and arithmetic
-prompts, block size 64, one warmup, and three measured repeats. The smaller
-speedup shows why the short-prompt measurements should not be extrapolated to
-longer generations.
+The longer generation runs use the original model card's coding and arithmetic
+prompts, block size 64, one warmup, and three measured repeats. Speedups depend
+on sequence length and precision; short-generation results should not be
+extrapolated to longer generations.
 
-Full outputs and timings: [float32](reports/float32.json),
-[BF16](reports/bfloat16.json), and [longer float32 generation](reports/float32-long.json).
+Full outputs and timings: [float32](reports/optimized-float32.json),
+[BF16](reports/optimized-bfloat16.json),
+[longer float32 generation](reports/optimized-float32-long.json), and
+[longer BF16 generation](reports/optimized-bfloat16-long.json).
+The earlier [float32](reports/float32.json), [BF16](reports/bfloat16.json), and
+[longer float32](reports/float32-long.json) reports are retained for reference.
 See the methodology below before interpreting the timings as application
 latency or a model-quality benchmark.
 
@@ -78,14 +106,21 @@ The token count must divide into whole blocks, and steps must divide across
 those blocks. Ordinary autoregressive generation and persistent KV caching
 are not used.
 
+The MLX sampler runs the full bidirectional backbone on every step, then projects
+only the current block onto the vocabulary. Softmax also runs only on that
+block. Confidence precision and global selection indices are preserved. A queue
+of at most two denoising steps overlaps CPU dispatch with GPU execution; generation
+waits for the final result before returning. These changes do not reduce the
+number of denoising steps or quantize weights.
+
 ## Compare with the original PyTorch implementation
 
 ```sh
 uv sync --extra benchmark
 uv run --extra benchmark python -m diffcider.benchmark \
-  --dtype float32 --output reports/float32.json
+  --dtype float32 --output reports/optimized-float32.json
 uv run --extra benchmark python -m diffcider.benchmark \
-  --dtype bfloat16 --output reports/bfloat16.json
+  --dtype bfloat16 --output reports/optimized-bfloat16.json
 ```
 
 For the longer coding and arithmetic examples from the original model card:
@@ -94,8 +129,11 @@ For the longer coding and arithmetic examples from the original model card:
 uv run --extra benchmark python -m diffcider.benchmark \
   --task generation --dtype float32 --prompts examples/generation_prompts.json \
   --generation-cases 2 --max-new-tokens 128 --steps 128 --block-size 64 \
-  --warmup 1 --repeats 3 --output reports/float32-long.json
+  --warmup 1 --repeats 3 --output reports/optimized-float32-long.json
 ```
+
+Repeat the longer command with `--dtype bfloat16` and
+`--output reports/optimized-bfloat16-long.json` to compare BF16 generation.
 
 The reference loads the checkpoint's **unmodified PyTorch model code** using
 Transformers 4.57.6 and SDPA. The generation baseline is the original
@@ -122,7 +160,9 @@ quality evaluation.
 
 JSON reports include package versions, hardware, checkpoint revisions, input
 hashes, every timing sample, probability/logit errors, decisions, generated
-token IDs, and decoded text. They retain mismatches: a faster result is not
+token IDs, decoded text, and implementation source hashes. The initial logit
+comparison covers the first block using the same selected-position readout as
+generation. Reports retain mismatches: a faster result is not
 automatically an equivalent result. Exact token agreement includes special
 tokens; visible-text agreement is reported separately.
 
@@ -136,6 +176,8 @@ uv run ruff check .
 
 Unit tests compare a small MLX model against PyTorch Qwen3 with bidirectional
 attention and padding, check future-token visibility, and validate the
-selected-token projection and sampler contracts. They do not download models.
+selected-position projection with tied and untied output weights. Sampler tests
+compare changing predictions against the original PyTorch loop across block
+boundaries, multi-token transfers, and uneven schedules. They do not download models.
 
 See [THIRD_PARTY.md](THIRD_PARTY.md) for upstream code and dataset attribution.

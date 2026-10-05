@@ -10,8 +10,8 @@ torch = pytest.importorskip("torch")
 from transformers import Qwen3Config, Qwen3ForCausalLM  # noqa: E402
 
 
-@pytest.fixture
-def models():
+@pytest.fixture(params=[True, False], ids=["tied", "untied"])
+def models(request):
     """Build small matching networks without downloading a checkpoint."""
     torch.manual_seed(17)
     config = Qwen3Config(
@@ -22,7 +22,7 @@ def models():
         num_key_value_heads=2,
         head_dim=16,
         vocab_size=64,
-        tie_word_embeddings=True,
+        tie_word_embeddings=request.param,
         rope_theta=1_000_000,
         attention_dropout=0.0,
         use_cache=False,
@@ -33,7 +33,8 @@ def models():
     args = ModelArgs.from_config({**config.to_dict(), "model_type": "a2d-qwen3"})
     model = Model(args)
     weights = reference.state_dict()
-    weights.pop("lm_head.weight")
+    if config.tie_word_embeddings:
+        weights.pop("lm_head.weight")
     model.load_weights([(key, mx.array(value.numpy())) for key, value in weights.items()])
     model.eval()
     return reference, model
@@ -63,9 +64,21 @@ def test_padding_cannot_change_real_tokens(models):
 def test_attention_sees_future_tokens(models):
     """Catch an accidental causal mask, even if causal logits otherwise look plausible."""
     _, model = models
-    a = np.asarray(model(mx.array([[2, 8, 4]])))
-    b = np.asarray(model(mx.array([[2, 8, 30]])))
+    a = np.asarray(model(mx.array([[2, 8, 4]]), logit_positions=slice(0, 1)))
+    b = np.asarray(model(mx.array([[2, 8, 30]]), logit_positions=slice(0, 1)))
     assert np.max(np.abs(a[0, 0] - b[0, 0])) > 1e-4
+
+
+@pytest.mark.parametrize("positions", [slice(1, 4), [3, 1]])
+def test_position_projection_matches_full_logits(models, positions):
+    """Selecting output positions must preserve full-context and padding semantics."""
+    _, model = models
+    ids = mx.array([[2, 8, 4, 5, 0], [7, 3, 9, 0, 0]])
+    valid = mx.array([[1, 1, 1, 1, 0], [1, 1, 1, 0, 0]])
+    selected = mx.array(positions) if isinstance(positions, list) else positions
+    actual = np.asarray(model(ids, valid, logit_positions=selected))
+    expected = np.asarray(model(ids, valid))[:, positions]
+    np.testing.assert_allclose(actual, expected, atol=2e-5, rtol=2e-4)
 
 
 def test_selected_projection_matches_full_vocabulary(models):

@@ -168,8 +168,22 @@ class Model(nn.Module):
             return self.model.embed_tokens.weight
         return self.lm_head.weight
 
-    def __call__(self, input_ids, attention_mask=None):
-        return self.model(input_ids, attention_mask) @ self.output_weight.T
+    def __call__(self, input_ids, attention_mask=None, *, logit_positions=None):
+        """Compute logits, optionally projecting only selected sequence positions.
+
+        Args:
+            input_ids: Token IDs with shape ``[batch, length]``.
+            attention_mask: Optional boolean valid-token mask.
+            logit_positions: Optional slice or one-dimensional position array.
+                Selection happens after the full bidirectional backbone.
+
+        Returns:
+            Logits with shape ``[batch, selected_length, vocabulary_size]``.
+        """
+        hidden = self.model(input_ids, attention_mask)
+        if logit_positions is not None:
+            hidden = hidden[:, logit_positions]
+        return hidden @ self.output_weight.T
 
     def score_masks(self, input_ids, positions, answer_ids, attention_mask=None):
         """Project mask states onto Yes/No rows without full-vocabulary logits.

@@ -190,26 +190,36 @@ def generate(
     if prompt_length + max_new_tokens > model.args.max_position_embeddings:
         raise ValueError("Prompt and generation exceed the model's context length.")
     x = mx.array([prompt_ids + [mask_id] * max_new_tokens])
-    positions = mx.arange(x.shape[1])[None, :]
     iterations = steps // (max_new_tokens // block_size)
     transfers = [
         block_size // iterations + (i < block_size % iterations) for i in range(iterations)
     ]
+    pending = None
     for start in range(prompt_length, x.shape[1], block_size):
+        stop = start + block_size
         for count in transfers:
             if count == 0:
                 continue
-            active = (positions >= start) & (positions < start + block_size) & (x == mask_id)
-            logits = model(x)
+            block = x[:, start:stop]
+            logits = model(x, logit_positions=slice(start, stop))
             predicted = mx.argmax(logits, axis=-1)
             # Match PyTorch's softmax output precision before gathering confidence.
             probs = mx.softmax(logits.astype(mx.float32), axis=-1).astype(logits.dtype)
             confidence = mx.take_along_axis(probs, predicted[..., None], axis=-1)[..., 0]
-            confidence = mx.where(active, confidence.astype(mx.float32), -mx.inf)
-            selected = mx.argpartition(-confidence[0], kth=count - 1)[:count]
+            # Keep global selection indices and precision, including confidence ties.
+            scores = mx.full(x.shape, -mx.inf)
+            scores[:, start:stop] = mx.where(
+                block == mask_id, confidence.astype(mx.float32), -mx.inf
+            )
+            selected = mx.argpartition(-scores[0], kth=count - 1)[:count]
             transfer = mx.zeros(x.shape, dtype=mx.bool_)
             transfer[0, selected] = True
-            x = mx.where(transfer, predicted, x)
-            # Bound the lazy graph to one denoising iteration.
-            mx.eval(x)
+            block = mx.where(transfer[:, start:stop], predicted, block)
+            x = mx.concatenate((x[:, :start], block, x[:, stop:]), axis=1)
+            # Overlap CPU dispatch with GPU work, with at most two steps in flight.
+            mx.async_eval(x)
+            if pending is not None:
+                mx.eval(pending)
+            pending = x
+    mx.eval(x)
     return x

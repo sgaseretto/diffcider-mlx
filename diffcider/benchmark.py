@@ -186,16 +186,19 @@ def generation_benchmark(args, torch_model, mlx_model, tokenizer):
         pad_id = tokenizer.pad_token_id
         # Compare one identical masked input before the two trajectories can diverge.
         masked_ids = [ids + [tokenizer.mask_token_id] * args.max_new_tokens]
+        first_block = slice(len(ids), len(ids) + args.block_size)
         with torch.inference_mode():
             tz = (
                 torch_model(torch.tensor(masked_ids, device=args.device))
-                .logits[0, len(ids) :]
+                .logits[0, first_block]
                 .float()
             )
-        mz = mlx_model(mx.array(masked_ids))[0, len(ids) :].astype(mx.float32)
+        mz = mlx_model(mx.array(masked_ids), logit_positions=first_block)[0].astype(mx.float32)
         mx.eval(mz)
         t_first, m_first = tz.cpu().numpy(), np.asarray(mz)
         first_pass = {
+            "position_start": first_block.start,
+            "position_stop": first_block.stop,
             "max_logit_error": float(np.abs(t_first - m_first).max()),
             "mean_logit_error": float(np.abs(t_first - m_first).mean()),
             "argmax_agreement": float(np.mean(t_first.argmax(-1) == m_first.argmax(-1))),
@@ -317,6 +320,16 @@ def main():
         "timing_scope": "Synchronized warm inference; excludes download, load, tokenization, input transfer and output decoding. Generation includes the sampling loop.",
         "checkpoints": CHECKPOINTS,
         "quantized": False,
+        "source_sha256": {
+            name: hashlib.sha256(Path(__file__).with_name(name).read_bytes()).hexdigest()
+            for name in (
+                "model.py",
+                "inference.py",
+                "reference.py",
+                "reference_sampler.py",
+                "benchmark.py",
+            )
+        },
     }
     args.output.parent.mkdir(parents=True, exist_ok=True)
     for task, checkpoint, runner in (
