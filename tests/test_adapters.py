@@ -410,3 +410,274 @@ def test_base_revision_and_duplicate_adapter_checks(bundle):
     with pytest.raises(ValueError, match="unique"):
         engine.load_adapter(bundle.adapters[0])
     assert engine.loaded_adapters == ("default",)
+
+
+def test_batch_generation_with_adapters_and_padding(bundle):
+    """Batch logits/tokens match independent PEFT inference and restore the base exactly."""
+    engine = Diffcider.from_pretrained(
+        bundle.path, adapters={"first": bundle.adapters[0], "second": bundle.adapters[1]}
+    )
+    prompts = ["hello world", "hello", "world hello world hello", "world"]
+    ids = [generation_input(bundle.tokenizer, prompt) for prompt in prompts]
+    lengths = [len(p) for p in ids]
+    total = max(lengths) + 4
+    x = [p + [1] * 4 + [0] * (max(lengths) - len(p)) for p in ids]
+    valid = np.arange(total)[None, :] < np.array(lengths)[:, None] + 4
+    positions = mx.array(lengths)[:, None] + mx.arange(2)[None, :]
+    baseline = engine.generate_batch_tokens(prompts, max_new_tokens=4, steps=4, block_size=2)
+    for name in ("first", None, "second", None):
+        bundle.oracle.set_adapter("second" if name == "second" else "default")
+        bundle.oracle.eval()
+        context = bundle.oracle.disable_adapter() if name is None else torch.inference_mode()
+        with context:
+
+            class MaskedOracle:
+                device = "cpu"
+
+                def __call__(self, tokens):
+                    with torch.inference_mode():
+                        return bundle.oracle(
+                            tokens, attention_mask=torch.tensor(valid)[:, None, None, :]
+                        )
+
+            oracle = MaskedOracle()
+            with engine._request(name):
+                actual = engine.model(mx.array(x), mx.array(valid), logit_positions=positions)
+                full = engine.model(mx.array(x), mx.array(valid))
+                np.testing.assert_allclose(
+                    np.asarray(actual),
+                    np.asarray(mx.take_along_axis(full, positions[..., None], axis=1)),
+                    atol=1e-6,
+                )
+                expected_logits = oracle(torch.tensor(x)).logits.numpy()
+                np.testing.assert_allclose(np.asarray(full), expected_logits, atol=3e-5, rtol=3e-4)
+            expected = reference_sampler.generate(
+                oracle,
+                torch.tensor([p + [0] * (max(lengths) - len(p)) for p in ids]),
+                torch.tensor(lengths),
+                pad_id=0,
+                max_new_tokens=4,
+                steps=4,
+                block_size=2,
+                remasking="low_confidence",
+                tokenizer=bundle.tokenizer,
+            )
+            expected = [expected[i, n : n + 4].tolist() for i, n in enumerate(lengths)]
+        actual = engine.generate_batch_tokens(
+            prompts, adapter=name, max_new_tokens=4, steps=4, block_size=2
+        )
+        assert actual == expected
+        assert actual == [
+            engine.generate_tokens(p, adapter=name, max_new_tokens=4, steps=4, block_size=2)
+            for p in prompts
+        ]
+        assert engine.generate_batch(
+            prompts, adapter=name, max_new_tokens=4, steps=4, block_size=2
+        ) == bundle.tokenizer.batch_decode(actual, skip_special_tokens=True)
+        if name is None:
+            assert actual == baseline
+        assert all(layer.active is None for layer in engine._adapters.layers.values())
+    assert engine.generate_batch_tokens([prompts[0]], max_new_tokens=4, steps=4, block_size=2) == [
+        baseline[0]
+    ]
+    # Changing masked-out padding embeddings must not change any generated sequence.
+    engine.tokenizer.pad_token = "world"
+    assert (
+        engine.generate_batch_tokens(prompts, max_new_tokens=4, steps=4, block_size=2) == baseline
+    )
+    engine.tokenizer.pad_token = None
+    assert (
+        engine.generate_batch_tokens(prompts, max_new_tokens=4, steps=4, block_size=2) == baseline
+    )
+    with pytest.raises(ValueError):
+        engine.generate_batch(prompts, adapter="first", max_new_tokens=4, steps=3, block_size=2)
+    for bad in ([], "hello", ["hello", None]):
+        with pytest.raises(ValueError, match="nonempty list"):
+            engine.generate_batch(bad)
+    with pytest.raises(ValueError, match="Unknown adapter"):
+        engine.generate_batch(prompts, adapter="missing")
+    assert all(layer.active is None for layer in engine._adapters.layers.values())
+
+
+def test_batch_cli_uses_selected_adapter(bundle, tmp_path, monkeypatch, capsys):
+    """The installed command's JSON batch route preserves input order and adapter selection."""
+    import sys
+
+    from diffcider import cli
+
+    engine = Diffcider.from_pretrained(bundle.path, adapters={"default": bundle.adapters[0]})
+    prompts = ["hello", "world hello world"]
+    path = tmp_path / "prompts.json"
+    path.write_text(json.dumps(prompts))
+    monkeypatch.setattr(cli.Diffcider, "from_pretrained", lambda *args, **kwargs: engine)
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        [
+            "diffcider",
+            "--prompts",
+            str(path),
+            "--adapter",
+            str(bundle.adapters[0]),
+            "--max-new-tokens",
+            "4",
+            "--steps",
+            "4",
+            "--block-size",
+            "2",
+        ],
+    )
+    cli.main()
+    assert json.loads(capsys.readouterr().out) == engine.generate_batch(
+        prompts, adapter="default", max_new_tokens=4, steps=4, block_size=2
+    )
+
+
+@pytest.fixture
+def decision_requests():
+    """Six heterogeneous requests with distinct positions and candidate counts."""
+    return [
+        {"state": "hello", "question": {"type": "noul", "instructions": "t9", "criteria": "t10"}},
+        {
+            "state": "world hello",
+            "question": {"type": "choice", "instructions": "t11", "criteria": ["t12", "t13"]},
+        },
+        {
+            "state": {"t14": "hello world"},
+            "question": {"type": "score", "instructions": "t15", "criteria": ["t16", "t17", "t18"]},
+        },
+        {
+            "state": "hello [PAD] world hello",
+            "question": {"type": "noul", "instructions": "t19", "criteria": "t20"},
+        },
+        {
+            "state": "world " * 12,
+            "question": {
+                "type": "choice",
+                "instructions": "t21",
+                "criteria": {"t22": "t23", "t24": "t25", "t26": "t27", "t28": "t29"},
+            },
+        },
+        {
+            "state": "hello world " * 10,
+            "question": {
+                "type": "score",
+                "instructions": "t30",
+                "criteria": ["t31", "t32", "t33", "t34", "t35"],
+            },
+        },
+    ]
+
+
+@pytest.mark.parametrize("batch_size", [1, 2, 3, 4, 5, 6])
+def test_batch_decisions_match_pytorch_and_single_requests(
+    bundle, decision_requests, batch_size, monkeypatch
+):
+    """Mixed S1 batches match independent full-vocabulary PEFT logits and restore the base."""
+    engine = Diffcider.from_pretrained(
+        bundle.path, adapters={"first": bundle.adapters[0], "second": bundle.adapters[1]}
+    )
+    requests = decision_requests[:batch_size]
+    encoded = [decision_input(engine.tokenizer, **item) for item in requests]
+    width = max(len(item.input_ids) for item in encoded)
+    ids = torch.tensor([item.input_ids + [0] * (width - len(item.input_ids)) for item in encoded])
+    valid = (
+        torch.arange(width)[None, :]
+        < torch.tensor([len(item.input_ids) for item in encoded])[:, None]
+    )
+    baseline = engine.decide_batch(requests)
+    original = engine.model.score_masks
+    calls = []
+
+    def counted(*args, **kwargs):
+        calls.append(args[0].shape[0])
+        return original(*args, **kwargs)
+
+    monkeypatch.setattr(engine.model, "score_masks", counted)
+    for name in ("first", None, "second", None):
+        bundle.oracle.set_adapter("second" if name == "second" else "default")
+        bundle.oracle.eval()
+        context = bundle.oracle.disable_adapter() if name is None else torch.inference_mode()
+        with context, torch.inference_mode():
+            logits = bundle.oracle(ids, attention_mask=valid[:, None, None, :]).logits.numpy()
+        calls.clear()
+        actual = engine.decide_batch(requests, adapter=name)
+        assert calls == [batch_size]  # Exactly one backbone pass, even for heterogeneous questions.
+        singles = [engine.decide(**item, adapter=name) for item in requests]
+        for i, (result, single, item) in enumerate(zip(actual, singles, encoded, strict=True)):
+            expected = probabilities(logits[i, item.positions][:, item.answer_ids], item.kind)
+            np.testing.assert_allclose(result["probabilities"], expected, atol=2e-5)
+            np.testing.assert_allclose(result["probabilities"], single["probabilities"], atol=2e-6)
+            assert result["index"] == int(expected.argmax()) == single["index"]
+            assert result["option"] == item.options[result["index"]]
+            assert len(result["probabilities"]) == len(item.options)
+            if item.kind == "score":
+                assert result["expected_score"] == pytest.approx(
+                    float(expected @ np.arange(len(expected))), abs=2e-5
+                )
+            else:
+                assert "expected_score" not in result
+        if name is None:
+            assert actual == baseline
+        assert all(layer.active is None for layer in engine._adapters.layers.values())
+    # Pad values cannot influence real candidates; literal pad tokens in state remain valid.
+    for pad in ("world", None):
+        engine.tokenizer.pad_token = pad
+        assert engine.decide_batch(requests) == baseline
+    reordered = engine.decide_batch(requests[::-1])
+    for result, expected in zip(reordered, baseline[::-1], strict=True):
+        np.testing.assert_allclose(result["probabilities"], expected["probabilities"], atol=2e-6)
+
+
+def test_batch_decisions_validate_before_forward(bundle, decision_requests, monkeypatch):
+    """Reject malformed or overlong batches atomically and reset any selected adapter."""
+    engine = Diffcider.from_pretrained(bundle.path, adapters={"first": bundle.adapters[0]})
+
+    def unexpected(*args, **kwargs):
+        pytest.fail("An invalid batch must not start inference")
+
+    monkeypatch.setattr(engine.model, "score_masks", unexpected)
+    for bad in ([], {}, "hello", [None], [{"state": "x"}], [{"state": "x", "question": None}]):
+        with pytest.raises(ValueError, match="nonempty list"):
+            engine.decide_batch(bad, adapter="first")
+    for length in (1, 10000):
+        items = copy.deepcopy(decision_requests)
+        if length == 10000:
+            items[-1]["state"] = "hello " * 600  # The model context still applies.
+        with pytest.raises(ValueError, match="limit"):
+            engine.decide_batch(items, adapter="first", max_length=length)
+    for question in (
+        {"type": "unsupported", "instructions": "x"},
+        {"type": "choice", "instructions": "x", "criteria": []},
+        {"type": "noul", "instructions": "[MASK]", "criteria": "x"},
+    ):
+        with pytest.raises(ValueError):
+            engine.decide_batch(
+                [decision_requests[0], {"state": "hello", "question": question}], adapter="first"
+            )
+        assert all(layer.active is None for layer in engine._adapters.layers.values())
+    with pytest.raises(ValueError, match="Unknown adapter"):
+        engine.decide_batch(decision_requests, adapter="missing")
+    assert all(layer.active is None for layer in engine._adapters.layers.values())
+
+
+def test_batch_decision_cli(bundle, decision_requests, tmp_path, monkeypatch, capsys):
+    """CLI batches preserve order, expected scores, and explicit adapter selection."""
+    import sys
+
+    from diffcider import cli
+
+    engine = Diffcider.from_pretrained(bundle.path, adapters={"default": bundle.adapters[0]})
+    path = tmp_path / "decisions.json"
+    path.write_text(json.dumps(decision_requests))
+    monkeypatch.setattr(cli.Diffcider, "from_pretrained", lambda *args, **kwargs: engine)
+    monkeypatch.setattr(
+        sys, "argv", ["diffcider", "--decisions", str(path), "--adapter", str(bundle.adapters[0])]
+    )
+    cli.main()
+    assert json.loads(capsys.readouterr().out) == engine.decide_batch(
+        decision_requests, adapter="default"
+    )
+    monkeypatch.setattr(sys, "argv", ["diffcider", "--decisions", str(path), "--max-length", "1"])
+    with pytest.raises(ValueError, match="limit"):
+        cli.main()

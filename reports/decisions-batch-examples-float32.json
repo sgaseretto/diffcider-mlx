@@ -1,0 +1,2496 @@
+{
+  "created_utc": "2026-10-06T02:37:29.674294+00:00",
+  "hardware": "Apple M1 Max",
+  "memory_bytes": 68719476736,
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "versions": {
+    "mlx": "0.32.3",
+    "torch": "2.14.1",
+    "transformers": "4.57.6"
+  },
+  "checkpoint": [
+    "SEU-ZZH/Shared-YesNo-Qwen3-0.6B-S1",
+    "1f1c29ff9fc6f6e9dc066b03089878a7dab8b6a0"
+  ],
+  "dtype": "float32",
+  "torch_device": "mps",
+  "mlx_device": "gpu",
+  "adapter": null,
+  "dataset": {
+    "source": ".cache/s1-example-cases.jsonl",
+    "sha256": "671d4cb1c267704b91abf4115336d9da8675ef29eb81792160cb99a3aabf66d9",
+    "selection": "First records per type, interleaved in sorted type order; no filtering by result"
+  },
+  "warmup": 1,
+  "repeats": 3,
+  "mlx_cache_limit_bytes": 1073741824,
+  "allocator_policy": "Clear both unused GPU allocator caches before every variant/sample, outside timing. MLX cache is capped at 1 GiB during each workload. Kernel compilation remains warm; first-use buffer allocation is included in timing.",
+  "methodology": "Every variant processes the same ordered workload. One warmup per variant/size; rotating variant order; GPU synchronized before and after each sample. Includes input-array construction, scoring, host transfer, and probability/result readout on both backends. Excludes loading, tokenization, adapter selection, and JSON serialization. The sequential variant completes each request before starting the next. Peak MLX active allocation includes model weights but excludes allocator cache, PyTorch, and other system memory.",
+  "implementation_sha256": {
+    "model.py": "5d9840ecbafddc97e97a14e5fc914c0b1f67eb1eff2085281a0ac7411b60bfa7",
+    "inference.py": "ddb81e2756316d3b35bf8a7d2c728826e904aecd58f8aa91512b2b706a0b752b",
+    "engine.py": "40c9b7b80b7db7d43e3c0d25fbba1aeaf4b2da8e62aeaaa6ca1d4f62f2316f3a",
+    "reference.py": "93adebe12132a2dabf6fa075d71d42d3419e8c552c9b617b98a937a0d135fc0e",
+    "benchmark.py": "6bb284e965a1a692da5be8de2ad506324949a1e47cd88219876eac2a4476f1ef",
+    "benchmark_decisions_batch.py": "c0fb568dbac24d6ad0d8c3f3fd5433540eca63a499afe879ee340304417199ed"
+  },
+  "cases": [
+    {
+      "case_id": "example-2",
+      "type": "choice",
+      "tokens": 70,
+      "masks": 3,
+      "input_sha256": "47660027eb2b0429626962e5127327ad7f8361fc17cd935c97fd0321742d69fb",
+      "options": [
+        "negative",
+        "neutral",
+        "positive"
+      ]
+    },
+    {
+      "case_id": "example-1",
+      "type": "noul",
+      "tokens": 42,
+      "masks": 1,
+      "input_sha256": "970747feaf31aa5801e06306a250bed1b4f213e007d6e93bc2e3b20e65b5c6c2",
+      "options": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "case_id": "example-3",
+      "type": "score",
+      "tokens": 84,
+      "masks": 3,
+      "input_sha256": "db5ea2cb04e3759059dd2924eb99b3fa6a58a4de037b02eb81a4be5c4992b82f",
+      "options": [
+        "level 0: Not useful",
+        "level 1: Somewhat useful",
+        "level 2: Very useful"
+      ]
+    },
+    {
+      "case_id": "example-5",
+      "type": "choice",
+      "tokens": 81,
+      "masks": 4,
+      "input_sha256": "504ddefed2fa3f6b7d87bb7e3aad4880111972cf62175dd9b3c3617c00bbbf88",
+      "options": [
+        "Review the payment records",
+        "Close the request",
+        "Send a replacement",
+        "Ask for a product review"
+      ]
+    },
+    {
+      "case_id": "example-4",
+      "type": "noul",
+      "tokens": 45,
+      "masks": 1,
+      "input_sha256": "4c1cf36a429a02fbbf091ff535e3b83ba0dd3d1d828fdd71d9fd6aeb0fe86b6c",
+      "options": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "case_id": "example-6",
+      "type": "score",
+      "tokens": 101,
+      "masks": 5,
+      "input_sha256": "edab001eb9b45ee40ccf1ba3c33945bd7d1c0302fed6d30b2f1a67698ca6f2e4",
+      "options": [
+        "level 0: Very unclear",
+        "level 1: Unclear",
+        "level 2: Mixed",
+        "level 3: Clear",
+        "level 4: Very clear"
+      ]
+    }
+  ],
+  "batches": [
+    {
+      "batch_size": 1,
+      "requests": 6,
+      "batch_count": 6,
+      "samples_seconds": {
+        "mlx_sequential": [
+          0.13468216700130142,
+          0.1359424999973271,
+          0.13520337500085589
+        ],
+        "mlx_batch": [
+          0.1359969170007389,
+          0.13494304199412,
+          0.13497566699516028
+        ],
+        "torch_sequential": [
+          0.25673191699024756,
+          0.2535180830018362,
+          0.2537865420017624
+        ],
+        "torch_batch": [
+          0.25416991699603386,
+          0.2519121250079479,
+          0.25247229100205004
+        ]
+      },
+      "median_workload_seconds": {
+        "mlx_sequential": 0.13520337500085589,
+        "mlx_batch": 0.13497566699516028,
+        "torch_sequential": 0.2537865420017624,
+        "torch_batch": 0.25247229100205004
+      },
+      "decisions_per_second": {
+        "mlx_sequential": 44.37759042599357,
+        "mlx_batch": 44.452456754409944,
+        "torch_sequential": 23.64191557469715,
+        "torch_batch": 23.76498417385249
+      },
+      "mlx_batch_speedup_vs_sequential": 1.0016870300459695,
+      "mlx_batch_speedup_vs_torch_batch": 1.870502266242572,
+      "mlx_peak_active_bytes": {
+        "mlx_sequential": 2676883712,
+        "mlx_batch": 2676883712
+      },
+      "allocator_memory_bytes_after_samples": {
+        "mlx_sequential": [
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 944271420,
+            "torch_active": 2399404288,
+            "torch_driver": 6157369344
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 944271448,
+            "torch_active": 2399404288,
+            "torch_driver": 6157369344
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 944271432,
+            "torch_active": 2399404288,
+            "torch_driver": 6157369344
+          }
+        ],
+        "mlx_batch": [
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 944271432,
+            "torch_active": 2399404288,
+            "torch_driver": 6157369344
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 925462600,
+            "torch_active": 2399404288,
+            "torch_driver": 6138560512
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 925167688,
+            "torch_active": 2399404288,
+            "torch_driver": 6138265600
+          }
+        ],
+        "torch_sequential": [
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 0,
+            "torch_active": 2399404288,
+            "torch_driver": 5221384192
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 0,
+            "torch_active": 2399404288,
+            "torch_driver": 5221384192
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 0,
+            "torch_active": 2399404288,
+            "torch_driver": 5229772800
+          }
+        ],
+        "torch_batch": [
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 0,
+            "torch_active": 2399404288,
+            "torch_driver": 5229772800
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 0,
+            "torch_active": 2399404288,
+            "torch_driver": 5221384192
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 0,
+            "torch_active": 2399404288,
+            "torch_driver": 5221384192
+          }
+        ]
+      },
+      "repeat_outputs_exactly_stable": {
+        "mlx_sequential": true,
+        "mlx_batch": true,
+        "torch_sequential": true,
+        "torch_batch": true
+      },
+      "comparisons": {
+        "mlx_batch_vs_mlx_sequential": {
+          "matching_decisions": 6,
+          "max_probability_error": 0.0,
+          "max_expected_score_error": 0.0,
+          "mismatch_indices": []
+        },
+        "mlx_batch_vs_torch_batch": {
+          "matching_decisions": 6,
+          "max_probability_error": 2.423505086779354e-06,
+          "max_expected_score_error": 3.2750637991574294e-06,
+          "mismatch_indices": []
+        },
+        "mlx_batch_vs_torch_sequential": {
+          "matching_decisions": 6,
+          "max_probability_error": 2.423505086779354e-06,
+          "max_expected_score_error": 3.2750637991574294e-06,
+          "mismatch_indices": []
+        },
+        "torch_batch_vs_torch_sequential": {
+          "matching_decisions": 6,
+          "max_probability_error": 0.0,
+          "max_expected_score_error": 0.0,
+          "mismatch_indices": []
+        }
+      },
+      "outputs": {
+        "mlx_sequential": [
+          {
+            "index": 0,
+            "option": "negative",
+            "probabilities": [
+              0.9693451996473218,
+              0.021334717134669407,
+              0.009320083218008725
+            ]
+          },
+          {
+            "index": 1,
+            "option": "Yes",
+            "probabilities": [
+              0.03689993125759939,
+              0.9631000687424006
+            ]
+          },
+          {
+            "index": 2,
+            "option": "level 2: Very useful",
+            "probabilities": [
+              0.0007180270998001791,
+              0.10862181359668664,
+              0.8906601593035132
+            ],
+            "expected_score": 1.8899421322037129
+          },
+          {
+            "index": 0,
+            "option": "Review the payment records",
+            "probabilities": [
+              0.7305727141896576,
+              0.15401042498926865,
+              0.10215586562195779,
+              0.013260995199116022
+            ]
+          },
+          {
+            "index": 0,
+            "option": "No",
+            "probabilities": [
+              0.9918947734949111,
+              0.00810522650508884
+            ]
+          },
+          {
+            "index": 1,
+            "option": "level 1: Unclear",
+            "probabilities": [
+              0.3114061092378125,
+              0.5396411991375397,
+              0.130803572949686,
+              0.010588064047297346,
+              0.007561054627664441
+            ],
+            "expected_score": 0.8632567556894615
+          }
+        ],
+        "mlx_batch": [
+          {
+            "index": 0,
+            "option": "negative",
+            "probabilities": [
+              0.9693451996473218,
+              0.021334717134669407,
+              0.009320083218008725
+            ]
+          },
+          {
+            "index": 1,
+            "option": "Yes",
+            "probabilities": [
+              0.03689993125759939,
+              0.9631000687424006
+            ]
+          },
+          {
+            "index": 2,
+            "option": "level 2: Very useful",
+            "probabilities": [
+              0.0007180270998001791,
+              0.10862181359668664,
+              0.8906601593035132
+            ],
+            "expected_score": 1.8899421322037129
+          },
+          {
+            "index": 0,
+            "option": "Review the payment records",
+            "probabilities": [
+              0.7305727141896576,
+              0.15401042498926865,
+              0.10215586562195779,
+              0.013260995199116022
+            ]
+          },
+          {
+            "index": 0,
+            "option": "No",
+            "probabilities": [
+              0.9918947734949111,
+              0.00810522650508884
+            ]
+          },
+          {
+            "index": 1,
+            "option": "level 1: Unclear",
+            "probabilities": [
+              0.3114061092378125,
+              0.5396411991375397,
+              0.130803572949686,
+              0.010588064047297346,
+              0.007561054627664441
+            ],
+            "expected_score": 0.8632567556894615
+          }
+        ],
+        "torch_sequential": [
+          {
+            "index": 0,
+            "option": "negative",
+            "probabilities": [
+              0.9693450443565563,
+              0.02133485614186612,
+              0.009320099501577478
+            ]
+          },
+          {
+            "index": 1,
+            "option": "Yes",
+            "probabilities": [
+              0.03689962623091019,
+              0.9631003737690897
+            ]
+          },
+          {
+            "index": 2,
+            "option": "level 2: Very useful",
+            "probabilities": [
+              0.0007180244966228348,
+              0.10862079825785419,
+              0.8906611772455231
+            ],
+            "expected_score": 1.8899431527489003
+          },
+          {
+            "index": 0,
+            "option": "Review the payment records",
+            "probabilities": [
+              0.7305746600492973,
+              0.15400892581317643,
+              0.10215535832469429,
+              0.013261055812832014
+            ]
+          },
+          {
+            "index": 0,
+            "option": "No",
+            "probabilities": [
+              0.9918947734949111,
+              0.00810522650508884
+            ]
+          },
+          {
+            "index": 1,
+            "option": "level 1: Unclear",
+            "probabilities": [
+              0.3114036857327257,
+              0.5396426604494683,
+              0.1308045508801453,
+              0.010588143207140641,
+              0.007560959730519966
+            ],
+            "expected_score": 0.8632600307532606
+          }
+        ],
+        "torch_batch": [
+          {
+            "index": 0,
+            "option": "negative",
+            "probabilities": [
+              0.9693450443565563,
+              0.02133485614186612,
+              0.009320099501577478
+            ]
+          },
+          {
+            "index": 1,
+            "option": "Yes",
+            "probabilities": [
+              0.03689962623091019,
+              0.9631003737690897
+            ]
+          },
+          {
+            "index": 2,
+            "option": "level 2: Very useful",
+            "probabilities": [
+              0.0007180244966228348,
+              0.10862079825785419,
+              0.8906611772455231
+            ],
+            "expected_score": 1.8899431527489003
+          },
+          {
+            "index": 0,
+            "option": "Review the payment records",
+            "probabilities": [
+              0.7305746600492973,
+              0.15400892581317643,
+              0.10215535832469429,
+              0.013261055812832014
+            ]
+          },
+          {
+            "index": 0,
+            "option": "No",
+            "probabilities": [
+              0.9918947734949111,
+              0.00810522650508884
+            ]
+          },
+          {
+            "index": 1,
+            "option": "level 1: Unclear",
+            "probabilities": [
+              0.3114036857327257,
+              0.5396426604494683,
+              0.1308045508801453,
+              0.010588143207140641,
+              0.007560959730519966
+            ],
+            "expected_score": 0.8632600307532606
+          }
+        ]
+      }
+    },
+    {
+      "batch_size": 2,
+      "requests": 6,
+      "batch_count": 3,
+      "samples_seconds": {
+        "mlx_sequential": [
+          0.13657504199363757,
+          0.1349763750040438,
+          0.13505933299893513
+        ],
+        "mlx_batch": [
+          0.12020620799739845,
+          0.11987470800522715,
+          0.1210809589974815
+        ],
+        "torch_sequential": [
+          0.25660345901269466,
+          0.26189058300224133,
+          0.25906725000822917
+        ],
+        "torch_batch": [
+          0.18700391700258479,
+          0.1866228340077214,
+          0.18717129199649207
+        ]
+      },
+      "median_workload_seconds": {
+        "mlx_sequential": 0.13505933299893513,
+        "mlx_batch": 0.12020620799739845,
+        "torch_sequential": 0.25906725000822917,
+        "torch_batch": 0.18700391700258479
+      },
+      "decisions_per_second": {
+        "mlx_sequential": 44.424919528125514,
+        "mlx_batch": 49.91422739273045,
+        "torch_sequential": 23.16000961066832,
+        "torch_batch": 32.084889429974176
+      },
+      "mlx_batch_speedup_vs_sequential": 1.1235637098032254,
+      "mlx_batch_speedup_vs_torch_batch": 1.555692672766385,
+      "mlx_peak_active_bytes": {
+        "mlx_sequential": 2676883708,
+        "mlx_batch": 2963638312
+      },
+      "allocator_memory_bytes_after_samples": {
+        "mlx_sequential": [
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 934719552,
+            "torch_active": 2399404288,
+            "torch_driver": 6147817472
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 944271412,
+            "torch_active": 2399404288,
+            "torch_driver": 6157369344
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 944271420,
+            "torch_active": 2399404288,
+            "torch_driver": 6157369344
+          }
+        ],
+        "mlx_batch": [
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 1074613644,
+            "torch_active": 2399404288,
+            "torch_driver": 6287605760
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 1074613644,
+            "torch_active": 2399404288,
+            "torch_driver": 6287605760
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 1074613644,
+            "torch_active": 2399404288,
+            "torch_driver": 6287605760
+          }
+        ],
+        "torch_sequential": [
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 0,
+            "torch_active": 2399404288,
+            "torch_driver": 5221384192
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 0,
+            "torch_active": 2399404288,
+            "torch_driver": 5221384192
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 0,
+            "torch_active": 2399404288,
+            "torch_driver": 5229772800
+          }
+        ],
+        "torch_batch": [
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 0,
+            "torch_active": 2399404288,
+            "torch_driver": 5221384192
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 0,
+            "torch_active": 2399404288,
+            "torch_driver": 5221384192
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 0,
+            "torch_active": 2399404288,
+            "torch_driver": 5221384192
+          }
+        ]
+      },
+      "repeat_outputs_exactly_stable": {
+        "mlx_sequential": true,
+        "mlx_batch": true,
+        "torch_sequential": true,
+        "torch_batch": true
+      },
+      "comparisons": {
+        "mlx_batch_vs_mlx_sequential": {
+          "matching_decisions": 6,
+          "max_probability_error": 3.3891974109134804e-08,
+          "max_expected_score_error": 0.0,
+          "mismatch_indices": []
+        },
+        "mlx_batch_vs_torch_batch": {
+          "matching_decisions": 6,
+          "max_probability_error": 2.423505086779354e-06,
+          "max_expected_score_error": 3.2750637991574294e-06,
+          "mismatch_indices": []
+        },
+        "mlx_batch_vs_torch_sequential": {
+          "matching_decisions": 6,
+          "max_probability_error": 2.423505086779354e-06,
+          "max_expected_score_error": 3.2750637991574294e-06,
+          "mismatch_indices": []
+        },
+        "torch_batch_vs_torch_sequential": {
+          "matching_decisions": 6,
+          "max_probability_error": 2.0335085670897257e-07,
+          "max_expected_score_error": 0.0,
+          "mismatch_indices": []
+        }
+      },
+      "outputs": {
+        "mlx_sequential": [
+          {
+            "index": 0,
+            "option": "negative",
+            "probabilities": [
+              0.9693451996473218,
+              0.021334717134669407,
+              0.009320083218008725
+            ]
+          },
+          {
+            "index": 1,
+            "option": "Yes",
+            "probabilities": [
+              0.03689993125759939,
+              0.9631000687424006
+            ]
+          },
+          {
+            "index": 2,
+            "option": "level 2: Very useful",
+            "probabilities": [
+              0.0007180270998001791,
+              0.10862181359668664,
+              0.8906601593035132
+            ],
+            "expected_score": 1.8899421322037129
+          },
+          {
+            "index": 0,
+            "option": "Review the payment records",
+            "probabilities": [
+              0.7305727141896576,
+              0.15401042498926865,
+              0.10215586562195779,
+              0.013260995199116022
+            ]
+          },
+          {
+            "index": 0,
+            "option": "No",
+            "probabilities": [
+              0.9918947734949111,
+              0.00810522650508884
+            ]
+          },
+          {
+            "index": 1,
+            "option": "level 1: Unclear",
+            "probabilities": [
+              0.3114061092378125,
+              0.5396411991375397,
+              0.130803572949686,
+              0.010588064047297346,
+              0.007561054627664441
+            ],
+            "expected_score": 0.8632567556894615
+          }
+        ],
+        "mlx_batch": [
+          {
+            "index": 0,
+            "option": "negative",
+            "probabilities": [
+              0.9693451996473218,
+              0.021334717134669407,
+              0.009320083218008725
+            ]
+          },
+          {
+            "index": 1,
+            "option": "Yes",
+            "probabilities": [
+              0.03689989736562528,
+              0.9631001026343746
+            ]
+          },
+          {
+            "index": 2,
+            "option": "level 2: Very useful",
+            "probabilities": [
+              0.0007180270998001791,
+              0.10862181359668664,
+              0.8906601593035132
+            ],
+            "expected_score": 1.8899421322037129
+          },
+          {
+            "index": 0,
+            "option": "Review the payment records",
+            "probabilities": [
+              0.7305727141896576,
+              0.15401042498926865,
+              0.10215586562195779,
+              0.013260995199116022
+            ]
+          },
+          {
+            "index": 0,
+            "option": "No",
+            "probabilities": [
+              0.9918947428264736,
+              0.008105257173526398
+            ]
+          },
+          {
+            "index": 1,
+            "option": "level 1: Unclear",
+            "probabilities": [
+              0.3114061092378125,
+              0.5396411991375397,
+              0.130803572949686,
+              0.010588064047297346,
+              0.007561054627664441
+            ],
+            "expected_score": 0.8632567556894615
+          }
+        ],
+        "torch_sequential": [
+          {
+            "index": 0,
+            "option": "negative",
+            "probabilities": [
+              0.9693450443565563,
+              0.02133485614186612,
+              0.009320099501577478
+            ]
+          },
+          {
+            "index": 1,
+            "option": "Yes",
+            "probabilities": [
+              0.03689962623091019,
+              0.9631003737690897
+            ]
+          },
+          {
+            "index": 2,
+            "option": "level 2: Very useful",
+            "probabilities": [
+              0.0007180244966228348,
+              0.10862079825785419,
+              0.8906611772455231
+            ],
+            "expected_score": 1.8899431527489003
+          },
+          {
+            "index": 0,
+            "option": "Review the payment records",
+            "probabilities": [
+              0.7305746600492973,
+              0.15400892581317643,
+              0.10215535832469429,
+              0.013261055812832014
+            ]
+          },
+          {
+            "index": 0,
+            "option": "No",
+            "probabilities": [
+              0.9918947734949111,
+              0.00810522650508884
+            ]
+          },
+          {
+            "index": 1,
+            "option": "level 1: Unclear",
+            "probabilities": [
+              0.3114036857327257,
+              0.5396426604494683,
+              0.1308045508801453,
+              0.010588143207140641,
+              0.007560959730519966
+            ],
+            "expected_score": 0.8632600307532606
+          }
+        ],
+        "torch_batch": [
+          {
+            "index": 0,
+            "option": "negative",
+            "probabilities": [
+              0.9693450443565563,
+              0.02133485614186612,
+              0.009320099501577478
+            ]
+          },
+          {
+            "index": 1,
+            "option": "Yes",
+            "probabilities": [
+              0.0368998295817669,
+              0.9631001704182331
+            ]
+          },
+          {
+            "index": 2,
+            "option": "level 2: Very useful",
+            "probabilities": [
+              0.0007180244966228348,
+              0.10862079825785419,
+              0.8906611772455231
+            ],
+            "expected_score": 1.8899431527489003
+          },
+          {
+            "index": 0,
+            "option": "Review the payment records",
+            "probabilities": [
+              0.7305746600492973,
+              0.15400892581317643,
+              0.10215535832469429,
+              0.013261055812832014
+            ]
+          },
+          {
+            "index": 0,
+            "option": "No",
+            "probabilities": [
+              0.9918947811620027,
+              0.008105218837997438
+            ]
+          },
+          {
+            "index": 1,
+            "option": "level 1: Unclear",
+            "probabilities": [
+              0.3114036857327257,
+              0.5396426604494683,
+              0.1308045508801453,
+              0.010588143207140641,
+              0.007560959730519966
+            ],
+            "expected_score": 0.8632600307532606
+          }
+        ]
+      }
+    },
+    {
+      "batch_size": 3,
+      "requests": 6,
+      "batch_count": 2,
+      "samples_seconds": {
+        "mlx_sequential": [
+          0.13592416599567514,
+          0.13485966699954588,
+          0.1350541670108214
+        ],
+        "mlx_batch": [
+          0.11337695800466463,
+          0.10990562500956003,
+          0.11245845799567178
+        ],
+        "torch_sequential": [
+          0.25824554200517014,
+          0.2592071660037618,
+          0.2611553340102546
+        ],
+        "torch_batch": [
+          0.15842283399251755,
+          0.15984520799247548,
+          0.1615010829991661
+        ]
+      },
+      "median_workload_seconds": {
+        "mlx_sequential": 0.1350541670108214,
+        "mlx_batch": 0.11245845799567178,
+        "torch_sequential": 0.2592071660037618,
+        "torch_batch": 0.15984520799247548
+      },
+      "decisions_per_second": {
+        "mlx_sequential": 44.42661883597595,
+        "mlx_batch": 53.353034595503026,
+        "torch_sequential": 23.147508197797755,
+        "torch_batch": 37.53631450923723
+      },
+      "mlx_batch_speedup_vs_sequential": 1.2009249407991995,
+      "mlx_batch_speedup_vs_torch_batch": 1.4213711519913201,
+      "mlx_peak_active_bytes": {
+        "mlx_sequential": 2676883712,
+        "mlx_batch": 3207269240
+      },
+      "allocator_memory_bytes_after_samples": {
+        "mlx_sequential": [
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 944271432,
+            "torch_active": 2399404288,
+            "torch_driver": 6157369344
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 944271424,
+            "torch_active": 2399404288,
+            "torch_driver": 6157369344
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 944271432,
+            "torch_active": 2399404288,
+            "torch_driver": 6157369344
+          }
+        ],
+        "mlx_batch": [
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 1074857768,
+            "torch_active": 2399404288,
+            "torch_driver": 6287851520
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 1074857768,
+            "torch_active": 2399404288,
+            "torch_driver": 6287851520
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 1074857768,
+            "torch_active": 2399404288,
+            "torch_driver": 6287851520
+          }
+        ],
+        "torch_sequential": [
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 0,
+            "torch_active": 2399404288,
+            "torch_driver": 5221384192
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 0,
+            "torch_active": 2399404288,
+            "torch_driver": 5221384192
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 0,
+            "torch_active": 2399404288,
+            "torch_driver": 5221384192
+          }
+        ],
+        "torch_batch": [
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 0,
+            "torch_active": 2399404288,
+            "torch_driver": 5221384192
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 0,
+            "torch_active": 2399404288,
+            "torch_driver": 5221384192
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 0,
+            "torch_active": 2399404288,
+            "torch_driver": 5221384192
+          }
+        ]
+      },
+      "repeat_outputs_exactly_stable": {
+        "mlx_sequential": true,
+        "mlx_batch": true,
+        "torch_sequential": true,
+        "torch_batch": true
+      },
+      "comparisons": {
+        "mlx_batch_vs_mlx_sequential": {
+          "matching_decisions": 6,
+          "max_probability_error": 3.3891974109134804e-08,
+          "max_expected_score_error": 0.0,
+          "mismatch_indices": []
+        },
+        "mlx_batch_vs_torch_batch": {
+          "matching_decisions": 6,
+          "max_probability_error": 2.423505086779354e-06,
+          "max_expected_score_error": 3.2750637991574294e-06,
+          "mismatch_indices": []
+        },
+        "mlx_batch_vs_torch_sequential": {
+          "matching_decisions": 6,
+          "max_probability_error": 2.423505086779354e-06,
+          "max_expected_score_error": 3.2750637991574294e-06,
+          "mismatch_indices": []
+        },
+        "torch_batch_vs_torch_sequential": {
+          "matching_decisions": 6,
+          "max_probability_error": 2.0335085670897257e-07,
+          "max_expected_score_error": 0.0,
+          "mismatch_indices": []
+        }
+      },
+      "outputs": {
+        "mlx_sequential": [
+          {
+            "index": 0,
+            "option": "negative",
+            "probabilities": [
+              0.9693451996473218,
+              0.021334717134669407,
+              0.009320083218008725
+            ]
+          },
+          {
+            "index": 1,
+            "option": "Yes",
+            "probabilities": [
+              0.03689993125759939,
+              0.9631000687424006
+            ]
+          },
+          {
+            "index": 2,
+            "option": "level 2: Very useful",
+            "probabilities": [
+              0.0007180270998001791,
+              0.10862181359668664,
+              0.8906601593035132
+            ],
+            "expected_score": 1.8899421322037129
+          },
+          {
+            "index": 0,
+            "option": "Review the payment records",
+            "probabilities": [
+              0.7305727141896576,
+              0.15401042498926865,
+              0.10215586562195779,
+              0.013260995199116022
+            ]
+          },
+          {
+            "index": 0,
+            "option": "No",
+            "probabilities": [
+              0.9918947734949111,
+              0.00810522650508884
+            ]
+          },
+          {
+            "index": 1,
+            "option": "level 1: Unclear",
+            "probabilities": [
+              0.3114061092378125,
+              0.5396411991375397,
+              0.130803572949686,
+              0.010588064047297346,
+              0.007561054627664441
+            ],
+            "expected_score": 0.8632567556894615
+          }
+        ],
+        "mlx_batch": [
+          {
+            "index": 0,
+            "option": "negative",
+            "probabilities": [
+              0.9693451996473218,
+              0.021334717134669407,
+              0.009320083218008725
+            ]
+          },
+          {
+            "index": 1,
+            "option": "Yes",
+            "probabilities": [
+              0.03689989736562528,
+              0.9631001026343746
+            ]
+          },
+          {
+            "index": 2,
+            "option": "level 2: Very useful",
+            "probabilities": [
+              0.0007180270998001791,
+              0.10862181359668664,
+              0.8906601593035132
+            ],
+            "expected_score": 1.8899421322037129
+          },
+          {
+            "index": 0,
+            "option": "Review the payment records",
+            "probabilities": [
+              0.7305727141896576,
+              0.15401042498926865,
+              0.10215586562195779,
+              0.013260995199116022
+            ]
+          },
+          {
+            "index": 0,
+            "option": "No",
+            "probabilities": [
+              0.9918947428264736,
+              0.008105257173526398
+            ]
+          },
+          {
+            "index": 1,
+            "option": "level 1: Unclear",
+            "probabilities": [
+              0.3114061092378125,
+              0.5396411991375397,
+              0.130803572949686,
+              0.010588064047297346,
+              0.007561054627664441
+            ],
+            "expected_score": 0.8632567556894615
+          }
+        ],
+        "torch_sequential": [
+          {
+            "index": 0,
+            "option": "negative",
+            "probabilities": [
+              0.9693450443565563,
+              0.02133485614186612,
+              0.009320099501577478
+            ]
+          },
+          {
+            "index": 1,
+            "option": "Yes",
+            "probabilities": [
+              0.03689962623091019,
+              0.9631003737690897
+            ]
+          },
+          {
+            "index": 2,
+            "option": "level 2: Very useful",
+            "probabilities": [
+              0.0007180244966228348,
+              0.10862079825785419,
+              0.8906611772455231
+            ],
+            "expected_score": 1.8899431527489003
+          },
+          {
+            "index": 0,
+            "option": "Review the payment records",
+            "probabilities": [
+              0.7305746600492973,
+              0.15400892581317643,
+              0.10215535832469429,
+              0.013261055812832014
+            ]
+          },
+          {
+            "index": 0,
+            "option": "No",
+            "probabilities": [
+              0.9918947734949111,
+              0.00810522650508884
+            ]
+          },
+          {
+            "index": 1,
+            "option": "level 1: Unclear",
+            "probabilities": [
+              0.3114036857327257,
+              0.5396426604494683,
+              0.1308045508801453,
+              0.010588143207140641,
+              0.007560959730519966
+            ],
+            "expected_score": 0.8632600307532606
+          }
+        ],
+        "torch_batch": [
+          {
+            "index": 0,
+            "option": "negative",
+            "probabilities": [
+              0.9693450443565563,
+              0.02133485614186612,
+              0.009320099501577478
+            ]
+          },
+          {
+            "index": 1,
+            "option": "Yes",
+            "probabilities": [
+              0.0368998295817669,
+              0.9631001704182331
+            ]
+          },
+          {
+            "index": 2,
+            "option": "level 2: Very useful",
+            "probabilities": [
+              0.0007180244966228348,
+              0.10862079825785419,
+              0.8906611772455231
+            ],
+            "expected_score": 1.8899431527489003
+          },
+          {
+            "index": 0,
+            "option": "Review the payment records",
+            "probabilities": [
+              0.7305746600492973,
+              0.15400892581317643,
+              0.10215535832469429,
+              0.013261055812832014
+            ]
+          },
+          {
+            "index": 0,
+            "option": "No",
+            "probabilities": [
+              0.9918947811620027,
+              0.008105218837997438
+            ]
+          },
+          {
+            "index": 1,
+            "option": "level 1: Unclear",
+            "probabilities": [
+              0.3114036857327257,
+              0.5396426604494683,
+              0.1308045508801453,
+              0.010588143207140641,
+              0.007560959730519966
+            ],
+            "expected_score": 0.8632600307532606
+          }
+        ]
+      }
+    },
+    {
+      "batch_size": 4,
+      "requests": 6,
+      "batch_count": 2,
+      "samples_seconds": {
+        "mlx_sequential": [
+          0.13622425000357907,
+          0.13519795799220446,
+          0.13566579199687112
+        ],
+        "mlx_batch": [
+          0.1073078329936834,
+          0.10757154200109653,
+          0.10743708300287835
+        ],
+        "torch_sequential": [
+          0.25438437500270084,
+          0.25354716600850224,
+          0.26014537501032464
+        ],
+        "torch_batch": [
+          0.15802545800397638,
+          0.15812079200986773,
+          0.1595115420059301
+        ]
+      },
+      "median_workload_seconds": {
+        "mlx_sequential": 0.13566579199687112,
+        "mlx_batch": 0.10743708300287835,
+        "torch_sequential": 0.25438437500270084,
+        "torch_batch": 0.15812079200986773
+      },
+      "decisions_per_second": {
+        "mlx_sequential": 44.22632936192477,
+        "mlx_batch": 55.846639096104774,
+        "torch_sequential": 23.58635431101575,
+        "torch_batch": 37.94567383412526
+      },
+      "mlx_batch_speedup_vs_sequential": 1.26274642055608,
+      "mlx_batch_speedup_vs_torch_batch": 1.4717524674942217,
+      "mlx_peak_active_bytes": {
+        "mlx_sequential": 2676883708,
+        "mlx_batch": 3266381744
+      },
+      "allocator_memory_bytes_after_samples": {
+        "mlx_sequential": [
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 913961020,
+            "torch_active": 2399404288,
+            "torch_driver": 6127058944
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 944271432,
+            "torch_active": 2399404288,
+            "torch_driver": 6157369344
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 944271412,
+            "torch_active": 2399404288,
+            "torch_driver": 6157369344
+          }
+        ],
+        "mlx_batch": [
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 1075037012,
+            "torch_active": 2399404288,
+            "torch_driver": 6288031744
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 1075037012,
+            "torch_active": 2399404288,
+            "torch_driver": 6288031744
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 1075037012,
+            "torch_active": 2399404288,
+            "torch_driver": 6288031744
+          }
+        ],
+        "torch_sequential": [
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 0,
+            "torch_active": 2399404288,
+            "torch_driver": 5221384192
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 0,
+            "torch_active": 2399404288,
+            "torch_driver": 5229772800
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 0,
+            "torch_active": 2399404288,
+            "torch_driver": 5229772800
+          }
+        ],
+        "torch_batch": [
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 0,
+            "torch_active": 2399404288,
+            "torch_driver": 5221384192
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 0,
+            "torch_active": 2399404288,
+            "torch_driver": 5221384192
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 0,
+            "torch_active": 2399404288,
+            "torch_driver": 5221384192
+          }
+        ]
+      },
+      "repeat_outputs_exactly_stable": {
+        "mlx_sequential": true,
+        "mlx_batch": true,
+        "torch_sequential": true,
+        "torch_batch": true
+      },
+      "comparisons": {
+        "mlx_batch_vs_mlx_sequential": {
+          "matching_decisions": 6,
+          "max_probability_error": 3.3891974109134804e-08,
+          "max_expected_score_error": 0.0,
+          "mismatch_indices": []
+        },
+        "mlx_batch_vs_torch_batch": {
+          "matching_decisions": 6,
+          "max_probability_error": 2.423505086779354e-06,
+          "max_expected_score_error": 3.2750637991574294e-06,
+          "mismatch_indices": []
+        },
+        "mlx_batch_vs_torch_sequential": {
+          "matching_decisions": 6,
+          "max_probability_error": 2.423505086779354e-06,
+          "max_expected_score_error": 3.2750637991574294e-06,
+          "mismatch_indices": []
+        },
+        "torch_batch_vs_torch_sequential": {
+          "matching_decisions": 6,
+          "max_probability_error": 2.0335085670897257e-07,
+          "max_expected_score_error": 0.0,
+          "mismatch_indices": []
+        }
+      },
+      "outputs": {
+        "mlx_sequential": [
+          {
+            "index": 0,
+            "option": "negative",
+            "probabilities": [
+              0.9693451996473218,
+              0.021334717134669407,
+              0.009320083218008725
+            ]
+          },
+          {
+            "index": 1,
+            "option": "Yes",
+            "probabilities": [
+              0.03689993125759939,
+              0.9631000687424006
+            ]
+          },
+          {
+            "index": 2,
+            "option": "level 2: Very useful",
+            "probabilities": [
+              0.0007180270998001791,
+              0.10862181359668664,
+              0.8906601593035132
+            ],
+            "expected_score": 1.8899421322037129
+          },
+          {
+            "index": 0,
+            "option": "Review the payment records",
+            "probabilities": [
+              0.7305727141896576,
+              0.15401042498926865,
+              0.10215586562195779,
+              0.013260995199116022
+            ]
+          },
+          {
+            "index": 0,
+            "option": "No",
+            "probabilities": [
+              0.9918947734949111,
+              0.00810522650508884
+            ]
+          },
+          {
+            "index": 1,
+            "option": "level 1: Unclear",
+            "probabilities": [
+              0.3114061092378125,
+              0.5396411991375397,
+              0.130803572949686,
+              0.010588064047297346,
+              0.007561054627664441
+            ],
+            "expected_score": 0.8632567556894615
+          }
+        ],
+        "mlx_batch": [
+          {
+            "index": 0,
+            "option": "negative",
+            "probabilities": [
+              0.9693451996473218,
+              0.021334717134669407,
+              0.009320083218008725
+            ]
+          },
+          {
+            "index": 1,
+            "option": "Yes",
+            "probabilities": [
+              0.03689989736562528,
+              0.9631001026343746
+            ]
+          },
+          {
+            "index": 2,
+            "option": "level 2: Very useful",
+            "probabilities": [
+              0.0007180270998001791,
+              0.10862181359668664,
+              0.8906601593035132
+            ],
+            "expected_score": 1.8899421322037129
+          },
+          {
+            "index": 0,
+            "option": "Review the payment records",
+            "probabilities": [
+              0.7305727141896576,
+              0.15401042498926865,
+              0.10215586562195779,
+              0.013260995199116022
+            ]
+          },
+          {
+            "index": 0,
+            "option": "No",
+            "probabilities": [
+              0.9918947428264736,
+              0.008105257173526398
+            ]
+          },
+          {
+            "index": 1,
+            "option": "level 1: Unclear",
+            "probabilities": [
+              0.3114061092378125,
+              0.5396411991375397,
+              0.130803572949686,
+              0.010588064047297346,
+              0.007561054627664441
+            ],
+            "expected_score": 0.8632567556894615
+          }
+        ],
+        "torch_sequential": [
+          {
+            "index": 0,
+            "option": "negative",
+            "probabilities": [
+              0.9693450443565563,
+              0.02133485614186612,
+              0.009320099501577478
+            ]
+          },
+          {
+            "index": 1,
+            "option": "Yes",
+            "probabilities": [
+              0.03689962623091019,
+              0.9631003737690897
+            ]
+          },
+          {
+            "index": 2,
+            "option": "level 2: Very useful",
+            "probabilities": [
+              0.0007180244966228348,
+              0.10862079825785419,
+              0.8906611772455231
+            ],
+            "expected_score": 1.8899431527489003
+          },
+          {
+            "index": 0,
+            "option": "Review the payment records",
+            "probabilities": [
+              0.7305746600492973,
+              0.15400892581317643,
+              0.10215535832469429,
+              0.013261055812832014
+            ]
+          },
+          {
+            "index": 0,
+            "option": "No",
+            "probabilities": [
+              0.9918947734949111,
+              0.00810522650508884
+            ]
+          },
+          {
+            "index": 1,
+            "option": "level 1: Unclear",
+            "probabilities": [
+              0.3114036857327257,
+              0.5396426604494683,
+              0.1308045508801453,
+              0.010588143207140641,
+              0.007560959730519966
+            ],
+            "expected_score": 0.8632600307532606
+          }
+        ],
+        "torch_batch": [
+          {
+            "index": 0,
+            "option": "negative",
+            "probabilities": [
+              0.9693450443565563,
+              0.02133485614186612,
+              0.009320099501577478
+            ]
+          },
+          {
+            "index": 1,
+            "option": "Yes",
+            "probabilities": [
+              0.0368998295817669,
+              0.9631001704182331
+            ]
+          },
+          {
+            "index": 2,
+            "option": "level 2: Very useful",
+            "probabilities": [
+              0.0007180244966228348,
+              0.10862079825785419,
+              0.8906611772455231
+            ],
+            "expected_score": 1.8899431527489003
+          },
+          {
+            "index": 0,
+            "option": "Review the payment records",
+            "probabilities": [
+              0.7305746600492973,
+              0.15400892581317643,
+              0.10215535832469429,
+              0.013261055812832014
+            ]
+          },
+          {
+            "index": 0,
+            "option": "No",
+            "probabilities": [
+              0.9918947811620027,
+              0.008105218837997438
+            ]
+          },
+          {
+            "index": 1,
+            "option": "level 1: Unclear",
+            "probabilities": [
+              0.3114036857327257,
+              0.5396426604494683,
+              0.1308045508801453,
+              0.010588143207140641,
+              0.007560959730519966
+            ],
+            "expected_score": 0.8632600307532606
+          }
+        ]
+      }
+    },
+    {
+      "batch_size": 5,
+      "requests": 6,
+      "batch_count": 2,
+      "samples_seconds": {
+        "mlx_sequential": [
+          0.136991459003184,
+          0.13509791699470952,
+          0.1352059159980854
+        ],
+        "mlx_batch": [
+          0.10186095800600015,
+          0.11187304199847858,
+          0.10190933400008362
+        ],
+        "torch_sequential": [
+          0.25304350000806153,
+          0.2602240830019582,
+          0.25709662500594277
+        ],
+        "torch_batch": [
+          0.1525364169938257,
+          0.1529455840063747,
+          0.15607079199980944
+        ]
+      },
+      "median_workload_seconds": {
+        "mlx_sequential": 0.1352059159980854,
+        "mlx_batch": 0.10190933400008362,
+        "torch_sequential": 0.25709662500594277,
+        "torch_batch": 0.1529455840063747
+      },
+      "decisions_per_second": {
+        "mlx_sequential": 44.37675641415694,
+        "mlx_batch": 58.875863127464626,
+        "torch_sequential": 23.33752922606942,
+        "torch_batch": 39.229638691300316
+      },
+      "mlx_batch_speedup_vs_sequential": 1.3267275007211259,
+      "mlx_batch_speedup_vs_torch_batch": 1.50080054498491,
+      "mlx_peak_active_bytes": {
+        "mlx_sequential": 2676883712,
+        "mlx_batch": 3409512804
+      },
+      "allocator_memory_bytes_after_samples": {
+        "mlx_sequential": [
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 934588468,
+            "torch_active": 2399404288,
+            "torch_driver": 6147686400
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 944271424,
+            "torch_active": 2399404288,
+            "torch_driver": 6157369344
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 944271432,
+            "torch_active": 2399404288,
+            "torch_driver": 6157369344
+          }
+        ],
+        "mlx_batch": [
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 1074452176,
+            "torch_active": 2399404288,
+            "torch_driver": 6287441920
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 1074452176,
+            "torch_active": 2399404288,
+            "torch_driver": 6287441920
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 1074452176,
+            "torch_active": 2399404288,
+            "torch_driver": 6287441920
+          }
+        ],
+        "torch_sequential": [
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 0,
+            "torch_active": 2399404288,
+            "torch_driver": 5221384192
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 0,
+            "torch_active": 2399404288,
+            "torch_driver": 5229772800
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 0,
+            "torch_active": 2399404288,
+            "torch_driver": 5221384192
+          }
+        ],
+        "torch_batch": [
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 0,
+            "torch_active": 2399404288,
+            "torch_driver": 5221384192
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 0,
+            "torch_active": 2399404288,
+            "torch_driver": 5221384192
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 0,
+            "torch_active": 2399404288,
+            "torch_driver": 5221384192
+          }
+        ]
+      },
+      "repeat_outputs_exactly_stable": {
+        "mlx_sequential": true,
+        "mlx_batch": true,
+        "torch_sequential": true,
+        "torch_batch": true
+      },
+      "comparisons": {
+        "mlx_batch_vs_mlx_sequential": {
+          "matching_decisions": 6,
+          "max_probability_error": 3.3891974109134804e-08,
+          "max_expected_score_error": 0.0,
+          "mismatch_indices": []
+        },
+        "mlx_batch_vs_torch_batch": {
+          "matching_decisions": 6,
+          "max_probability_error": 2.423505086779354e-06,
+          "max_expected_score_error": 3.2750637991574294e-06,
+          "mismatch_indices": []
+        },
+        "mlx_batch_vs_torch_sequential": {
+          "matching_decisions": 6,
+          "max_probability_error": 2.423505086779354e-06,
+          "max_expected_score_error": 3.2750637991574294e-06,
+          "mismatch_indices": []
+        },
+        "torch_batch_vs_torch_sequential": {
+          "matching_decisions": 6,
+          "max_probability_error": 2.0335085670897257e-07,
+          "max_expected_score_error": 0.0,
+          "mismatch_indices": []
+        }
+      },
+      "outputs": {
+        "mlx_sequential": [
+          {
+            "index": 0,
+            "option": "negative",
+            "probabilities": [
+              0.9693451996473218,
+              0.021334717134669407,
+              0.009320083218008725
+            ]
+          },
+          {
+            "index": 1,
+            "option": "Yes",
+            "probabilities": [
+              0.03689993125759939,
+              0.9631000687424006
+            ]
+          },
+          {
+            "index": 2,
+            "option": "level 2: Very useful",
+            "probabilities": [
+              0.0007180270998001791,
+              0.10862181359668664,
+              0.8906601593035132
+            ],
+            "expected_score": 1.8899421322037129
+          },
+          {
+            "index": 0,
+            "option": "Review the payment records",
+            "probabilities": [
+              0.7305727141896576,
+              0.15401042498926865,
+              0.10215586562195779,
+              0.013260995199116022
+            ]
+          },
+          {
+            "index": 0,
+            "option": "No",
+            "probabilities": [
+              0.9918947734949111,
+              0.00810522650508884
+            ]
+          },
+          {
+            "index": 1,
+            "option": "level 1: Unclear",
+            "probabilities": [
+              0.3114061092378125,
+              0.5396411991375397,
+              0.130803572949686,
+              0.010588064047297346,
+              0.007561054627664441
+            ],
+            "expected_score": 0.8632567556894615
+          }
+        ],
+        "mlx_batch": [
+          {
+            "index": 0,
+            "option": "negative",
+            "probabilities": [
+              0.9693451996473218,
+              0.021334717134669407,
+              0.009320083218008725
+            ]
+          },
+          {
+            "index": 1,
+            "option": "Yes",
+            "probabilities": [
+              0.03689989736562528,
+              0.9631001026343746
+            ]
+          },
+          {
+            "index": 2,
+            "option": "level 2: Very useful",
+            "probabilities": [
+              0.0007180270998001791,
+              0.10862181359668664,
+              0.8906601593035132
+            ],
+            "expected_score": 1.8899421322037129
+          },
+          {
+            "index": 0,
+            "option": "Review the payment records",
+            "probabilities": [
+              0.7305727141896576,
+              0.15401042498926865,
+              0.10215586562195779,
+              0.013260995199116022
+            ]
+          },
+          {
+            "index": 0,
+            "option": "No",
+            "probabilities": [
+              0.9918947428264736,
+              0.008105257173526398
+            ]
+          },
+          {
+            "index": 1,
+            "option": "level 1: Unclear",
+            "probabilities": [
+              0.3114061092378125,
+              0.5396411991375397,
+              0.130803572949686,
+              0.010588064047297346,
+              0.007561054627664441
+            ],
+            "expected_score": 0.8632567556894615
+          }
+        ],
+        "torch_sequential": [
+          {
+            "index": 0,
+            "option": "negative",
+            "probabilities": [
+              0.9693450443565563,
+              0.02133485614186612,
+              0.009320099501577478
+            ]
+          },
+          {
+            "index": 1,
+            "option": "Yes",
+            "probabilities": [
+              0.03689962623091019,
+              0.9631003737690897
+            ]
+          },
+          {
+            "index": 2,
+            "option": "level 2: Very useful",
+            "probabilities": [
+              0.0007180244966228348,
+              0.10862079825785419,
+              0.8906611772455231
+            ],
+            "expected_score": 1.8899431527489003
+          },
+          {
+            "index": 0,
+            "option": "Review the payment records",
+            "probabilities": [
+              0.7305746600492973,
+              0.15400892581317643,
+              0.10215535832469429,
+              0.013261055812832014
+            ]
+          },
+          {
+            "index": 0,
+            "option": "No",
+            "probabilities": [
+              0.9918947734949111,
+              0.00810522650508884
+            ]
+          },
+          {
+            "index": 1,
+            "option": "level 1: Unclear",
+            "probabilities": [
+              0.3114036857327257,
+              0.5396426604494683,
+              0.1308045508801453,
+              0.010588143207140641,
+              0.007560959730519966
+            ],
+            "expected_score": 0.8632600307532606
+          }
+        ],
+        "torch_batch": [
+          {
+            "index": 0,
+            "option": "negative",
+            "probabilities": [
+              0.9693450443565563,
+              0.02133485614186612,
+              0.009320099501577478
+            ]
+          },
+          {
+            "index": 1,
+            "option": "Yes",
+            "probabilities": [
+              0.0368998295817669,
+              0.9631001704182331
+            ]
+          },
+          {
+            "index": 2,
+            "option": "level 2: Very useful",
+            "probabilities": [
+              0.0007180244966228348,
+              0.10862079825785419,
+              0.8906611772455231
+            ],
+            "expected_score": 1.8899431527489003
+          },
+          {
+            "index": 0,
+            "option": "Review the payment records",
+            "probabilities": [
+              0.7305746600492973,
+              0.15400892581317643,
+              0.10215535832469429,
+              0.013261055812832014
+            ]
+          },
+          {
+            "index": 0,
+            "option": "No",
+            "probabilities": [
+              0.9918947811620027,
+              0.008105218837997438
+            ]
+          },
+          {
+            "index": 1,
+            "option": "level 1: Unclear",
+            "probabilities": [
+              0.3114036857327257,
+              0.5396426604494683,
+              0.1308045508801453,
+              0.010588143207140641,
+              0.007560959730519966
+            ],
+            "expected_score": 0.8632600307532606
+          }
+        ]
+      }
+    },
+    {
+      "batch_size": 6,
+      "requests": 6,
+      "batch_count": 1,
+      "samples_seconds": {
+        "mlx_sequential": [
+          0.1358480420021806,
+          0.13694783300161362,
+          0.13545262500701938
+        ],
+        "mlx_batch": [
+          0.10000949999084696,
+          0.10039708300610073,
+          0.0997790000110399
+        ],
+        "torch_sequential": [
+          0.2545317920012167,
+          0.25633358300547116,
+          0.261783583991928
+        ],
+        "torch_batch": [
+          0.13745224999729544,
+          0.13674641599936876,
+          0.14299870900867973
+        ]
+      },
+      "median_workload_seconds": {
+        "mlx_sequential": 0.1358480420021806,
+        "mlx_batch": 0.10000949999084696,
+        "torch_sequential": 0.25633358300547116,
+        "torch_batch": 0.13745224999729544
+      },
+      "decisions_per_second": {
+        "mlx_sequential": 44.16699653207876,
+        "mlx_batch": 59.99430054693934,
+        "torch_sequential": 23.406999307897696,
+        "torch_batch": 43.65152262053228
+      },
+      "mlx_batch_speedup_vs_sequential": 1.3583513767653437,
+      "mlx_batch_speedup_vs_torch_batch": 1.3743919328651308,
+      "mlx_peak_active_bytes": {
+        "mlx_sequential": 2676883708,
+        "mlx_batch": 3428355374
+      },
+      "allocator_memory_bytes_after_samples": {
+        "mlx_sequential": [
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 943403072,
+            "torch_active": 2399404288,
+            "torch_driver": 6156500992
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 914092104,
+            "torch_active": 2399404288,
+            "torch_driver": 6127190016
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 944271420,
+            "torch_active": 2399404288,
+            "torch_driver": 6157369344
+          }
+        ],
+        "mlx_batch": [
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 1044303074,
+            "torch_active": 2399404288,
+            "torch_driver": 6257278976
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 1044303074,
+            "torch_active": 2399404288,
+            "torch_driver": 6257278976
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 1044303074,
+            "torch_active": 2399404288,
+            "torch_driver": 6257278976
+          }
+        ],
+        "torch_sequential": [
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 0,
+            "torch_active": 2399404288,
+            "torch_driver": 5229772800
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 0,
+            "torch_active": 2399404288,
+            "torch_driver": 5221384192
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 0,
+            "torch_active": 2399404288,
+            "torch_driver": 5221384192
+          }
+        ],
+        "torch_batch": [
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 0,
+            "torch_active": 2399404288,
+            "torch_driver": 5212995584
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 0,
+            "torch_active": 2399404288,
+            "torch_driver": 5212995584
+          },
+          {
+            "mlx_active": 2384199688,
+            "mlx_cache": 0,
+            "torch_active": 2399404288,
+            "torch_driver": 5212995584
+          }
+        ]
+      },
+      "repeat_outputs_exactly_stable": {
+        "mlx_sequential": true,
+        "mlx_batch": true,
+        "torch_sequential": true,
+        "torch_batch": true
+      },
+      "comparisons": {
+        "mlx_batch_vs_mlx_sequential": {
+          "matching_decisions": 6,
+          "max_probability_error": 1.9494288215904376e-06,
+          "max_expected_score_error": 7.576717020452151e-07,
+          "mismatch_indices": []
+        },
+        "mlx_batch_vs_torch_batch": {
+          "matching_decisions": 6,
+          "max_probability_error": 2.3616802126147363e-06,
+          "max_expected_score_error": 2.5173920971122143e-06,
+          "mismatch_indices": []
+        },
+        "mlx_batch_vs_torch_sequential": {
+          "matching_decisions": 6,
+          "max_probability_error": 2.3616802126147363e-06,
+          "max_expected_score_error": 2.5173920971122143e-06,
+          "mismatch_indices": []
+        },
+        "torch_batch_vs_torch_sequential": {
+          "matching_decisions": 6,
+          "max_probability_error": 2.0335085670897257e-07,
+          "max_expected_score_error": 0.0,
+          "mismatch_indices": []
+        }
+      },
+      "outputs": {
+        "mlx_sequential": [
+          {
+            "index": 0,
+            "option": "negative",
+            "probabilities": [
+              0.9693451996473218,
+              0.021334717134669407,
+              0.009320083218008725
+            ]
+          },
+          {
+            "index": 1,
+            "option": "Yes",
+            "probabilities": [
+              0.03689993125759939,
+              0.9631000687424006
+            ]
+          },
+          {
+            "index": 2,
+            "option": "level 2: Very useful",
+            "probabilities": [
+              0.0007180270998001791,
+              0.10862181359668664,
+              0.8906601593035132
+            ],
+            "expected_score": 1.8899421322037129
+          },
+          {
+            "index": 0,
+            "option": "Review the payment records",
+            "probabilities": [
+              0.7305727141896576,
+              0.15401042498926865,
+              0.10215586562195779,
+              0.013260995199116022
+            ]
+          },
+          {
+            "index": 0,
+            "option": "No",
+            "probabilities": [
+              0.9918947734949111,
+              0.00810522650508884
+            ]
+          },
+          {
+            "index": 1,
+            "option": "level 1: Unclear",
+            "probabilities": [
+              0.3114061092378125,
+              0.5396411991375397,
+              0.130803572949686,
+              0.010588064047297346,
+              0.007561054627664441
+            ],
+            "expected_score": 0.8632567556894615
+          }
+        ],
+        "mlx_batch": [
+          {
+            "index": 0,
+            "option": "negative",
+            "probabilities": [
+              0.9693450554634583,
+              0.021334836039829243,
+              0.009320108496712448
+            ]
+          },
+          {
+            "index": 1,
+            "option": "Yes",
+            "probabilities": [
+              0.036899694014409345,
+              0.9631003059855907
+            ]
+          },
+          {
+            "index": 2,
+            "option": "level 2: Very useful",
+            "probabilities": [
+              0.0007180243627160943,
+              0.1086218138942073,
+              0.8906601617430765
+            ],
+            "expected_score": 1.8899421373803602
+          },
+          {
+            "index": 0,
+            "option": "Review the payment records",
+            "probabilities": [
+              0.7305746636184792,
+              0.1540090734400063,
+              0.10215535882376862,
+              0.013260904117745758
+            ]
+          },
+          {
+            "index": 0,
+            "option": "No",
+            "probabilities": [
+              0.99189471982507,
+              0.008105280174930092
+            ]
+          },
+          {
+            "index": 1,
+            "option": "level 1: Unclear",
+            "probabilities": [
+              0.3114060474129383,
+              0.5396405773585088,
+              0.13080417070205982,
+              0.010588223507437156,
+              0.007560981019055922
+            ],
+            "expected_score": 0.8632575133611635
+          }
+        ],
+        "torch_sequential": [
+          {
+            "index": 0,
+            "option": "negative",
+            "probabilities": [
+              0.9693450443565563,
+              0.02133485614186612,
+              0.009320099501577478
+            ]
+          },
+          {
+            "index": 1,
+            "option": "Yes",
+            "probabilities": [
+              0.03689962623091019,
+              0.9631003737690897
+            ]
+          },
+          {
+            "index": 2,
+            "option": "level 2: Very useful",
+            "probabilities": [
+              0.0007180244966228348,
+              0.10862079825785419,
+              0.8906611772455231
+            ],
+            "expected_score": 1.8899431527489003
+          },
+          {
+            "index": 0,
+            "option": "Review the payment records",
+            "probabilities": [
+              0.7305746600492973,
+              0.15400892581317643,
+              0.10215535832469429,
+              0.013261055812832014
+            ]
+          },
+          {
+            "index": 0,
+            "option": "No",
+            "probabilities": [
+              0.9918947734949111,
+              0.00810522650508884
+            ]
+          },
+          {
+            "index": 1,
+            "option": "level 1: Unclear",
+            "probabilities": [
+              0.3114036857327257,
+              0.5396426604494683,
+              0.1308045508801453,
+              0.010588143207140641,
+              0.007560959730519966
+            ],
+            "expected_score": 0.8632600307532606
+          }
+        ],
+        "torch_batch": [
+          {
+            "index": 0,
+            "option": "negative",
+            "probabilities": [
+              0.9693450443565563,
+              0.02133485614186612,
+              0.009320099501577478
+            ]
+          },
+          {
+            "index": 1,
+            "option": "Yes",
+            "probabilities": [
+              0.0368998295817669,
+              0.9631001704182331
+            ]
+          },
+          {
+            "index": 2,
+            "option": "level 2: Very useful",
+            "probabilities": [
+              0.0007180244966228348,
+              0.10862079825785419,
+              0.8906611772455231
+            ],
+            "expected_score": 1.8899431527489003
+          },
+          {
+            "index": 0,
+            "option": "Review the payment records",
+            "probabilities": [
+              0.7305746600492973,
+              0.15400892581317643,
+              0.10215535832469429,
+              0.013261055812832014
+            ]
+          },
+          {
+            "index": 0,
+            "option": "No",
+            "probabilities": [
+              0.9918947811620027,
+              0.008105218837997438
+            ]
+          },
+          {
+            "index": 1,
+            "option": "level 1: Unclear",
+            "probabilities": [
+              0.3114036857327257,
+              0.5396426604494683,
+              0.1308045508801453,
+              0.010588143207140641,
+              0.007560959730519966
+            ],
+            "expected_score": 0.8632600307532606
+          }
+        ]
+      }
+    }
+  ]
+}

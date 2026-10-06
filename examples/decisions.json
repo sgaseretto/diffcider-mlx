@@ -1,0 +1,50 @@
+[
+  {
+    "state": "The delivery arrived early and everything was perfect.",
+    "question": {
+      "type": "noul",
+      "instructions": "Is the customer satisfied?",
+      "criteria": "Customer satisfaction"
+    }
+  },
+  {
+    "state": "The film was fine, but I would not watch it again.",
+    "question": {
+      "type": "choice",
+      "instructions": "Classify the sentiment of this review.",
+      "criteria": ["negative", "neutral", "positive"]
+    }
+  },
+  {
+    "state": "The answer explains every step clearly and gives a correct example.",
+    "question": {
+      "type": "score",
+      "instructions": "Rate the usefulness of this answer.",
+      "criteria": ["Not useful", "Somewhat useful", "Very useful"]
+    }
+  },
+  {
+    "state": "The package is still missing after two weeks.",
+    "question": {
+      "type": "noul",
+      "instructions": "Has the customer's problem been resolved?",
+      "criteria": "Problem resolution"
+    }
+  },
+  {
+    "state": "A customer reports being charged twice for one order.",
+    "question": {
+      "type": "choice",
+      "instructions": "Choose the best next action.",
+      "criteria": ["Review the payment records", "Close the request", "Send a replacement", "Ask for a product review"]
+    }
+  },
+  {
+    "state": "The instructions omit an important step and use several undefined terms.",
+    "question": {
+      "type": "score",
+      "instructions": "Rate how clear these instructions are.",
+      "criteria": ["Very unclear", "Unclear", "Mixed", "Clear", "Very clear"]
+    }
+  }
+]

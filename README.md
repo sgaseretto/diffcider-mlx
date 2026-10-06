@@ -34,6 +34,26 @@ The adapter must be trained against the loaded base checkpoint. See
 one-call Hub loading, revisions, adapter switching, PEFT export examples,
 supported configurations, and validation results.
 
+Use `engine.generate_batch([prompt1, prompt2, prompt3])` to generate several
+prompts together, or `diffcider --prompts prompts.json` with a JSON list.
+Rows may have different prompt lengths and share one adapter and denoising
+schedule. See [batch generation](docs/batch-generation.md) for API examples,
+padding semantics, and comparisons with sequential MLX and PyTorch.
+On the tested four-prompt workload, batch size 4 improves throughput over
+sequential MLX by **1.34× in FP32** and **1.82× in BF16**, with exact token
+agreement on all four prompts in each precision.
+
+For single-pass S1 tasks, use `engine.decide_batch(requests)` or
+`diffcider --model s1 --decisions examples/decisions.json`. Each request contains
+`state` and `question`; one batch can mix binary, choice, and ordinal questions
+with different lengths and candidate counts. See [batched S1 decisions](docs/batch-decisions.md)
+for examples, validation, and comparisons through batch size 6.
+On the six short example decisions, size 6 improves throughput over sequential
+MLX by **1.36× in FP32** and **1.49× in BF16**, with identical selected answers
+at every tested size. See the guide for probability drift and benchmark cache policy.
+Long, uneven batches can be slower than sequential inference because of padding;
+group similarly sized prompts when throughput matters.
+
 ## Measured results
 
 Measured October 5, 2026 on an **M1 Max, 32 GPU cores, 64 GiB memory**,
@@ -122,7 +142,8 @@ and timing checks, not fine-tuning quality measurements.
 
 The [adapter guide](docs/models-and-adapters.md#measured-adapter-results) records
 absolute latencies, adapter overhead, precision differences, raw reports,
-reproduction commands, and the supported PEFT configurations. All 50 tests pass.
+reproduction commands, and the supported PEFT configurations. The current suite,
+including batch generation and S1 decisions, passes all 65 tests.
 
 ## Install
 
@@ -213,7 +234,7 @@ Decision inputs contain `state` and `question`. Questions use the upstream
 - `score`: an ordered list of level descriptions. The result also includes the
   probability-weighted expected level index.
 
-Generation currently supports one prompt, greedy sampling (`temperature=0`),
+Generation supports individual prompts or a batch, greedy sampling (`temperature=0`),
 low-confidence remasking, and no classifier-free guidance. It uses a fixed
 token budget, including tokens after EOS, to match the reference sampler.
 The token count must divide into whole blocks, and steps must divide across

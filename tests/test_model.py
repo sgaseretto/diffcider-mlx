@@ -88,6 +88,17 @@ def test_selected_projection_matches_full_vocabulary(models):
     actual = np.asarray(model.score_masks(ids, positions, answers))
     expected = np.asarray(model(ids))[0, [0, 2]][:, [10, 20]]
     np.testing.assert_allclose(actual, expected, atol=2e-5, rtol=2e-4)
+    # Different candidate positions in each row must work for tied and untied heads.
+    ids = mx.array([[2, 8, 4, 0], [7, 3, 9, 5]])
+    valid = mx.array([[1, 1, 1, 0], [1, 1, 1, 1]])
+    positions = mx.array([[0, 2], [3, 1]])
+    actual = np.asarray(model.score_masks(ids, positions, answers, valid))
+    full = np.asarray(model(ids, valid))
+    expected = full[np.arange(2)[:, None], np.asarray(positions)][:, :, [10, 20]]
+    np.testing.assert_allclose(actual, expected, atol=2e-5, rtol=2e-4)
+    for invalid in (mx.array([0, 2]), mx.array([[0, 2]]), mx.array([[[0]]])):
+        with pytest.raises(ValueError, match="Mask positions"):
+            model.score_masks(ids, invalid, answers, valid)
 
 
 def test_integer_padding_mask_has_boolean_semantics(models):

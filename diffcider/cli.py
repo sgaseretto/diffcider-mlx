@@ -9,7 +9,7 @@ from .model import DTYPES
 
 
 def main():
-    """Run one decision JSON file or a text-generation prompt."""
+    """Run individual or batched decisions and text generation."""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--model", default="s1", help="s1, base, local directory, or Hugging Face repo ID"
@@ -28,10 +28,17 @@ def main():
     parser.add_argument("--dtype", choices=DTYPES, default="float32")
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("--decision", type=Path, help="JSON object with state and question fields")
+    group.add_argument(
+        "--decisions", type=Path, help="JSON list of state/question objects to batch"
+    )
     group.add_argument("--prompt", help="Prompt for the base model's diffusion sampler")
+    group.add_argument("--prompts", type=Path, help="JSON list of prompts to generate as one batch")
     parser.add_argument("--max-new-tokens", type=int, default=64)
     parser.add_argument("--steps", type=int, default=64)
     parser.add_argument("--block-size", type=int, default=32)
+    parser.add_argument(
+        "--max-length", type=int, default=4096, help="Per-decision prompt token limit"
+    )
     args = parser.parse_args()
     if args.adapter_revision and not args.adapter:
         parser.error("--adapter-revision requires --adapter")
@@ -47,8 +54,24 @@ def main():
     adapter = "default" if args.adapter else None
     if args.decision:
         payload = json.loads(args.decision.read_text())
-        result = engine.decide(payload["state"], payload["question"], adapter=adapter)
+        result = engine.decide(
+            payload["state"], payload["question"], adapter=adapter, max_length=args.max_length
+        )
         print(json.dumps(result, indent=2, ensure_ascii=False))
+    elif args.decisions:
+        results = engine.decide_batch(
+            json.loads(args.decisions.read_text()), adapter=adapter, max_length=args.max_length
+        )
+        print(json.dumps(results, indent=2, ensure_ascii=False))
+    elif args.prompts:
+        results = engine.generate_batch(
+            json.loads(args.prompts.read_text()),
+            adapter=adapter,
+            max_new_tokens=args.max_new_tokens,
+            steps=args.steps,
+            block_size=args.block_size,
+        )
+        print(json.dumps(results, indent=2, ensure_ascii=False))
     else:
         print(
             engine.generate(

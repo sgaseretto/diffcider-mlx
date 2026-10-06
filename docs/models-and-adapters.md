@@ -15,6 +15,8 @@ uses the unchanged base. MLX inference does not require PyTorch or PEFT.
 | Enable an adapter for one call | `engine.decide(state, question, adapter="task")` |
 | Use the unchanged base for the next call | `engine.generate(prompt, adapter=None)` |
 | Alternate decision and generation modes | Call `decide()` and `generate()` on the same engine |
+| Generate several prompts together | `engine.generate_batch(prompts, adapter="task")` |
+| Score several independent decisions together | `engine.decide_batch(requests, adapter="task")` |
 
 Install runtime dependencies with `uv sync`. The `base` and `s1` aliases retain
 their pinned Hugging Face revisions. Custom repository IDs default to the Hub's
@@ -85,6 +87,18 @@ adapter is reset, including when a request raises. Adapters do not merge into
 or modify base weights. Disabling therefore restores the engine's original MLX
 base computation. Accessing `engine.model` directly bypasses request management;
 use the public methods for concurrent or alternating requests.
+
+For several prompts in one GPU operation, use `generate_batch(prompts, ...)`
+or `generate_batch_tokens(prompts, ...)`. They take the same generation settings
+and one adapter for the entire batch, support different prompt lengths, and
+return lists in input order. See [batch generation](batch-generation.md) for
+details, CLI usage, and measured comparisons.
+
+For single-pass S1 batches, use `decide_batch(requests, adapter=None, max_length=4096)`.
+Each item contains `state` and `question`; types, prompt lengths, and candidate
+counts can differ. One adapter applies to the whole batch, and results follow
+input order. See [batched decisions](batch-decisions.md) for the six-request
+example, CLI usage, and probability/throughput measurements.
 
 ## What S1 and generation mean
 
@@ -210,7 +224,8 @@ include `--local-files-only`, `--dtype`, and `--allow-base-mismatch`.
 The PEFT reference is pinned to 0.17.1 alongside Transformers 4.57.6. Runtime
 inference uses neither package's PyTorch model/adapter implementation.
 
-All **50 tests pass**, including the existing model/inference tests. Adapter
+The original adapter implementation passed **50 tests**, including the existing
+model/inference tests. Adapter
 tests export nonzero adapters using PEFT and compare independent Torch logits,
 decision probabilities, and sampler outputs with MLX. They cover adapter/base
 alternation, multiple adapters, request failures, concurrent calls, float32 /

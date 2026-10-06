@@ -11,7 +11,14 @@ from huggingface_hub import hf_hub_download
 from transformers import AutoTokenizer
 
 from .adapters import AdapterManager
-from .inference import decide, decision_input, generate, generation_input
+from .inference import (
+    decide,
+    decide_batch,
+    decision_input,
+    generate,
+    generate_batch,
+    generation_input,
+)
 from .model import CHECKPOINTS, checkpoint_path, load_model
 
 
@@ -197,6 +204,47 @@ class Diffcider:
             )
             return decide(self.model, encoded)
 
+    def decide_batch(
+        self, requests: list[dict], *, adapter: str | None = None, max_length: int = 4096
+    ) -> list[dict]:
+        """Score independent decisions together in one forward pass.
+
+        Args:
+            requests: Nonempty list of dictionaries with ``state`` and ``question``.
+                Question types and candidate counts may differ between requests.
+            adapter: Loaded adapter for the whole batch, or None for the unchanged base.
+            max_length: Per-prompt limit, also bounded by the model context.
+
+        Returns:
+            Results in input order, with the same fields as ``decide``. Binary
+            probabilities are [No, Yes]; ordinal results include expected_score.
+        """
+        if (
+            not isinstance(requests, list)
+            or not requests
+            or any(
+                not isinstance(item, dict)
+                or not {"state", "question"} <= item.keys()
+                or not isinstance(item["question"], dict)
+                for item in requests
+            )
+        ):
+            raise ValueError("requests must be a nonempty list of objects with state and question.")
+        with self._request(adapter):
+            encoded = [
+                decision_input(
+                    self.tokenizer,
+                    item["state"],
+                    item["question"],
+                    max_length=min(max_length, self.model.args.max_position_embeddings),
+                )
+                for item in requests
+            ]
+            pad_id = self.tokenizer.pad_token_id
+            if pad_id is None:
+                pad_id = self.tokenizer.mask_token_id
+            return decide_batch(self.model, encoded, pad_id)
+
     def generate_tokens(
         self,
         prompt: str,
@@ -259,3 +307,73 @@ class Diffcider:
             block_size=block_size,
         )
         return self.tokenizer.decode(tokens, skip_special_tokens=True)
+
+    def generate_batch_tokens(
+        self,
+        prompts: list[str],
+        *,
+        adapter: str | None = None,
+        max_new_tokens: int = 64,
+        steps: int = 64,
+        block_size: int = 32,
+    ) -> list[list[int]]:
+        """Generate several prompts together using one adapter and shared settings.
+
+        Args:
+            prompts: Nonempty list of user prompts; lengths may differ.
+            adapter: Adapter for the entire batch, or None for the unchanged base.
+            max_new_tokens: Fixed generated token budget per prompt.
+            steps: Shared denoising schedule.
+            block_size: Generated positions per block for each prompt.
+
+        Returns:
+            Generated token IDs in input order, excluding prompts and padding.
+            Special tokens and tokens after EOS are retained.
+        """
+        if (
+            not isinstance(prompts, list)
+            or not prompts
+            or not all(isinstance(prompt, str) for prompt in prompts)
+        ):
+            raise ValueError("prompts must be a nonempty list of strings.")
+        with self._request(adapter):
+            ids = [generation_input(self.tokenizer, prompt) for prompt in prompts]
+            return generate_batch(
+                self.model,
+                ids,
+                self.tokenizer.mask_token_id,
+                self.tokenizer.pad_token_id,
+                max_new_tokens,
+                steps,
+                block_size,
+            ).tolist()
+
+    def generate_batch(
+        self,
+        prompts: list[str],
+        *,
+        adapter: str | None = None,
+        max_new_tokens: int = 64,
+        steps: int = 64,
+        block_size: int = 32,
+    ) -> list[str]:
+        """Generate a batch of texts with the same options as generate_batch_tokens.
+
+        Args:
+            prompts: Nonempty list of user prompts; lengths may differ.
+            adapter: Adapter for every prompt, or None for the unchanged base.
+            max_new_tokens: Fixed generated token budget per prompt.
+            steps: Shared denoising schedule.
+            block_size: Generated positions per block for each prompt.
+
+        Returns:
+            Decoded texts in input order, with special tokens omitted.
+        """
+        tokens = self.generate_batch_tokens(
+            prompts,
+            adapter=adapter,
+            max_new_tokens=max_new_tokens,
+            steps=steps,
+            block_size=block_size,
+        )
+        return self.tokenizer.batch_decode(tokens, skip_special_tokens=True)

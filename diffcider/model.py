@@ -219,7 +219,8 @@ class Model(nn.Module):
         Args:
             input_ids: Token IDs with shape ``[batch, length]``.
             attention_mask: Optional boolean valid-token mask.
-            logit_positions: Optional slice or one-dimensional position array.
+            logit_positions: Optional slice, shared one-dimensional position array,
+                or per-example array with shape ``[batch, selected_length]``.
                 Selection happens after the full bidirectional backbone.
 
         Returns:
@@ -227,22 +228,37 @@ class Model(nn.Module):
         """
         hidden = self.model(input_ids, attention_mask)
         if logit_positions is not None:
-            hidden = hidden[:, logit_positions]
+            if isinstance(logit_positions, mx.array) and logit_positions.ndim == 2:
+                if logit_positions.shape[0] != input_ids.shape[0]:
+                    raise ValueError("Per-example logit positions must match the batch size.")
+                hidden = mx.take_along_axis(hidden, logit_positions[..., None], axis=1)
+            else:
+                hidden = hidden[:, logit_positions]
         return hidden @ self.output_weight.T
 
     def score_masks(self, input_ids, positions, answer_ids, attention_mask=None):
         """Project mask states onto Yes/No rows without full-vocabulary logits.
 
         Args:
-            input_ids: Token IDs with shape ``[1, length]``.
-            positions: One-dimensional array of mask positions.
+            input_ids: Token IDs with shape ``[batch, length]``.
+            positions: Mask positions, either one-dimensional for a single input
+                or ``[batch, masks]`` for per-row positions.
             answer_ids: The two token IDs in ``[Yes, No]`` order.
             attention_mask: Optional boolean valid-token mask.
 
         Returns:
-            Float32 logits with shape ``[number_of_masks, 2]``.
+            Float32 logits with shape ``[masks, 2]`` for one-dimensional positions,
+            otherwise ``[batch, masks, 2]``.
         """
-        hidden = self.model(input_ids, attention_mask)[0, positions]
+        if positions.ndim == 1 and input_ids.shape[0] == 1:
+            hidden = self.model(input_ids, attention_mask)[0, positions]
+        elif positions.ndim == 2 and positions.shape[0] == input_ids.shape[0]:
+            hidden = self.model(input_ids, attention_mask)
+            hidden = mx.take_along_axis(hidden, positions[..., None], axis=1)
+        else:
+            raise ValueError(
+                "Mask positions must have shape [masks] for one input or [batch, masks]."
+            )
         return (hidden @ self.output_weight[answer_ids].T).astype(mx.float32)
 
 
