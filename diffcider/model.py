@@ -26,21 +26,62 @@ CHECKPOINTS = {
 DTYPES = {"float32": mx.float32, "float16": mx.float16, "bfloat16": mx.bfloat16}
 
 
-def checkpoint_path(model: str) -> Path:
-    """Resolve a local checkpoint or download a pinned supported checkpoint.
+def checkpoint_path(
+    model: str | Path,
+    *,
+    revision: str | None = None,
+    local_files_only: bool = False,
+    adapter: bool = False,
+) -> Path:
+    """Resolve a local directory, pinned alias, or Hugging Face repository.
 
     Args:
-        model: ``s1``, ``base``, or a local Hugging Face checkpoint directory.
+        model: ``s1``, ``base``, a local directory, or a Hugging Face repo ID.
+        revision: Optional Hub commit, tag, or branch; aliases default to pinned commits.
+        local_files_only: Use the local Hugging Face cache without network requests.
+        adapter: Require a PEFT adapter instead of a complete model checkpoint.
 
     Returns:
-        Directory containing the config, tokenizer, and safetensors weights.
+        Resolved directory containing the required configuration file.
     """
-    if model in CHECKPOINTS:
-        repo, revision = CHECKPOINTS[model]
-        return Path(snapshot_download(repo, revision=revision))
+    source = str(model)
     path = Path(model).expanduser()
-    if not (path / "config.json").is_file():
-        raise ValueError(f"Unknown checkpoint: {model}. Use s1, base, or a local directory.")
+    if path.exists():
+        if not path.is_dir():
+            raise ValueError(f"Expected a checkpoint directory: {model}")
+        if revision is not None:
+            raise ValueError("revision applies to Hub repositories, not local directories.")
+    else:
+        if isinstance(model, Path) or source.startswith(("/", "./", "../", "~")):
+            raise ValueError(f"Local checkpoint directory does not exist: {model}")
+        repo, pinned = CHECKPOINTS.get(source, (source, None))
+        patterns = (
+            [
+                "adapter_config.json",
+                "adapter_model.safetensors",
+                "tokenizer*",
+                "vocab.json",
+                "merges.txt",
+                "special_tokens_map.json",
+                "added_tokens.json",
+                "chat_template.jinja",
+            ]
+            if adapter
+            else ["*.json", "*.safetensors", "*.model", "*.txt", "*.tiktoken", "*.jinja", "*.py"]
+        )
+        path = Path(
+            snapshot_download(
+                repo,
+                revision=revision or pinned,
+                local_files_only=local_files_only,
+                allow_patterns=patterns,
+            )
+        )
+    config_name = "adapter_config.json" if adapter else "config.json"
+    if not (path / config_name).is_file():
+        raise ValueError(
+            f"Missing {config_name} in {path}; pass a {'PEFT adapter' if adapter else 'full model'} directory or repository."
+        )
     return path
 
 
@@ -69,6 +110,10 @@ class ModelArgs:
             raise ValueError("Scaled RoPE and sliding attention are not supported.")
         if config.get("attention_bias") or config.get("hidden_act", "silu") != "silu":
             raise ValueError("Expected bias-free attention and SiLU activation.")
+        if config.get("quantization_config"):
+            raise ValueError(
+                "Quantized checkpoints are not supported; export full-precision safetensors."
+            )
         return cls(**{f.name: config[f.name] for f in fields(cls) if f.name in config})
 
 
@@ -211,11 +256,26 @@ def load_model(path: Path, dtype: str = "float32"):
     Returns:
         The evaluated MLX model and original tokenizer.
     """
+    path = Path(path).expanduser()
+    if dtype not in DTYPES:
+        raise ValueError(f"Unsupported dtype: {dtype}. Choose from {tuple(DTYPES)}.")
     args = ModelArgs.from_config(json.loads((path / "config.json").read_text()))
     model = Model(args)
     weights = {}
-    for shard in sorted(path.glob("*.safetensors")):
-        weights.update(mx.load(str(shard)))
+    index_path = path / "model.safetensors.index.json"
+    index = json.loads(index_path.read_text())["weight_map"] if index_path.exists() else None
+    shards = sorted(set(index.values())) if index is not None else ["model.safetensors"]
+    for name in shards:
+        if Path(name).name != name or not name.endswith(".safetensors"):
+            raise ValueError(f"Invalid checkpoint shard name: {name}")
+        shard = mx.load(str(path / name))
+        if weights.keys() & shard.keys():
+            raise ValueError("Duplicate weights across checkpoint shards.")
+        if index is not None and any(index.get(key) != name for key in shard):
+            raise ValueError("Checkpoint shards disagree with the safetensors index.")
+        weights.update(shard)
+    if index is not None and weights.keys() != index.keys():
+        raise ValueError("Missing weights listed in the safetensors index.")
     if not weights:
         raise ValueError(f"No safetensors weights in {path}")
     if args.tie_word_embeddings and "lm_head.weight" in weights:
@@ -228,5 +288,9 @@ def load_model(path: Path, dtype: str = "float32"):
     model.load_weights([(name, value.astype(DTYPES[dtype])) for name, value in weights.items()])
     model.eval()
     mx.eval(model.parameters())
-    tokenizer = AutoTokenizer.from_pretrained(path, local_files_only=True)
+    tokenizer = AutoTokenizer.from_pretrained(path, local_files_only=True, trust_remote_code=False)
+    if len(tokenizer) > args.vocab_size or max(tokenizer.get_vocab().values()) >= args.vocab_size:
+        raise ValueError("Tokenizer vocabulary exceeds the model's embedding table.")
+    if tokenizer.mask_token_id is None or not 0 <= tokenizer.mask_token_id < args.vocab_size:
+        raise ValueError("A valid mask token ID is required for masked diffusion inference.")
     return model, tokenizer

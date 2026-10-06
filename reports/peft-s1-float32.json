@@ -1,0 +1,1453 @@
+{
+  "created_utc": "2026-10-06T00:16:49.453558+00:00",
+  "hardware": "Apple M1 Max",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "versions": {
+    "mlx": "0.32.3",
+    "torch": "2.14.1",
+    "transformers": "4.57.6",
+    "peft": "0.17.1"
+  },
+  "dtype": "float32",
+  "torch_device": "mps",
+  "mlx_device": "gpu",
+  "checkpoint": [
+    "SEU-ZZH/Shared-YesNo-Qwen3-0.6B-S1",
+    "1f1c29ff9fc6f6e9dc066b03089878a7dab8b6a0"
+  ],
+  "adapter_kind": "Synthetic nonzero standard LoRA, not fine-tuned; validates inference compatibility, not quality.",
+  "seed": 2026,
+  "adapter_initialization": "CPU float32 normal(0, 0.01), copied into PEFT adapter parameters in named_parameters order.",
+  "warmup": 1,
+  "repeats": 3,
+  "timing_scope": "Synchronized warm inference using the existing benchmark runners; excludes loading, tokenization, and adapter selection. Both modes reuse one loaded base model per backend.",
+  "source_sha256": {
+    "model.py": "31cf62600accd93bf5afd7b6a4334bac23adf5695cf2c5487f189d692c07ff6f",
+    "inference.py": "46c5b603b57e2ca953f2aa1691394eda85dfd30a26fc11a6c81171573ed0b7b7",
+    "engine.py": "623c3826806a800980fa1fe3787e62bc951a92ef67f4ac77fbea73d49b0cc291",
+    "adapters.py": "086c67f8c9edce36f2d81b9bc074ca3b107cafcc34ef0107f8edc8e94701824a",
+    "reference.py": "93adebe12132a2dabf6fa075d71d42d3419e8c552c9b617b98a937a0d135fc0e",
+    "reference_sampler.py": "8536f5f44988de7ee793b2cfd0726a05c548789c5d3e38eb5f711c17ed683c70",
+    "benchmark.py": "6bb284e965a1a692da5be8de2ad506324949a1e47cd88219876eac2a4476f1ef",
+    "benchmark_adapters.py": "8d5955967872a6f1e1e8b0a0efcf166069dc0d520e7f8cc50f37f776b753510e"
+  },
+  "states": {
+    "base_before": {
+      "probe_logits": [
+        [
+          2.6504416465759277,
+          1.4375801086425781
+        ]
+      ],
+      "probe_max_change_from_base": 0.0,
+      "decisions": {
+        "source": "https://raw.githubusercontent.com/zhouzihao11/jev-dllm/92e681da3cc01e6888a246378d418645c54ca0f0/datasets/s0/test.jsonl.gz",
+        "source_sha256": "179207541710c6f6005fb3871f250da2ad3cdfd856f5ada3ad1dbd3653fc251f",
+        "selection": "First records per type, interleaved in sorted type order; no filtering by result",
+        "count": 6,
+        "matching_decisions": 6,
+        "max_probability_error": 2.619542570636568e-07,
+        "mean_torch_ms": 61.1479511668828,
+        "mean_mlx_ms": 40.57844433312615,
+        "speedup": 1.50690723047174,
+        "cases": [
+          {
+            "case_id": "clinc:df6116dde2dd7f0afb2a2d8f291e0e0236a9b34afccf46c1c83f07c33c85f181",
+            "type": "choice",
+            "tokens": 73,
+            "masks": 4,
+            "input_sha256": "e8806cf68759910bbf7f6ce837171ee1a16c280e7d18b2c4c16eddab690298d6",
+            "torch_index": 2,
+            "mlx_index": 2,
+            "same_decision": true,
+            "torch_probabilities": [
+              3.218698525457257e-05,
+              1.5451439497085804e-05,
+              0.9999217942629519,
+              3.0567312296349283e-05
+            ],
+            "mlx_probabilities": [
+              3.2186524837447096e-05,
+              1.545145424142226e-05,
+              0.9999217948252126,
+              3.056719570871713e-05
+            ],
+            "max_probability_error": 5.622606824573495e-10,
+            "max_logit_error": 6.67572021484375e-06,
+            "mean_logit_error": 4.5299530029296875e-06,
+            "torch_ms": 40.694458002690226,
+            "mlx_ms": 24.019500007852912,
+            "speedup": 1.6942258577150073,
+            "samples_seconds": {
+              "torch": [
+                0.04072562498913612,
+                0.040694458002690226,
+                0.040503666998120025
+              ],
+              "mlx": [
+                0.02427008301310707,
+                0.024019500007852912,
+                0.023795624991180375
+              ]
+            }
+          },
+          {
+            "case_id": "snli:6fbae4becc4a6414b7edb5cee1d4360a7a5d59e6433cd7c462f6759cc07bf044",
+            "type": "noul",
+            "tokens": 87,
+            "masks": 1,
+            "input_sha256": "99b89ee73a0f0a79dd56811d4871ed0c4415c73c035a89e4cfa11416dfe81652",
+            "torch_index": 0,
+            "mlx_index": 0,
+            "same_decision": true,
+            "torch_probabilities": [
+              0.8980457954465875,
+              0.10195420455341252
+            ],
+            "mlx_probabilities": [
+              0.8980455334923304,
+              0.10195446650766951
+            ],
+            "max_probability_error": 2.619542570636568e-07,
+            "max_logit_error": 4.76837158203125e-06,
+            "mean_logit_error": 3.337860107421875e-06,
+            "torch_ms": 43.8111670082435,
+            "mlx_ms": 24.981208000099286,
+            "speedup": 1.753764950360662,
+            "samples_seconds": {
+              "torch": [
+                0.0438111670082435,
+                0.04436112500843592,
+                0.04369966599915642
+              ],
+              "mlx": [
+                0.024981208000099286,
+                0.025082624997594394,
+                0.024870959008694626
+              ]
+            }
+          },
+          {
+            "case_id": "synthetic_ordinal:shipment:0321:base",
+            "type": "score",
+            "tokens": 212,
+            "masks": 3,
+            "input_sha256": "2a6d1ed94ceebbd77612ea616c7bc13fc2ff9e67d21ca5ede335244010f99c5d",
+            "torch_index": 0,
+            "mlx_index": 0,
+            "same_decision": true,
+            "torch_probabilities": [
+              0.9999870141806674,
+              9.72570925282693e-06,
+              3.2601100798967637e-06
+            ],
+            "mlx_probabilities": [
+              0.9999870143502805,
+              9.725463465865593e-06,
+              3.2601862538793046e-06
+            ],
+            "max_probability_error": 2.457869613369521e-10,
+            "max_logit_error": 2.765655517578125e-05,
+            "mean_logit_error": 1.0093052878801245e-05,
+            "torch_ms": 66.34562500403263,
+            "mlx_ms": 46.3768329937011,
+            "speedup": 1.4305768790431137,
+            "samples_seconds": {
+              "torch": [
+                0.06634562500403263,
+                0.06576116599899251,
+                0.06762583400995936
+              ],
+              "mlx": [
+                0.04567300000053365,
+                0.0463768329937011,
+                0.046492749999742955
+              ]
+            }
+          },
+          {
+            "case_id": "clinc:1f026654e4adbde0f52e2f5c733a16e6403328d2f489ecf2511575cb888e1d3e",
+            "type": "choice",
+            "tokens": 279,
+            "masks": 32,
+            "input_sha256": "89df81c30629fbf768effba9a21c27b54312b556bc0bde44ca8459c5adae0abd",
+            "torch_index": 19,
+            "mlx_index": 19,
+            "same_decision": true,
+            "torch_probabilities": [
+              0.0004660937043407544,
+              7.523848278370261e-07,
+              1.2525093894732297e-07,
+              1.5815681180783425e-07,
+              1.178278843506396e-07,
+              6.80583452868278e-08,
+              3.09732785650832e-08,
+              5.86699329072149e-08,
+              2.47772650558289e-06,
+              1.6074917973813362e-07,
+              6.798358497020175e-07,
+              1.2395338776627195e-07,
+              2.6415498902142605e-07,
+              1.3697947647582608e-07,
+              5.020062003163478e-08,
+              4.3766241802308e-08,
+              1.3456668343640888e-07,
+              2.9238189530531487e-08,
+              1.5405452797516954e-07,
+              0.998649675702223,
+              3.3780138321223687e-07,
+              1.6054342645409393e-07,
+              1.6798048187627247e-07,
+              4.4562151491485056e-07,
+              0.0008768091842615618,
+              4.8985163722044945e-08,
+              4.7928795200448775e-08,
+              7.458600579250896e-08,
+              6.107207088914923e-08,
+              1.1694227476239909e-07,
+              8.08981672669563e-08,
+              3.125022196504097e-07
+            ],
+            "mlx_probabilities": [
+              0.00046608593414573395,
+              7.523887880131732e-07,
+              1.2524998565115254e-07,
+              1.5815500474748867e-07,
+              1.1782749321166402e-07,
+              6.805776238366477e-08,
+              3.097313143938516e-08,
+              5.8669682195939426e-08,
+              2.4776946513237065e-06,
+              1.6074749635872322e-07,
+              6.798361862974726e-07,
+              1.239525625561993e-07,
+              2.6415285255610187e-07,
+              1.3697902176162666e-07,
+              5.0200285824897496e-08,
+              4.3765595656448744e-08,
+              1.3456527424238012e-07,
+              2.923819006487562e-08,
+              1.540529147027355e-07,
+              0.9986496939530998,
+              3.37803483383544e-07,
+              1.6054258730652356e-07,
+              1.6798056504556512e-07,
+              4.4562003563900855e-07,
+              0.0008767987479678533,
+              4.8984860964910175e-08,
+              4.7928316139927784e-08,
+              7.458575819836723e-08,
+              6.107134397378312e-08,
+              1.1694132894223539e-07,
+              8.089755154372342e-08,
+              3.1250207634892356e-07
+            ],
+            "max_probability_error": 1.8250876809844385e-08,
+            "max_logit_error": 1.621246337890625e-05,
+            "mean_logit_error": 6.884336471557617e-06,
+            "torch_ms": 82.95129099860787,
+            "mlx_ms": 61.082416999852285,
+            "speedup": 1.3580224076399674,
+            "samples_seconds": {
+              "torch": [
+                0.08295129099860787,
+                0.08226012501108926,
+                0.08681791700655594
+              ],
+              "mlx": [
+                0.059626500005833805,
+                0.061082416999852285,
+                0.06116054100857582
+              ]
+            }
+          },
+          {
+            "case_id": "snli:8d518897bc0a38c0df1aa8fec3e1a4c4faa9fced2b1e6e5a45fc207dbea4f88b",
+            "type": "noul",
+            "tokens": 94,
+            "masks": 1,
+            "input_sha256": "5fa569f0686bb6bc09e9655db9d501e1c1b0b82c3a9cd7e9b31f79cec491902f",
+            "torch_index": 0,
+            "mlx_index": 0,
+            "same_decision": true,
+            "torch_probabilities": [
+              0.9850995868383308,
+              0.014900413161669146
+            ],
+            "mlx_probabilities": [
+              0.9850996428318446,
+              0.014900357168155326
+            ],
+            "max_probability_error": 5.599351382556961e-08,
+            "max_logit_error": 8.58306884765625e-06,
+            "mean_logit_error": 6.67572021484375e-06,
+            "torch_ms": 44.65045798860956,
+            "mlx_ms": 24.870958004612476,
+            "speedup": 1.7952850059225243,
+            "samples_seconds": {
+              "torch": [
+                0.04515499999979511,
+                0.04355133399076294,
+                0.04465045798860956
+              ],
+              "mlx": [
+                0.02499304199591279,
+                0.024653125001350418,
+                0.024870958004612476
+              ]
+            }
+          },
+          {
+            "case_id": "synthetic_ordinal:laboratory:0385:base",
+            "type": "score",
+            "tokens": 292,
+            "masks": 4,
+            "input_sha256": "75baf0eba5405d66ad4a5f2ac4b54cc14eb755b41d5bb19d295ffb196f6cfe4a",
+            "torch_index": 1,
+            "mlx_index": 1,
+            "same_decision": true,
+            "torch_probabilities": [
+              0.001810687086166405,
+              0.9980362748403007,
+              0.00012493775891805726,
+              2.8100314614701497e-05
+            ],
+            "mlx_probabilities": [
+              0.0018107181093216223,
+              0.9980362419813252,
+              0.00012493954206635498,
+              2.8100367286683196e-05
+            ],
+            "max_probability_error": 3.2858975429483905e-08,
+            "max_logit_error": 2.574920654296875e-05,
+            "mean_logit_error": 1.3470649719238281e-05,
+            "torch_ms": 88.43470799911302,
+            "mlx_ms": 62.139749992638826,
+            "speedup": 1.423158413247384,
+            "samples_seconds": {
+              "torch": [
+                0.08843470799911302,
+                0.0837742919975426,
+                0.09054229100001976
+              ],
+              "mlx": [
+                0.06317066699557472,
+                0.06190220799180679,
+                0.062139749992638826
+              ]
+            }
+          }
+        ]
+      },
+      "generation": {
+        "count": 2,
+        "matching_sequences": 2,
+        "matching_visible_texts": 2,
+        "mean_torch_ms": 709.4120624969946,
+        "mean_mlx_ms": 297.71920799976215,
+        "speedup": 2.3828226175368616,
+        "max_new_tokens": 16,
+        "steps": 16,
+        "block_size": 8,
+        "temperature": 0,
+        "cfg_scale": 0,
+        "remasking": "low_confidence",
+        "cases": [
+          {
+            "prompt": "What is the capital of France? Answer in one short sentence.",
+            "prompt_tokens": 37,
+            "same_token_ids": true,
+            "matching_token_positions": 16,
+            "torch_token_ids": [
+              785,
+              6722,
+              315,
+              9625,
+              374,
+              12095,
+              13,
+              151645,
+              198,
+              151643,
+              151643,
+              151643,
+              151643,
+              151643,
+              151643,
+              151643
+            ],
+            "mlx_token_ids": [
+              785,
+              6722,
+              315,
+              9625,
+              374,
+              12095,
+              13,
+              151645,
+              198,
+              151643,
+              151643,
+              151643,
+              151643,
+              151643,
+              151643,
+              151643
+            ],
+            "torch_text": "The capital of France is Paris.\n",
+            "mlx_text": "The capital of France is Paris.\n",
+            "same_visible_text": true,
+            "first_masked_forward": {
+              "position_start": 37,
+              "position_stop": 45,
+              "max_logit_error": 4.1961669921875e-05,
+              "mean_logit_error": 5.27753491041949e-06,
+              "argmax_agreement": 1.0
+            },
+            "torch_ms": 708.9341249957215,
+            "mlx_ms": 297.2687080036849,
+            "speedup": 2.384825936630147,
+            "samples_seconds": {
+              "torch": [
+                0.7138255830068374,
+                0.6974292910017539,
+                0.7089341249957215
+              ],
+              "mlx": [
+                0.2965743749955436,
+                0.3325805000058608,
+                0.2972687080036849
+              ]
+            }
+          },
+          {
+            "prompt": "Calculate 17 + 25. Answer briefly.",
+            "prompt_tokens": 36,
+            "same_token_ids": true,
+            "matching_token_positions": 16,
+            "torch_token_ids": [
+              16,
+              22,
+              488,
+              220,
+              17,
+              20,
+              16819,
+              220,
+              19,
+              17,
+              13,
+              151645,
+              198,
+              151643,
+              151643,
+              151643
+            ],
+            "mlx_token_ids": [
+              16,
+              22,
+              488,
+              220,
+              17,
+              20,
+              16819,
+              220,
+              19,
+              17,
+              13,
+              151645,
+              198,
+              151643,
+              151643,
+              151643
+            ],
+            "torch_text": "17 + 25 equals 42.\n",
+            "mlx_text": "17 + 25 equals 42.\n",
+            "same_visible_text": true,
+            "first_masked_forward": {
+              "position_start": 36,
+              "position_stop": 44,
+              "max_logit_error": 4.3392181396484375e-05,
+              "mean_logit_error": 6.218805538082961e-06,
+              "argmax_agreement": 1.0
+            },
+            "torch_ms": 709.8899999982677,
+            "mlx_ms": 298.1697079958394,
+            "speedup": 2.380825352011189,
+            "samples_seconds": {
+              "torch": [
+                0.7098899999982677,
+                0.6975009160087211,
+                0.7112853749858914
+              ],
+              "mlx": [
+                0.2981697079958394,
+                0.3334538750059437,
+                0.2975331250054296
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "adapter": {
+      "probe_logits": [
+        [
+          2.4249091148376465,
+          1.3389028310775757
+        ]
+      ],
+      "probe_max_change_from_base": 0.22553253173828125,
+      "decisions": {
+        "source": "https://raw.githubusercontent.com/zhouzihao11/jev-dllm/92e681da3cc01e6888a246378d418645c54ca0f0/datasets/s0/test.jsonl.gz",
+        "source_sha256": "179207541710c6f6005fb3871f250da2ad3cdfd856f5ada3ad1dbd3653fc251f",
+        "selection": "First records per type, interleaved in sorted type order; no filtering by result",
+        "count": 6,
+        "matching_decisions": 6,
+        "max_probability_error": 3.4296533628352943e-07,
+        "mean_torch_ms": 66.96755583107006,
+        "mean_mlx_ms": 51.60130550211761,
+        "speedup": 1.2977880148462881,
+        "cases": [
+          {
+            "case_id": "clinc:df6116dde2dd7f0afb2a2d8f291e0e0236a9b34afccf46c1c83f07c33c85f181",
+            "type": "choice",
+            "tokens": 73,
+            "masks": 4,
+            "input_sha256": "e8806cf68759910bbf7f6ce837171ee1a16c280e7d18b2c4c16eddab690298d6",
+            "torch_index": 2,
+            "mlx_index": 2,
+            "same_decision": true,
+            "torch_probabilities": [
+              3.803352461335074e-05,
+              1.7926093349165624e-05,
+              0.9999107592130841,
+              3.32811689533418e-05
+            ],
+            "mlx_probabilities": [
+              3.803356086761113e-05,
+              1.7926195915209346e-05,
+              0.9999107587568834,
+              3.328148633363137e-05
+            ],
+            "max_probability_error": 4.562007438480009e-10,
+            "max_logit_error": 1.1444091796875e-05,
+            "mean_logit_error": 5.125999450683594e-06,
+            "torch_ms": 48.04433399112895,
+            "mlx_ms": 35.439958999631926,
+            "speedup": 1.3556543333367832,
+            "samples_seconds": {
+              "torch": [
+                0.05081008300476242,
+                0.047314499999629334,
+                0.04804433399112895
+              ],
+              "mlx": [
+                0.03537283401237801,
+                0.03556512499926612,
+                0.035439958999631926
+              ]
+            }
+          },
+          {
+            "case_id": "snli:6fbae4becc4a6414b7edb5cee1d4360a7a5d59e6433cd7c462f6759cc07bf044",
+            "type": "noul",
+            "tokens": 87,
+            "masks": 1,
+            "input_sha256": "99b89ee73a0f0a79dd56811d4871ed0c4415c73c035a89e4cfa11416dfe81652",
+            "torch_index": 0,
+            "mlx_index": 0,
+            "same_decision": true,
+            "torch_probabilities": [
+              0.9001172729485911,
+              0.09988272705140884
+            ],
+            "mlx_probabilities": [
+              0.9001169299832549,
+              0.09988307001674512
+            ],
+            "max_probability_error": 3.4296533628352943e-07,
+            "max_logit_error": 3.814697265625e-06,
+            "mean_logit_error": 1.9073486328125e-06,
+            "torch_ms": 47.99324998748489,
+            "mlx_ms": 35.610500010079704,
+            "speedup": 1.3477274953707528,
+            "samples_seconds": {
+              "torch": [
+                0.04799324998748489,
+                0.047382250006194226,
+                0.04926808300660923
+              ],
+              "mlx": [
+                0.03531487500004005,
+                0.035610500010079704,
+                0.03569004200107884
+              ]
+            }
+          },
+          {
+            "case_id": "synthetic_ordinal:shipment:0321:base",
+            "type": "score",
+            "tokens": 212,
+            "masks": 3,
+            "input_sha256": "2a6d1ed94ceebbd77612ea616c7bc13fc2ff9e67d21ca5ede335244010f99c5d",
+            "torch_index": 0,
+            "mlx_index": 0,
+            "same_decision": true,
+            "torch_probabilities": [
+              0.9999880153610801,
+              8.48702951485056e-06,
+              3.4976094052325193e-06
+            ],
+            "mlx_probabilities": [
+              0.9999880154172214,
+              8.486928342654182e-06,
+              3.497654436052251e-06
+            ],
+            "max_probability_error": 1.011721963784716e-10,
+            "max_logit_error": 2.86102294921875e-05,
+            "mean_logit_error": 1.7086664229282178e-05,
+            "torch_ms": 73.20058401091956,
+            "mlx_ms": 56.7552910069935,
+            "speedup": 1.2897578835759935,
+            "samples_seconds": {
+              "torch": [
+                0.07320058401091956,
+                0.07318200000736397,
+                0.0803252499899827
+              ],
+              "mlx": [
+                0.055450874991947785,
+                0.0567552910069935,
+                0.057074666998232715
+              ]
+            }
+          },
+          {
+            "case_id": "clinc:1f026654e4adbde0f52e2f5c733a16e6403328d2f489ecf2511575cb888e1d3e",
+            "type": "choice",
+            "tokens": 279,
+            "masks": 32,
+            "input_sha256": "89df81c30629fbf768effba9a21c27b54312b556bc0bde44ca8459c5adae0abd",
+            "torch_index": 19,
+            "mlx_index": 19,
+            "same_decision": true,
+            "torch_probabilities": [
+              0.0004845454681192216,
+              8.218827699998077e-07,
+              1.3205621128568137e-07,
+              1.6912852912626838e-07,
+              1.2781505763051672e-07,
+              7.14320538961309e-08,
+              3.353719455111273e-08,
+              6.372883867499434e-08,
+              2.4961988590921857e-06,
+              1.6837752519184994e-07,
+              7.053883991744312e-07,
+              1.323120512158602e-07,
+              2.7659072687638894e-07,
+              1.433163410063709e-07,
+              5.4547554367480834e-08,
+              4.813830026763777e-08,
+              1.4830673855208735e-07,
+              3.111126414949203e-08,
+              1.5805616759522505e-07,
+              0.9986754083755573,
+              3.780157632425005e-07,
+              1.6842249284535816e-07,
+              1.832156954012452e-07,
+              4.6325487126343896e-07,
+              0.00083225919745718,
+              5.3931622893646945e-08,
+              5.278423672856116e-08,
+              7.771554696452171e-08,
+              6.440820883084069e-08,
+              1.241730434059011e-07,
+              8.472199510320546e-08,
+              3.543908069444415e-07
+            ],
+            "mlx_probabilities": [
+              0.00048454316143186867,
+              8.218882631231157e-07,
+              1.3205646419879457e-07,
+              1.6912812721928266e-07,
+              1.2781420537817026e-07,
+              7.14319182106278e-08,
+              3.353729076494593e-08,
+              6.372859606901622e-08,
+              2.496203639794422e-06,
+              1.6837784766728427e-07,
+              7.053998408827488e-07,
+              1.3231142134197784e-07,
+              2.7659099282312286e-07,
+              1.4331750389049718e-07,
+              5.454760681589113e-08,
+              4.8138805638676685e-08,
+              1.4830582038188077e-07,
+              3.111119021853277e-08,
+              1.580551890660937e-07,
+              0.9986754162075644,
+              3.7801720822550953e-07,
+              1.6842281540691422e-07,
+              1.8321796831753329e-07,
+              4.6325443310240116e-07,
+              0.0008322536480730381,
+              5.3931340434719924e-08,
+              5.2783859601581635e-08,
+              7.771562168935478e-08,
+              6.440762580627606e-08,
+              1.241726299081556e-07,
+              8.472203616623414e-08,
+              3.5439266858236186e-07
+            ],
+            "max_probability_error": 7.832007042907208e-09,
+            "max_logit_error": 1.811981201171875e-05,
+            "mean_logit_error": 6.6533684730529785e-06,
+            "torch_ms": 93.24466699035838,
+            "mlx_ms": 70.62491599936038,
+            "speedup": 1.320280040987275,
+            "samples_seconds": {
+              "torch": [
+                0.09324466699035838,
+                0.08931358400150202,
+                0.09758854200481437
+              ],
+              "mlx": [
+                0.07061799999792129,
+                0.07090887500089593,
+                0.07062491599936038
+              ]
+            }
+          },
+          {
+            "case_id": "snli:8d518897bc0a38c0df1aa8fec3e1a4c4faa9fced2b1e6e5a45fc207dbea4f88b",
+            "type": "noul",
+            "tokens": 94,
+            "masks": 1,
+            "input_sha256": "5fa569f0686bb6bc09e9655db9d501e1c1b0b82c3a9cd7e9b31f79cec491902f",
+            "torch_index": 0,
+            "mlx_index": 0,
+            "same_decision": true,
+            "torch_probabilities": [
+              0.9845542593078636,
+              0.015445740692136316
+            ],
+            "mlx_probabilities": [
+              0.9845543463237459,
+              0.015445653676254075
+            ],
+            "max_probability_error": 8.70158823884637e-08,
+            "max_logit_error": 6.67572021484375e-06,
+            "mean_logit_error": 3.814697265625e-06,
+            "torch_ms": 48.40970800432842,
+            "mlx_ms": 37.62837499380112,
+            "speedup": 1.2865213555542439,
+            "samples_seconds": {
+              "torch": [
+                0.04840970800432842,
+                0.04802041700168047,
+                0.054542291996767744
+              ],
+              "mlx": [
+                0.03759320899553131,
+                0.039181583997560665,
+                0.03762837499380112
+              ]
+            }
+          },
+          {
+            "case_id": "synthetic_ordinal:laboratory:0385:base",
+            "type": "score",
+            "tokens": 292,
+            "masks": 4,
+            "input_sha256": "75baf0eba5405d66ad4a5f2ac4b54cc14eb755b41d5bb19d295ffb196f6cfe4a",
+            "torch_index": 1,
+            "mlx_index": 1,
+            "same_decision": true,
+            "torch_probabilities": [
+              0.0018573859646882187,
+              0.9979740774476039,
+              0.00013501427923180457,
+              3.3522308475930484e-05
+            ],
+            "mlx_probabilities": [
+              0.0018573895018677757,
+              0.9979740744890182,
+              0.00013501389255314472,
+              3.352211656091216e-05
+            ],
+            "max_probability_error": 3.537179557068504e-09,
+            "max_logit_error": 2.47955322265625e-05,
+            "mean_logit_error": 1.2278556823730469e-05,
+            "torch_ms": 90.91279200220015,
+            "mlx_ms": 73.54879200283904,
+            "speedup": 1.2360881739388847,
+            "samples_seconds": {
+              "torch": [
+                0.09253354200336616,
+                0.09091279200220015,
+                0.09004879200074356
+              ],
+              "mlx": [
+                0.07292741601122543,
+                0.07447879199753515,
+                0.07354879200283904
+              ]
+            }
+          }
+        ]
+      },
+      "generation": {
+        "count": 2,
+        "matching_sequences": 2,
+        "matching_visible_texts": 2,
+        "mean_torch_ms": 831.260104503599,
+        "mean_mlx_ms": 462.0299789967248,
+        "speedup": 1.7991475494915699,
+        "max_new_tokens": 16,
+        "steps": 16,
+        "block_size": 8,
+        "temperature": 0,
+        "cfg_scale": 0,
+        "remasking": "low_confidence",
+        "cases": [
+          {
+            "prompt": "What is the capital of France? Answer in one short sentence.",
+            "prompt_tokens": 37,
+            "same_token_ids": true,
+            "matching_token_positions": 16,
+            "torch_token_ids": [
+              785,
+              6722,
+              315,
+              9625,
+              374,
+              12095,
+              13,
+              151645,
+              198,
+              151643,
+              151643,
+              151643,
+              151643,
+              151643,
+              151643,
+              151643
+            ],
+            "mlx_token_ids": [
+              785,
+              6722,
+              315,
+              9625,
+              374,
+              12095,
+              13,
+              151645,
+              198,
+              151643,
+              151643,
+              151643,
+              151643,
+              151643,
+              151643,
+              151643
+            ],
+            "torch_text": "The capital of France is Paris.\n",
+            "mlx_text": "The capital of France is Paris.\n",
+            "same_visible_text": true,
+            "first_masked_forward": {
+              "position_start": 37,
+              "position_stop": 45,
+              "max_logit_error": 5.340576171875e-05,
+              "mean_logit_error": 6.245108579605585e-06,
+              "argmax_agreement": 1.0
+            },
+            "torch_ms": 815.9259170060977,
+            "mlx_ms": 463.56033299525734,
+            "speedup": 1.760128852557463,
+            "samples_seconds": {
+              "torch": [
+                0.8159259170060977,
+                0.804078708999441,
+                0.8197832500009099
+              ],
+              "mlx": [
+                0.46309420799661893,
+                0.4852717079920694,
+                0.46356033299525734
+              ]
+            }
+          },
+          {
+            "prompt": "Calculate 17 + 25. Answer briefly.",
+            "prompt_tokens": 36,
+            "same_token_ids": true,
+            "matching_token_positions": 16,
+            "torch_token_ids": [
+              16,
+              22,
+              488,
+              220,
+              17,
+              20,
+              16819,
+              220,
+              19,
+              17,
+              13,
+              151645,
+              198,
+              151643,
+              151643,
+              151643
+            ],
+            "mlx_token_ids": [
+              16,
+              22,
+              488,
+              220,
+              17,
+              20,
+              16819,
+              220,
+              19,
+              17,
+              13,
+              151645,
+              198,
+              151643,
+              151643,
+              151643
+            ],
+            "torch_text": "17 + 25 equals 42.\n",
+            "mlx_text": "17 + 25 equals 42.\n",
+            "same_visible_text": true,
+            "first_masked_forward": {
+              "position_start": 36,
+              "position_stop": 44,
+              "max_logit_error": 3.910064697265625e-05,
+              "mean_logit_error": 5.980984497000463e-06,
+              "argmax_agreement": 1.0
+            },
+            "torch_ms": 846.5942920011003,
+            "mlx_ms": 460.4996249981923,
+            "speedup": 1.8384255839609502,
+            "samples_seconds": {
+              "torch": [
+                0.8550862499978393,
+                0.8465942920011003,
+                0.8111873329908121
+              ],
+              "mlx": [
+                0.45904345899180043,
+                0.4976881670008879,
+                0.4604996249981923
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "base_after": {
+      "probe_logits": [
+        [
+          2.6504416465759277,
+          1.4375801086425781
+        ]
+      ],
+      "probe_max_change_from_base": 0.0,
+      "decisions": {
+        "source": "https://raw.githubusercontent.com/zhouzihao11/jev-dllm/92e681da3cc01e6888a246378d418645c54ca0f0/datasets/s0/test.jsonl.gz",
+        "source_sha256": "179207541710c6f6005fb3871f250da2ad3cdfd856f5ada3ad1dbd3653fc251f",
+        "selection": "First records per type, interleaved in sorted type order; no filtering by result",
+        "count": 6,
+        "matching_decisions": 6,
+        "max_probability_error": 2.619542570636568e-07,
+        "mean_torch_ms": 63.682486167332776,
+        "mean_mlx_ms": 45.00102050224086,
+        "speedup": 1.4151342671031573,
+        "cases": [
+          {
+            "case_id": "clinc:df6116dde2dd7f0afb2a2d8f291e0e0236a9b34afccf46c1c83f07c33c85f181",
+            "type": "choice",
+            "tokens": 73,
+            "masks": 4,
+            "input_sha256": "e8806cf68759910bbf7f6ce837171ee1a16c280e7d18b2c4c16eddab690298d6",
+            "torch_index": 2,
+            "mlx_index": 2,
+            "same_decision": true,
+            "torch_probabilities": [
+              3.218698525457257e-05,
+              1.5451439497085804e-05,
+              0.9999217942629519,
+              3.0567312296349283e-05
+            ],
+            "mlx_probabilities": [
+              3.2186524837447096e-05,
+              1.545145424142226e-05,
+              0.9999217948252126,
+              3.056719570871713e-05
+            ],
+            "max_probability_error": 5.622606824573495e-10,
+            "max_logit_error": 6.67572021484375e-06,
+            "mean_logit_error": 4.5299530029296875e-06,
+            "torch_ms": 42.64924999733921,
+            "mlx_ms": 26.604041006066836,
+            "speedup": 1.603111722298631,
+            "samples_seconds": {
+              "torch": [
+                0.042428375003510155,
+                0.04264924999733921,
+                0.04402829200262204
+              ],
+              "mlx": [
+                0.026044541998999193,
+                0.026604041006066836,
+                0.026661832991521806
+              ]
+            }
+          },
+          {
+            "case_id": "snli:6fbae4becc4a6414b7edb5cee1d4360a7a5d59e6433cd7c462f6759cc07bf044",
+            "type": "noul",
+            "tokens": 87,
+            "masks": 1,
+            "input_sha256": "99b89ee73a0f0a79dd56811d4871ed0c4415c73c035a89e4cfa11416dfe81652",
+            "torch_index": 0,
+            "mlx_index": 0,
+            "same_decision": true,
+            "torch_probabilities": [
+              0.8980457954465875,
+              0.10195420455341252
+            ],
+            "mlx_probabilities": [
+              0.8980455334923304,
+              0.10195446650766951
+            ],
+            "max_probability_error": 2.619542570636568e-07,
+            "max_logit_error": 4.76837158203125e-06,
+            "mean_logit_error": 3.337860107421875e-06,
+            "torch_ms": 42.234166990965605,
+            "mlx_ms": 25.116541000897996,
+            "speedup": 1.6815280013858436,
+            "samples_seconds": {
+              "torch": [
+                0.04356145899510011,
+                0.042234166990965605,
+                0.040620125000714324
+              ],
+              "mlx": [
+                0.026000625002779998,
+                0.025116541000897996,
+                0.02511624999169726
+              ]
+            }
+          },
+          {
+            "case_id": "synthetic_ordinal:shipment:0321:base",
+            "type": "score",
+            "tokens": 212,
+            "masks": 3,
+            "input_sha256": "2a6d1ed94ceebbd77612ea616c7bc13fc2ff9e67d21ca5ede335244010f99c5d",
+            "torch_index": 0,
+            "mlx_index": 0,
+            "same_decision": true,
+            "torch_probabilities": [
+              0.9999870141806674,
+              9.72570925282693e-06,
+              3.2601100798967637e-06
+            ],
+            "mlx_probabilities": [
+              0.9999870143502805,
+              9.725463465865593e-06,
+              3.2601862538793046e-06
+            ],
+            "max_probability_error": 2.457869613369521e-10,
+            "max_logit_error": 2.765655517578125e-05,
+            "mean_logit_error": 1.0093052878801245e-05,
+            "torch_ms": 67.34908299404196,
+            "mlx_ms": 49.90883301070426,
+            "speedup": 1.3494421514443584,
+            "samples_seconds": {
+              "torch": [
+                0.06734908299404196,
+                0.06557595799677074,
+                0.06891191599424928
+              ],
+              "mlx": [
+                0.04990883301070426,
+                0.04864766700484324,
+                0.051115666996338405
+              ]
+            }
+          },
+          {
+            "case_id": "clinc:1f026654e4adbde0f52e2f5c733a16e6403328d2f489ecf2511575cb888e1d3e",
+            "type": "choice",
+            "tokens": 279,
+            "masks": 32,
+            "input_sha256": "89df81c30629fbf768effba9a21c27b54312b556bc0bde44ca8459c5adae0abd",
+            "torch_index": 19,
+            "mlx_index": 19,
+            "same_decision": true,
+            "torch_probabilities": [
+              0.0004660937043407544,
+              7.523848278370261e-07,
+              1.2525093894732297e-07,
+              1.5815681180783425e-07,
+              1.178278843506396e-07,
+              6.80583452868278e-08,
+              3.09732785650832e-08,
+              5.86699329072149e-08,
+              2.47772650558289e-06,
+              1.6074917973813362e-07,
+              6.798358497020175e-07,
+              1.2395338776627195e-07,
+              2.6415498902142605e-07,
+              1.3697947647582608e-07,
+              5.020062003163478e-08,
+              4.3766241802308e-08,
+              1.3456668343640888e-07,
+              2.9238189530531487e-08,
+              1.5405452797516954e-07,
+              0.998649675702223,
+              3.3780138321223687e-07,
+              1.6054342645409393e-07,
+              1.6798048187627247e-07,
+              4.4562151491485056e-07,
+              0.0008768091842615618,
+              4.8985163722044945e-08,
+              4.7928795200448775e-08,
+              7.458600579250896e-08,
+              6.107207088914923e-08,
+              1.1694227476239909e-07,
+              8.08981672669563e-08,
+              3.125022196504097e-07
+            ],
+            "mlx_probabilities": [
+              0.00046608593414573395,
+              7.523887880131732e-07,
+              1.2524998565115254e-07,
+              1.5815500474748867e-07,
+              1.1782749321166402e-07,
+              6.805776238366477e-08,
+              3.097313143938516e-08,
+              5.8669682195939426e-08,
+              2.4776946513237065e-06,
+              1.6074749635872322e-07,
+              6.798361862974726e-07,
+              1.239525625561993e-07,
+              2.6415285255610187e-07,
+              1.3697902176162666e-07,
+              5.0200285824897496e-08,
+              4.3765595656448744e-08,
+              1.3456527424238012e-07,
+              2.923819006487562e-08,
+              1.540529147027355e-07,
+              0.9986496939530998,
+              3.37803483383544e-07,
+              1.6054258730652356e-07,
+              1.6798056504556512e-07,
+              4.4562003563900855e-07,
+              0.0008767987479678533,
+              4.8984860964910175e-08,
+              4.7928316139927784e-08,
+              7.458575819836723e-08,
+              6.107134397378312e-08,
+              1.1694132894223539e-07,
+              8.089755154372342e-08,
+              3.1250207634892356e-07
+            ],
+            "max_probability_error": 1.8250876809844385e-08,
+            "max_logit_error": 1.621246337890625e-05,
+            "mean_logit_error": 6.884336471557617e-06,
+            "torch_ms": 91.20062500005588,
+            "mlx_ms": 70.66316599957645,
+            "speedup": 1.2906388174088115,
+            "samples_seconds": {
+              "torch": [
+                0.09120062500005588,
+                0.09136120899347588,
+                0.09071041700372007
+              ],
+              "mlx": [
+                0.07066316599957645,
+                0.06892008399881888,
+                0.0711866670026211
+              ]
+            }
+          },
+          {
+            "case_id": "snli:8d518897bc0a38c0df1aa8fec3e1a4c4faa9fced2b1e6e5a45fc207dbea4f88b",
+            "type": "noul",
+            "tokens": 94,
+            "masks": 1,
+            "input_sha256": "5fa569f0686bb6bc09e9655db9d501e1c1b0b82c3a9cd7e9b31f79cec491902f",
+            "torch_index": 0,
+            "mlx_index": 0,
+            "same_decision": true,
+            "torch_probabilities": [
+              0.9850995868383308,
+              0.014900413161669146
+            ],
+            "mlx_probabilities": [
+              0.9850996428318446,
+              0.014900357168155326
+            ],
+            "max_probability_error": 5.599351382556961e-08,
+            "max_logit_error": 8.58306884765625e-06,
+            "mean_logit_error": 6.67572021484375e-06,
+            "torch_ms": 45.488084011594765,
+            "mlx_ms": 25.255833999835886,
+            "speedup": 1.8010921362521763,
+            "samples_seconds": {
+              "torch": [
+                0.045488084011594765,
+                0.04826562500966247,
+                0.04114674999436829
+              ],
+              "mlx": [
+                0.02668262500083074,
+                0.025118666992057115,
+                0.025255833999835886
+              ]
+            }
+          },
+          {
+            "case_id": "synthetic_ordinal:laboratory:0385:base",
+            "type": "score",
+            "tokens": 292,
+            "masks": 4,
+            "input_sha256": "75baf0eba5405d66ad4a5f2ac4b54cc14eb755b41d5bb19d295ffb196f6cfe4a",
+            "torch_index": 1,
+            "mlx_index": 1,
+            "same_decision": true,
+            "torch_probabilities": [
+              0.001810687086166405,
+              0.9980362748403007,
+              0.00012493775891805726,
+              2.8100314614701497e-05
+            ],
+            "mlx_probabilities": [
+              0.0018107181093216223,
+              0.9980362419813252,
+              0.00012493954206635498,
+              2.8100367286683196e-05
+            ],
+            "max_probability_error": 3.2858975429483905e-08,
+            "max_logit_error": 2.574920654296875e-05,
+            "mean_logit_error": 1.3470649719238281e-05,
+            "torch_ms": 93.17370800999925,
+            "mlx_ms": 72.45770799636375,
+            "speedup": 1.285904710299077,
+            "samples_seconds": {
+              "torch": [
+                0.09317370800999925,
+                0.08949245800613426,
+                0.094295749993762
+              ],
+              "mlx": [
+                0.07245770799636375,
+                0.07053341700520832,
+                0.07454566600790713
+              ]
+            }
+          }
+        ]
+      },
+      "generation": {
+        "count": 2,
+        "matching_sequences": 2,
+        "matching_visible_texts": 2,
+        "mean_torch_ms": 720.7316874992102,
+        "mean_mlx_ms": 342.8431249994901,
+        "speedup": 2.1022200386846963,
+        "max_new_tokens": 16,
+        "steps": 16,
+        "block_size": 8,
+        "temperature": 0,
+        "cfg_scale": 0,
+        "remasking": "low_confidence",
+        "cases": [
+          {
+            "prompt": "What is the capital of France? Answer in one short sentence.",
+            "prompt_tokens": 37,
+            "same_token_ids": true,
+            "matching_token_positions": 16,
+            "torch_token_ids": [
+              785,
+              6722,
+              315,
+              9625,
+              374,
+              12095,
+              13,
+              151645,
+              198,
+              151643,
+              151643,
+              151643,
+              151643,
+              151643,
+              151643,
+              151643
+            ],
+            "mlx_token_ids": [
+              785,
+              6722,
+              315,
+              9625,
+              374,
+              12095,
+              13,
+              151645,
+              198,
+              151643,
+              151643,
+              151643,
+              151643,
+              151643,
+              151643,
+              151643
+            ],
+            "torch_text": "The capital of France is Paris.\n",
+            "mlx_text": "The capital of France is Paris.\n",
+            "same_visible_text": true,
+            "first_masked_forward": {
+              "position_start": 37,
+              "position_stop": 45,
+              "max_logit_error": 4.1961669921875e-05,
+              "mean_logit_error": 5.27753491041949e-06,
+              "argmax_agreement": 1.0
+            },
+            "torch_ms": 727.678333001677,
+            "mlx_ms": 331.5629999997327,
+            "speedup": 2.1946910029233164,
+            "samples_seconds": {
+              "torch": [
+                0.740106665994972,
+                0.7047752920043422,
+                0.727678333001677
+              ],
+              "mlx": [
+                0.35603566700592637,
+                0.3315629999997327,
+                0.31732600000395905
+              ]
+            }
+          },
+          {
+            "prompt": "Calculate 17 + 25. Answer briefly.",
+            "prompt_tokens": 36,
+            "same_token_ids": true,
+            "matching_token_positions": 16,
+            "torch_token_ids": [
+              16,
+              22,
+              488,
+              220,
+              17,
+              20,
+              16819,
+              220,
+              19,
+              17,
+              13,
+              151645,
+              198,
+              151643,
+              151643,
+              151643
+            ],
+            "mlx_token_ids": [
+              16,
+              22,
+              488,
+              220,
+              17,
+              20,
+              16819,
+              220,
+              19,
+              17,
+              13,
+              151645,
+              198,
+              151643,
+              151643,
+              151643
+            ],
+            "torch_text": "17 + 25 equals 42.\n",
+            "mlx_text": "17 + 25 equals 42.\n",
+            "same_visible_text": true,
+            "first_masked_forward": {
+              "position_start": 36,
+              "position_stop": 44,
+              "max_logit_error": 4.3392181396484375e-05,
+              "mean_logit_error": 6.218805538082961e-06,
+              "argmax_agreement": 1.0
+            },
+            "torch_ms": 713.7850419967435,
+            "mlx_ms": 354.1232499992475,
+            "speedup": 2.015640153529203,
+            "samples_seconds": {
+              "torch": [
+                0.7137850419967435,
+                0.6884200829954352,
+                0.7138873329968192
+              ],
+              "mlx": [
+                0.36101837499882095,
+                0.3353167079912964,
+                0.3541232499992475
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "adapter_config": {
+    "alpha_pattern": {},
+    "auto_mapping": {
+      "base_model_class": "A2DQwen3LMHeadModel",
+      "parent_library": "_diffcider_upstream_qwen3"
+    },
+    "base_model_name_or_path": "SEU-ZZH/Shared-YesNo-Qwen3-0.6B-S1",
+    "bias": "none",
+    "corda_config": null,
+    "eva_config": null,
+    "exclude_modules": null,
+    "fan_in_fan_out": false,
+    "inference_mode": true,
+    "init_lora_weights": true,
+    "layer_replication": null,
+    "layers_pattern": null,
+    "layers_to_transform": null,
+    "loftq_config": {},
+    "lora_alpha": 8,
+    "lora_bias": false,
+    "lora_dropout": 0.0,
+    "megatron_config": null,
+    "megatron_core": "megatron.core",
+    "modules_to_save": null,
+    "peft_type": "LORA",
+    "qalora_group_size": 16,
+    "r": 4,
+    "rank_pattern": {},
+    "revision": "1f1c29ff9fc6f6e9dc066b03089878a7dab8b6a0",
+    "target_modules": [
+      "gate_proj",
+      "q_proj",
+      "v_proj"
+    ],
+    "target_parameters": null,
+    "task_type": null,
+    "trainable_token_indices": null,
+    "use_dora": false,
+    "use_qalora": false,
+    "use_rslora": false
+  },
+  "adapter_sha256": "0b5fd305ed83fa03d0b1f898757f6e9d7904a2e05913f9a05598676d40cd013a",
+  "base_restored_exactly": true
+}

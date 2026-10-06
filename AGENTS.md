@@ -16,6 +16,8 @@ See `README.md` for usage, supported behavior, and benchmark methodology.
 
 - `diffcider/model.py` owns the shared backbone; `inference.py` owns prompts and
   sampling. `reference*.py` provides the independent PyTorch baseline.
+- `engine.py` manages per-request adapters; `adapters.py` handles PEFT loading.
+  Keep base weights immutable and verify exact restoration when adapters are disabled.
 - Preserve bidirectional attention, padding semantics, tied embeddings, and exact
   tokenizer/mask IDs. Binary decision probabilities are ordered **[No, Yes]**.
 - Keep the upstream reference algorithms unchanged when optimizing MLX. Preserve

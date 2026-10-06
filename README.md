@@ -9,7 +9,30 @@ MLX inference for two pinned Qwen3 masked language models:
 
 Both use a small, shared bidirectional Qwen3 implementation. Original
 safetensors load directly; no weight conversion, quantization, or retraining
-is needed. Downloads use fixed revisions and the standard Hugging Face cache.
+is needed. The two aliases use fixed revisions and the standard Hugging Face cache.
+
+The `Diffcider` Python API also loads compatible fine-tuned checkpoints from
+local directories or custom Hugging Face repositories, with optional named PEFT
+LoRA/rsLoRA adapters. One resident model can alternate between decisions and
+generation, selecting an adapter or the unchanged base on each call:
+
+```python
+from diffcider import Diffcider
+
+engine = Diffcider.from_pretrained("base", adapters={"task": "./my-adapter"})
+question = {
+    "type": "noul",
+    "instructions": "Is the customer satisfied?",
+    "criteria": "Customer satisfaction",
+}
+decision = engine.decide("The delivery was excellent.", question, adapter="task")
+text = engine.generate("Explain what makes good customer service.", adapter=None)
+```
+
+The adapter must be trained against the loaded base checkpoint. See
+[models, adapters, and both inference modes](docs/models-and-adapters.md) for
+one-call Hub loading, revisions, adapter switching, PEFT export examples,
+supported configurations, and validation results.
 
 ## Measured results
 
@@ -75,6 +98,31 @@ The earlier [float32](reports/float32.json), [BF16](reports/bfloat16.json), and
 [longer float32](reports/float32-long.json) reports are retained for reference.
 See the methodology below before interpreting the timings as application
 latency or a model-quality benchmark.
+
+### Adapter-enabled measurements
+
+The persistent engine adds one-call model/adapter loading, per-request adapter
+switching, and shared decision/generation methods. Compatible local and Hub
+checkpoints can use single-file or sharded safetensors exports.
+
+With a synthetic, nonzero PEFT LoRA enabled, the same M1 Max measured:
+
+| Checkpoint / precision | Decision speedup vs PyTorch + PEFT | Generation speedup |
+|---|---:|---:|
+| Base / float32 | 1.34× | 1.75× |
+| Base / BF16 | 1.79× | 2.00× |
+| S1 / float32 | 1.30× | 1.80× |
+
+Each configuration matched **6/6 decisions and 2/2 generated token sequences**
+with the adapter disabled, enabled, and disabled again. Disabling restored MLX
+base outputs exactly. Generation used 16 tokens / 16 steps; timings exclude
+loading, tokenization, decoding, and adapter selection. Active LoRA adds compute
+cost, and BF16 probability differences reached 0.0243. These are compatibility
+and timing checks, not fine-tuning quality measurements.
+
+The [adapter guide](docs/models-and-adapters.md#measured-adapter-results) records
+absolute latencies, adapter overhead, precision differences, raw reports,
+reproduction commands, and the supported PEFT configurations. All 50 tests pass.
 
 ## Run
 
