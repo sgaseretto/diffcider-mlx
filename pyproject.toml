@@ -1,9 +1,23 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
 [project]
 name = "diffcider-mlx"
 version = "0.1.0"
 description = "Bidirectional Qwen3 diffusion and Shared Yes/No inference in MLX"
 readme = "README.md"
 requires-python = ">=3.13"
+license = "MIT AND Apache-2.0"
+license-files = ["LICENSE", "licenses/*.txt", "THIRD_PARTY.md"]
+authors = [{name = "Sebastian Gonzalez Aseretto"}]
+keywords = ["mlx", "diffusion", "qwen3", "lora"]
+classifiers = [
+    "Operating System :: MacOS",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
 dependencies = [
     "huggingface-hub==0.36.2",
     "jinja2>=3.1",
@@ -12,11 +26,21 @@ dependencies = [
     "transformers==4.57.6",
 ]
 
+[project.scripts]
+diffcider = "diffcider.cli:main"
+
+[project.urls]
+Repository = "https://github.com/sgaseretto/diffcider-mlx"
+Issues = "https://github.com/sgaseretto/diffcider-mlx/issues"
+
 [project.optional-dependencies]
 benchmark = [
     "peft==0.17.1",
     "torch>=2.8",
 ]
+
+[tool.hatch.build.targets.wheel]
+packages = ["diffcider"]
 
 [tool.pytest.ini_options]
 pythonpath = ["."]

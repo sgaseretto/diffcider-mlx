@@ -124,9 +124,75 @@ The [adapter guide](docs/models-and-adapters.md#measured-adapter-results) record
 absolute latencies, adapter overhead, precision differences, raw reports,
 reproduction commands, and the supported PEFT configurations. All 50 tests pass.
 
+## Install
+
+Supported runtime: **macOS on Apple Silicon, Python 3.13+**, and a macOS version
+supported by the installed MLX Metal runtime. The distribution name is
+`diffcider-mlx`; the Python import and command are both `diffcider`.
+
+From a local checkout, choose pip or uv:
+
+```sh
+# pip
+python3.13 -m venv .venv
+source .venv/bin/activate
+python -m pip install .
+```
+
+```sh
+# uv
+uv venv --python 3.13
+uv pip install .
+source .venv/bin/activate
+```
+
+To add Diffcider directly from GitHub, run this **inside the uv project that will
+use it**, after the packaging changes have been pushed:
+
+```sh
+uv add git+https://github.com/sgaseretto/diffcider-mlx.git
+uv run diffcider --help
+```
+
+Use the `git+https://` prefix to identify a Git repository. This installs from
+the remote's default branch and requires no PyPI publication. The consuming
+project can then use `from diffcider import Diffcider`.
+
+To select a specific source, add `--branch main`, `--tag <tag>`, or
+`--rev <commit>` to the `uv add` command. The selected revision must contain the
+packaging configuration and be available on the remote. See
+[uv's Git dependency documentation](https://docs.astral.sh/uv/concepts/projects/dependencies/#git).
+
+With pip, replace `<revision>` below with the desired commit, tag, or branch:
+
+```sh
+python -m pip install "git+https://github.com/sgaseretto/diffcider-mlx.git@<revision>"
+```
+
+Installation does not download model weights. They are fetched on first model
+load and stored in the Hugging Face cache. PyTorch and PEFT are optional benchmark
+dependencies; add them with `python -m pip install '.[benchmark]'` or
+`uv pip install '.[benchmark]'` from the checkout. The regular install supports
+MLX inference and loading PEFT-exported adapters without either package.
+A Transformers message about missing PyTorch/TensorFlow/Flax is expected in a
+core-only install; tokenizers remain available, and Diffcider inference uses MLX.
+
 ## Run
 
-Requires Apple Silicon and Python 3.13+.
+After installation, these commands work outside the repository:
+
+```sh
+diffcider --help
+python -m diffcider --help
+diffcider --model base --prompt "What is the capital of France?" \
+  --max-new-tokens 32 --steps 32 --block-size 16
+```
+
+Python applications can use `from diffcider import Diffcider`. Decision JSON
+files are user inputs; pass their path to `diffcider --decision /path/to/input.json`.
+
+When working from a checkout, `uv sync` installs the package in editable mode
+alongside the development tools. The existing script also remains available:
 
 ```sh
 uv sync
@@ -220,7 +286,28 @@ tokens; visible-text agreement is reported separately.
 uv sync --extra benchmark
 uv run --extra benchmark pytest
 uv run ruff check .
+uv run ruff format --check .
 ```
+
+Build a source archive and wheel with `uv build`. This builds the wheel from the
+source archive, checking that the archive contains the files needed to package
+the project. Build output goes into the ignored `dist/` directory. To install
+the wheel in a separate activated environment:
+
+```sh
+python -m pip install /path/to/dist/diffcider_mlx-0.1.0-py3-none-any.whl
+# Or:
+uv pip install /path/to/dist/diffcider_mlx-0.1.0-py3-none-any.whl
+```
+
+The wheel contains the `diffcider` package and existing project/upstream license
+notices. It does not bundle model weights, downloaded datasets, or benchmark
+reports. A build creates local artifacts; publishing to a package index is a
+separate step. These instructions do not assume a PyPI release exists.
+
+Packaging was verified with clean pip wheel and uv source-archive installations,
+both CLI entry points, and real-model decision/generation runs outside the
+checkout without PyTorch or PEFT. Dependency checks and `twine check` passed.
 
 Unit tests compare a small MLX model against PyTorch Qwen3 with bidirectional
 attention and padding, check future-token visibility, and validate the
