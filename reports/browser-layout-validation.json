@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-06",
+  "tool": "Codex in-app browser",
+  "checks": [
+    {
+      "viewport": [
+        1280,
+        720
+      ],
+      "theme": "dark",
+      "scroll_y": 0,
+      "browser_top": 198,
+      "browser_bottom": 598,
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": [
+        1024,
+        768
+      ],
+      "theme": "dark",
+      "scroll_y": 0,
+      "browser_top": 198,
+      "browser_bottom": 646,
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "horizontal_overflow": false,
+      "layout": "stacked; vertical scrolling remains on narrow screens"
+    }
+  ],
+  "screenshot_directory": ".cache/browser-demo",
+  "notes": "Viewer and run/inspect controls are visible without scrolling on the tested desktop sizes. Narrow screens stack setup above the browser. This is a layout smoke check, not a full accessibility audit."
+}

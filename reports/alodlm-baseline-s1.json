@@ -1,0 +1,1078 @@
+{
+  "timestamp": "2026-10-08T01:32:57.079755+00:00",
+  "baseline": "s1",
+  "dtype": "float32",
+  "backend": "mlx",
+  "checkpoint": [
+    "SEU-ZZH/Shared-YesNo-Qwen3-0.6B-S1",
+    "1f1c29ff9fc6f6e9dc066b03089878a7dab8b6a0"
+  ],
+  "dataset_sha256": "179207541710c6f6005fb3871f250da2ad3cdfd856f5ada3ad1dbd3653fc251f",
+  "excluded": [
+    {
+      "case_id": "clinc:1f026654e4adbde0f52e2f5c733a16e6403328d2f489ecf2511575cb888e1d3e",
+      "options": 32,
+      "reason": "letter readout supports at most 26 options"
+    },
+    {
+      "case_id": "clinc:f2a3fa8a41e99776fa3315fb19f75263fafa7fe5b53e59e9f6b63c328ec29931",
+      "options": 120,
+      "reason": "letter readout supports at most 26 options"
+    },
+    {
+      "case_id": "clinc:89291ce378f9a0bbb464bedee7d202a83b782bdda0c1cc3301cca50eb75d35a7",
+      "options": 64,
+      "reason": "letter readout supports at most 26 options"
+    },
+    {
+      "case_id": "clinc:7a8c71d569e142bb420af0d85241a66f0c80b6f312c9198fd6b5a55ded364b16",
+      "options": 120,
+      "reason": "letter readout supports at most 26 options"
+    },
+    {
+      "case_id": "clinc:7faced8787ef674ba5e08affd5ac4f0acb47c265dd70b405300385330300ac35",
+      "options": 120,
+      "reason": "letter readout supports at most 26 options"
+    },
+    {
+      "case_id": "clinc:947c8f5c44ad4d8561725579aed1ba5a8dcda6b6f2f3918c698941488eba3ff3",
+      "options": 32,
+      "reason": "letter readout supports at most 26 options"
+    },
+    {
+      "case_id": "clinc:ab152d283f0aa8f079d61fd85df7e1b336e4e07e7077ced3a1d79eaa814493f0",
+      "options": 120,
+      "reason": "letter readout supports at most 26 options"
+    },
+    {
+      "case_id": "clinc:4d860e08ce45bd292adb177a886b6df2095b59d8324559b105cf5eb264abcbcd",
+      "options": 77,
+      "reason": "letter readout supports at most 26 options"
+    },
+    {
+      "case_id": "clinc:158a85b2a42db1a0b4b5e7d2d2ccba7cc82abfe1dec89c9688f9f60444732140",
+      "options": 64,
+      "reason": "letter readout supports at most 26 options"
+    },
+    {
+      "case_id": "clinc:62bd34074e858c47c4db4592bdc681d28a2f50d1b3829a0a80ef09c19be6161b",
+      "options": 120,
+      "reason": "letter readout supports at most 26 options"
+    },
+    {
+      "case_id": "clinc:8cbb6d2e6e958ad9ffcc6a5f7846b038bfa200802ab20cc5187d69dc93f68ac8",
+      "options": 120,
+      "reason": "letter readout supports at most 26 options"
+    },
+    {
+      "case_id": "clinc:53054412e1428f9302c86aec8f9f076b94f53df4d8a557f7728aeeca5eaf010c",
+      "options": 77,
+      "reason": "letter readout supports at most 26 options"
+    },
+    {
+      "case_id": "clinc:1034abf6c65ed152f7bded1d8c0c98584c4e3c8fb28b689cd3c2ff575b7b6f4a",
+      "options": 32,
+      "reason": "letter readout supports at most 26 options"
+    },
+    {
+      "case_id": "clinc:863dc5d9014ca7d99e0612c390b9c2d1f517b4592410fca2cc2d62d3e91745b6",
+      "options": 120,
+      "reason": "letter readout supports at most 26 options"
+    },
+    {
+      "case_id": "clinc:e7574496909047a05b8c7be983a701757841d9ce75da439ff770b339d731d431",
+      "options": 64,
+      "reason": "letter readout supports at most 26 options"
+    },
+    {
+      "case_id": "clinc:552777efd696568a0c64b3afd4cc3718e4862f8727ac61febfd1f88f6c5f05c8",
+      "options": 120,
+      "reason": "letter readout supports at most 26 options"
+    }
+  ],
+  "warmup": 1,
+  "repeats": 2,
+  "timing_scope": "Synchronized full-input model inference, no reusable prefix. Excludes tokenization, loading and probability normalization.",
+  "decisions": [
+    {
+      "case_id": "clinc:df6116dde2dd7f0afb2a2d8f291e0e0236a9b34afccf46c1c83f07c33c85f181",
+      "type": "choice",
+      "gold": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "probabilities": [
+        3.2186524837447096e-05,
+        1.545145424142226e-05,
+        0.9999217948252126,
+        3.056719570871713e-05
+      ],
+      "passes": 1,
+      "readout": "yesno",
+      "prediction": 2,
+      "tokens": 73,
+      "input_sha256": "e8806cf68759910bbf7f6ce837171ee1a16c280e7d18b2c4c16eddab690298d6",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.023919125000247732,
+        0.024066584010142833
+      ]
+    },
+    {
+      "case_id": "snli:6fbae4becc4a6414b7edb5cee1d4360a7a5d59e6433cd7c462f6759cc07bf044",
+      "type": "noul",
+      "gold": [
+        0.0,
+        1.0
+      ],
+      "probabilities": [
+        0.8980455334923304,
+        0.10195446650766951
+      ],
+      "passes": 1,
+      "readout": "yesno",
+      "prediction": 0,
+      "tokens": 87,
+      "input_sha256": "99b89ee73a0f0a79dd56811d4871ed0c4415c73c035a89e4cfa11416dfe81652",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.02459970800555311,
+        0.02490370799205266
+      ]
+    },
+    {
+      "case_id": "synthetic_ordinal:shipment:0321:base",
+      "type": "score",
+      "gold": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "probabilities": [
+        0.9999870143502805,
+        9.725463465865593e-06,
+        3.2601862538793046e-06
+      ],
+      "passes": 1,
+      "readout": "yesno",
+      "prediction": 0,
+      "tokens": 212,
+      "input_sha256": "2a6d1ed94ceebbd77612ea616c7bc13fc2ff9e67d21ca5ede335244010f99c5d",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.04546054100501351,
+        0.04547524999361485
+      ]
+    },
+    {
+      "case_id": "clinc:f795f641320ef0c9964ac61e92e632168bfba09a2678a28afe2a522a1145987b",
+      "type": "choice",
+      "gold": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "probabilities": [
+        9.005399822212621e-06,
+        5.809927625682538e-06,
+        4.3274834853528935e-07,
+        1.0803501021966752e-07,
+        9.895779680303477e-08,
+        1.0831489310860207e-07,
+        3.7888628202875797e-07,
+        2.6769960850861195e-07,
+        1.5442615908011614e-07,
+        4.2359825322792833e-07,
+        0.9999443029727128,
+        3.3050486426912174e-05,
+        1.2948811364402873e-07,
+        2.172612308219273e-07,
+        3.654824457059806e-06,
+        1.8569732592699397e-06
+      ],
+      "passes": 1,
+      "readout": "yesno",
+      "prediction": 10,
+      "tokens": 151,
+      "input_sha256": "f137724a8d94e1e70e6b9d666d29c002abd0955f681670e5d1be765a032ef061",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.03732912498526275,
+        0.03728166699875146
+      ]
+    },
+    {
+      "case_id": "snli:8d518897bc0a38c0df1aa8fec3e1a4c4faa9fced2b1e6e5a45fc207dbea4f88b",
+      "type": "noul",
+      "gold": [
+        1.0,
+        0.0
+      ],
+      "probabilities": [
+        0.9850996428318446,
+        0.014900357168155326
+      ],
+      "passes": 1,
+      "readout": "yesno",
+      "prediction": 0,
+      "tokens": 94,
+      "input_sha256": "5fa569f0686bb6bc09e9655db9d501e1c1b0b82c3a9cd7e9b31f79cec491902f",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.025390875001903623,
+        0.025160958000924438
+      ]
+    },
+    {
+      "case_id": "synthetic_ordinal:laboratory:0385:base",
+      "type": "score",
+      "gold": [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "probabilities": [
+        0.0018107181093216223,
+        0.9980362419813252,
+        0.00012493954206635498,
+        2.8100367286683196e-05
+      ],
+      "passes": 1,
+      "readout": "yesno",
+      "prediction": 1,
+      "tokens": 292,
+      "input_sha256": "75baf0eba5405d66ad4a5f2ac4b54cc14eb755b41d5bb19d295ffb196f6cfe4a",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.06094916697475128,
+        0.0611084169941023
+      ]
+    },
+    {
+      "case_id": "clinc:b2877e560c371b3776e318ad8e1bf9d5e98984f4804518f0bf5a2c4522252233",
+      "type": "choice",
+      "gold": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "probabilities": [
+        0.0008918757208680737,
+        0.13891467043240757,
+        0.0005166722918660634,
+        0.027597342924747716,
+        0.0022102321024438814,
+        0.0006317702802125656,
+        0.0003974259622953033,
+        0.1434910109592376,
+        0.0011911896870447976,
+        0.0010489779553379615,
+        0.001387066923288378,
+        0.015400850288408997,
+        0.6607344200743446,
+        0.0011566268143129456,
+        0.0004991569660586382,
+        0.003930710617124863
+      ],
+      "passes": 1,
+      "readout": "yesno",
+      "prediction": 12,
+      "tokens": 157,
+      "input_sha256": "34b66520cbcf01106a2421eae4f7af110c5c93f86fef8c00e25d853cddd45b8a",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.03727849997812882,
+        0.03792033402714878
+      ]
+    },
+    {
+      "case_id": "snli:51eff04b4c4055ac68c2bffaef4e07b554e1f1ea407e7bfb4b4be9699d6762c0",
+      "type": "noul",
+      "gold": [
+        0.0,
+        1.0
+      ],
+      "probabilities": [
+        0.04315919539621273,
+        0.9568408046037874
+      ],
+      "passes": 1,
+      "readout": "yesno",
+      "prediction": 1,
+      "tokens": 86,
+      "input_sha256": "92922a4061ab7f5b481a19ef31ea54e8ff2ca697e91390c1b6cec62b3de9f25c",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.02473787500639446,
+        0.025033374986378476
+      ]
+    },
+    {
+      "case_id": "synthetic_ordinal:laboratory:0044:base",
+      "type": "score",
+      "gold": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "probabilities": [
+        0.9937184903332866,
+        5.746214240225096e-06,
+        4.172943486186543e-06,
+        0.006271590508987059
+      ],
+      "passes": 1,
+      "readout": "yesno",
+      "prediction": 0,
+      "tokens": 290,
+      "input_sha256": "0f182e8140c963ab69434c8e20085a5ca89ae7b10df26cf82b1a986b6fb123d0",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.061397540994221345,
+        0.062192374985897914
+      ]
+    },
+    {
+      "case_id": "clinc:0d76d2c97b14a7205b30ed4f4c1d433ed9d0309f9e363ca10842f86f9bc47887",
+      "type": "choice",
+      "gold": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "probabilities": [
+        0.46007584653953454,
+        0.001455234715701813,
+        0.00555109812161459,
+        0.013404256503381149,
+        0.5114999242248116,
+        0.0013326307362740457,
+        0.0024500956347162117,
+        0.004230913523966056
+      ],
+      "passes": 1,
+      "readout": "yesno",
+      "prediction": 4,
+      "tokens": 102,
+      "input_sha256": "57553578f99b9e04c1744be316e4fd89865cd8cfdcb5a7fa58ef66636a460184",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.027665333007462323,
+        0.02747137501137331
+      ]
+    },
+    {
+      "case_id": "snli:bad5368c1024d26f28ce2dbb8ef48ac2a4ca1043668d54468b5e8616335a012b",
+      "type": "noul",
+      "gold": [
+        1.0,
+        0.0
+      ],
+      "probabilities": [
+        0.9894401087426692,
+        0.01055989125733085
+      ],
+      "passes": 1,
+      "readout": "yesno",
+      "prediction": 0,
+      "tokens": 88,
+      "input_sha256": "2bb88661e3b7e7ba46a883ebf56d4ff7e9e7901e72fbd21e69560ebd77bc5698",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.025272291008150205,
+        0.02552945798379369
+      ]
+    },
+    {
+      "case_id": "synthetic_ordinal:deployment:0287:base",
+      "type": "score",
+      "gold": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "probabilities": [
+        8.024225054603685e-07,
+        1.973595969677934e-05,
+        0.9999558050837224,
+        1.3849717871435542e-05,
+        9.806816204100521e-06
+      ],
+      "passes": 1,
+      "readout": "yesno",
+      "prediction": 2,
+      "tokens": 323,
+      "input_sha256": "e8f2642f16560a587856f3d77c4719158c4f3a078b3f42abb24bbf9fad8e48d8",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.0691098750103265,
+        0.0695047499903012
+      ]
+    },
+    {
+      "case_id": "clinc:ea250342bc80a98ca775888248a5672ec36ba4faa6bc405f74fc9d4d7fddceb2",
+      "type": "choice",
+      "gold": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "probabilities": [
+        3.945912738583277e-06,
+        4.6675540815969414e-07,
+        8.969142411422392e-06,
+        4.48559546920593e-07,
+        5.522438188630001e-07,
+        1.6016275451466306e-06,
+        0.2216609579942454,
+        1.0208096976508887e-06,
+        6.956472661400995e-07,
+        0.778316539530798,
+        5.280383238240315e-07,
+        1.28899576813946e-06,
+        1.1423861769618217e-06,
+        7.133033044461657e-07,
+        6.059967766463767e-07,
+        5.230561734597439e-07
+      ],
+      "passes": 1,
+      "readout": "yesno",
+      "prediction": 9,
+      "tokens": 170,
+      "input_sha256": "7c902a17de4e273c9a50185d2aea4466cb367b1cc6d1d4fba41ba1b73799946c",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.040499875001842156,
+        0.040003333997447044
+      ]
+    },
+    {
+      "case_id": "snli:fc31995c85305304720c78dcabe2166c8da27c1558bbb5c442df9aab76752900",
+      "type": "noul",
+      "gold": [
+        0.0,
+        1.0
+      ],
+      "probabilities": [
+        0.017021892481425865,
+        0.9829781075185741
+      ],
+      "passes": 1,
+      "readout": "yesno",
+      "prediction": 1,
+      "tokens": 86,
+      "input_sha256": "43871e8f3012b6edaf8a5955f976c7e80ac46889dde92bbdb772c027a98cd209",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.026083792006829754,
+        0.026017333002528176
+      ]
+    },
+    {
+      "case_id": "synthetic_ordinal:laboratory:0379:base",
+      "type": "score",
+      "gold": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "probabilities": [
+        0.06056661171649706,
+        0.003359330417980482,
+        0.000964980711458823,
+        0.9351090771540637
+      ],
+      "passes": 1,
+      "readout": "yesno",
+      "prediction": 3,
+      "tokens": 291,
+      "input_sha256": "8a522872b800528eb3affb8c20f0ca92f258c7b4aeb753e6b5e89ae4ecd8e703",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.06312008301028982,
+        0.06599216698668897
+      ]
+    },
+    {
+      "case_id": "clinc:5c6993afdda19769fc34d3dc53796d94afcad2e27ac934758489720092f09a1d",
+      "type": "choice",
+      "gold": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "probabilities": [
+        5.668161109127802e-08,
+        4.002188478570481e-08,
+        2.6910388963256104e-08,
+        9.813674734404851e-08,
+        4.2539841182365725e-08,
+        2.0615996239124408e-07,
+        4.31711515315715e-08,
+        4.060581595599037e-08,
+        4.8415516387016116e-08,
+        4.432552303514217e-08,
+        0.9999988592901401,
+        1.5348798139856052e-07,
+        4.544007073560255e-08,
+        1.1917527452146975e-07,
+        2.466137721489666e-08,
+        1.5097671332911762e-07
+      ],
+      "passes": 1,
+      "readout": "yesno",
+      "prediction": 10,
+      "tokens": 152,
+      "input_sha256": "48387304b8e08a098de304221f212cd1150d792e8f0df9ecd203ea309ae3bfb5",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.03919358298298903,
+        0.038952749979216605
+      ]
+    },
+    {
+      "case_id": "snli:5df4ddcf3aa9950b9b974f17482712f82f38a398bfac19f071138f51dbecb645",
+      "type": "noul",
+      "gold": [
+        1.0,
+        0.0
+      ],
+      "probabilities": [
+        0.998177712201374,
+        0.0018222877986261063
+      ],
+      "passes": 1,
+      "readout": "yesno",
+      "prediction": 0,
+      "tokens": 85,
+      "input_sha256": "afa2eb28072ff2bf8241710ef645e323426778db90b356d018c819e0e4fd4d0b",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.02594595798291266,
+        0.026149999990593642
+      ]
+    },
+    {
+      "case_id": "synthetic_ordinal:shipment:0269:base",
+      "type": "score",
+      "gold": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "probabilities": [
+        0.0009078200798398298,
+        0.00023708634643383291,
+        0.9988550935737264
+      ],
+      "passes": 1,
+      "readout": "yesno",
+      "prediction": 2,
+      "tokens": 211,
+      "input_sha256": "cb0a4770dea9019a932e4458985437246d76abd4d86f4097269375dcca7fdadb",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.04637100000400096,
+        0.046956125006545335
+      ]
+    },
+    {
+      "case_id": "clinc:45040ee3a55f47c18e387c2a0d329737da9877d38a530d67c3a9c4eea3de778f",
+      "type": "choice",
+      "gold": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "probabilities": [
+        5.281763537223358e-07,
+        0.9999808083187348,
+        1.5744729210400187e-05,
+        2.759051581294805e-07,
+        6.645203284927656e-07,
+        3.909644191681993e-07,
+        4.1290252570632865e-07,
+        1.1744832694189473e-06
+      ],
+      "passes": 1,
+      "readout": "yesno",
+      "prediction": 1,
+      "tokens": 112,
+      "input_sha256": "ff4d258c196b3a69bed0227669644c75904b5808b7878f3f3664b41b8ad5a168",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.02592562499921769,
+        0.02590295800473541
+      ]
+    },
+    {
+      "case_id": "snli:5fc5f9c1e4da42e9207697dc1c31f18e16744a0df31ebff4715def9ef0737ec4",
+      "type": "noul",
+      "gold": [
+        0.0,
+        1.0
+      ],
+      "probabilities": [
+        0.0012012847087731996,
+        0.9987987152912269
+      ],
+      "passes": 1,
+      "readout": "yesno",
+      "prediction": 1,
+      "tokens": 80,
+      "input_sha256": "e6703f766ba0d387368e4e863f7e10ffabb14fa462e23043a8c02db97087be38",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.023892249999335036,
+        0.02393470800598152
+      ]
+    },
+    {
+      "case_id": "synthetic_ordinal:shipment:0232:base",
+      "type": "score",
+      "gold": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "probabilities": [
+        2.920120877846831e-05,
+        0.9998998083432125,
+        7.099044800903319e-05
+      ],
+      "passes": 1,
+      "readout": "yesno",
+      "prediction": 1,
+      "tokens": 210,
+      "input_sha256": "b88f95fada490ccc2bd4ff3dc0149af8c51d8e36f71f15b5fb598f761121c581",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.045892750000348315,
+        0.04535787500208244
+      ]
+    },
+    {
+      "case_id": "clinc:6ecc8bacd297bf44cf01870e588fe0ef994c41d6ac0e33c63e20277665567144",
+      "type": "choice",
+      "gold": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "probabilities": [
+        4.0019522638625856e-07,
+        1.07978394642742e-05,
+        2.1146949401755133e-07,
+        3.8726635764053856e-07,
+        2.828994710002782e-07,
+        2.6195831922145733e-07,
+        3.6295957906859376e-07,
+        5.367032249660623e-07,
+        1.352169402477623e-07,
+        7.916395667890783e-07,
+        7.590710474481042e-08,
+        1.4720506416508478e-07,
+        2.391406349558176e-07,
+        0.999985103827986,
+        1.0066693906547088e-07,
+        1.651046274121208e-07
+      ],
+      "passes": 1,
+      "readout": "yesno",
+      "prediction": 13,
+      "tokens": 155,
+      "input_sha256": "17e283a8636383e0088dae5c98c4bb9bedf6b040f0951e219122ad183ccfc9a4",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.03871904200059362,
+        0.039319166011409834
+      ]
+    },
+    {
+      "case_id": "snli:9dcc1dc898aef84e4b55205cbed97a5d7553eee46ec91df2713589c5df9b0809",
+      "type": "noul",
+      "gold": [
+        1.0,
+        0.0
+      ],
+      "probabilities": [
+        0.996533632685886,
+        0.0034663673141139624
+      ],
+      "passes": 1,
+      "readout": "yesno",
+      "prediction": 0,
+      "tokens": 75,
+      "input_sha256": "08eae87ccaf8f9c9aacd2ee96b8cdbf4ecbb37d0ee4e52e4963a45be5dcd522a",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.024471083015669137,
+        0.024506375018972903
+      ]
+    },
+    {
+      "case_id": "synthetic_ordinal:deployment:0194:base",
+      "type": "score",
+      "gold": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "probabilities": [
+        3.548668319713023e-05,
+        0.00012012772197994246,
+        5.6972765561772487e-05,
+        0.00022162083679122503,
+        0.9995657919924699
+      ],
+      "passes": 1,
+      "readout": "yesno",
+      "prediction": 4,
+      "tokens": 322,
+      "input_sha256": "41c15b06a40b94d3916c2cb221c052717d73abfea6dae4d5b80b8d4d3a58fee6",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.06832579101319425,
+        0.06884849999914877
+      ]
+    },
+    {
+      "case_id": "clinc:14f82c0024469fc0ac7a15f528f4891635a72b09f920f944bfdfde9dc212c766",
+      "type": "choice",
+      "gold": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "probabilities": [
+        1.3304044559143972e-06,
+        7.451982875685662e-07,
+        2.1531278588775676e-07,
+        1.5269681506362632e-06,
+        3.44879465410387e-07,
+        1.6852978021837457e-05,
+        0.9999788491460538,
+        1.3511277886556014e-07
+      ],
+      "passes": 1,
+      "readout": "yesno",
+      "prediction": 6,
+      "tokens": 101,
+      "input_sha256": "708cf37d1192066f8d9c0ed55fa154bc60e632804222b7b3739852dd9eb36ebc",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.02775191600085236,
+        0.027287500008242205
+      ]
+    },
+    {
+      "case_id": "snli:56dfb9db85f7e302031f25e03a33033ec5d8717064483c701a5855932d1819e0",
+      "type": "noul",
+      "gold": [
+        0.0,
+        1.0
+      ],
+      "probabilities": [
+        0.062064193846898305,
+        0.9379358061531017
+      ],
+      "passes": 1,
+      "readout": "yesno",
+      "prediction": 1,
+      "tokens": 78,
+      "input_sha256": "c4d3313ac03e8e714cf3dfc8edf17202949cb7013612652709aa6d76c94a527c",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.026111832994502038,
+        0.02765629201894626
+      ]
+    },
+    {
+      "case_id": "synthetic_ordinal:deployment:0035:base",
+      "type": "score",
+      "gold": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "probabilities": [
+        0.9999992084904495,
+        3.4022781432570593e-08,
+        2.866683553726452e-08,
+        2.1811522283829628e-07,
+        5.107047106822378e-07
+      ],
+      "passes": 1,
+      "readout": "yesno",
+      "prediction": 0,
+      "tokens": 323,
+      "input_sha256": "d2d0fd01c4f035bd48e0a8b04b70a55c1b00280f7fc95bff6e871c39b77ea213",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.06822387498687021,
+        0.06889954197686166
+      ]
+    },
+    {
+      "case_id": "clinc:4709dde423fbda07fe5b1b86b31a413ec598dcb5ada79e43a52911138a1c07ad",
+      "type": "choice",
+      "gold": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "probabilities": [
+        1.5378746518362102e-05,
+        2.8074261117326606e-05,
+        0.00010830009331744542,
+        2.2621057842295944e-05,
+        1.3192934304127458e-05,
+        0.9997980430977115,
+        1.2404363380551137e-05,
+        1.985445808358334e-06
+      ],
+      "passes": 1,
+      "readout": "yesno",
+      "prediction": 5,
+      "tokens": 118,
+      "input_sha256": "880cd19a64d1252d8f45b6a0a3412fe2eff5bd3d7f646d971931ceb03c48fa34",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.027136457996675745,
+        0.02727737501845695
+      ]
+    },
+    {
+      "case_id": "snli:d057a0771f3826c8639b428bbada1edd6dcbddf4ffca9b47492611097341029a",
+      "type": "noul",
+      "gold": [
+        1.0,
+        0.0
+      ],
+      "probabilities": [
+        0.24354508862304775,
+        0.7564549113769522
+      ],
+      "passes": 1,
+      "readout": "yesno",
+      "prediction": 1,
+      "tokens": 84,
+      "input_sha256": "b8baa1cbb1d2e7f6d498bb4252b0dcc6e683dde80718e67e9ee2124210fc01cb",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.024330542015377432,
+        0.024594999995315447
+      ]
+    },
+    {
+      "case_id": "synthetic_ordinal:deployment:0398:base",
+      "type": "score",
+      "gold": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "probabilities": [
+        5.433920406297142e-07,
+        6.930977876264625e-06,
+        6.14237130868992e-07,
+        0.9990127598618844,
+        0.0009791515310676388
+      ],
+      "passes": 1,
+      "readout": "yesno",
+      "prediction": 3,
+      "tokens": 323,
+      "input_sha256": "77f2dab4b69e1b6642b065df1a06b6b22091a5e705861053297cf57f0e50cb39",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.06907987501472235,
+        0.06753404199844226
+      ]
+    }
+  ],
+  "quality": {
+    "yesno/depth1": {
+      "count": 30,
+      "accuracy": 0.9,
+      "by_type": {
+        "choice": {
+          "count": 10,
+          "accuracy": 0.9
+        },
+        "noul": {
+          "count": 10,
+          "accuracy": 0.8
+        },
+        "score": {
+          "count": 10,
+          "accuracy": 1
+        }
+      },
+      "nll": 0.22647197711542838,
+      "brier": 0.15058100322934206,
+      "ece15": 0.09374999658593923,
+      "score_expected_value_mae": 0.021376853223432548,
+      "mean_prefill_seconds": 0.0,
+      "mean_read_seconds": 0.03925040966666226
+    }
+  }
+}

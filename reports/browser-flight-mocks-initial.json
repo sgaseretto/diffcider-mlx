@@ -1,0 +1,1114 @@
+[
+  {
+    "scenario": "Google Flights (mock)",
+    "repeat": 1,
+    "goal": "Find one-way flights from Zurich to London on November 5, 2026, for one adult in economy. Stop when matching flight options are visible. Do not select or book a flight.",
+    "departure": "2026-11-05",
+    "fixture_today": "2026-10-06",
+    "status": "Stopped \u2014 three actions made no page change \u00b7 0/9 checks passed",
+    "trace": [
+      {
+        "step": 1,
+        "mode": "decide",
+        "adapter": "decision",
+        "operation": "TYPE_TEXT",
+        "milliseconds": 620.89,
+        "answers": {
+          "operation": {
+            "type": "choice",
+            "confidence": 0.5024497387066587,
+            "answer_confidence": 0.48800071313196636,
+            "probabilities": {
+              "CLICK": 0.4537660373060334,
+              "TYPE_TEXT": 0.48800071313196636,
+              "SELECT": 0.054683500183947444,
+              "WAIT": 0.0010383754430601047,
+              "DONE": 0.0013325298964360212,
+              "BLOCKED": 0.001178844038556682
+            },
+            "choice": "TYPE_TEXT"
+          },
+          "CLICK": {
+            "type": "choice",
+            "confidence": 0.20638022269998935,
+            "answer_confidence": 0.6625715193953212,
+            "probabilities": {
+              "4": 0.15378827573830012,
+              "5": 0.18364020486637853,
+              "6": 0.6625715193953212
+            },
+            "choice": "6"
+          },
+          "TYPE_TEXT": {
+            "type": "choice",
+            "confidence": 0.003613377569451348,
+            "answer_confidence": 0.5353730883868557,
+            "probabilities": {
+              "4": 0.5353730883868557,
+              "5": 0.4646269116131443
+            },
+            "choice": "4"
+          },
+          "SELECT": {
+            "type": "choice",
+            "confidence": 0.7651508700661687,
+            "answer_confidence": 0.9105620740341657,
+            "probabilities": {
+              "1:1": 0.9105620740341657,
+              "2:1": 0.06607250439109952,
+              "2:2": 0.006121347547985758,
+              "3:1": 0.009040734787486215,
+              "3:2": 0.008203339239263023
+            },
+            "choice": "1:1"
+          }
+        },
+        "url": "https://google-flights.diffcider.test/?site=google&today=2026-10-06",
+        "omitted_actions": 0,
+        "offered_targets": 10,
+        "target": "Where from?",
+        "element": 4,
+        "action_id": "e6",
+        "executed": true
+      },
+      {
+        "step": 1,
+        "mode": "generate",
+        "adapter": null,
+        "text": "Z Zurich",
+        "milliseconds": 269.89
+      },
+      {
+        "step": 2,
+        "mode": "decide",
+        "adapter": "decision",
+        "operation": "TYPE_TEXT",
+        "milliseconds": 573.58,
+        "answers": {
+          "operation": {
+            "type": "choice",
+            "confidence": 0.5058121107185088,
+            "answer_confidence": 0.5050813621883095,
+            "probabilities": {
+              "CLICK": 0.43881123881518636,
+              "TYPE_TEXT": 0.5050813621883095,
+              "SELECT": 0.052476312382788874,
+              "WAIT": 0.0010587139058902673,
+              "DONE": 0.0013913900080713229,
+              "BLOCKED": 0.0011809826997536794
+            },
+            "choice": "TYPE_TEXT"
+          },
+          "CLICK": {
+            "type": "choice",
+            "confidence": 0.1185289251009608,
+            "answer_confidence": 0.5682108949978862,
+            "probabilities": {
+              "4": 0.15986056093161274,
+              "5": 0.271928544070501,
+              "6": 0.5682108949978862
+            },
+            "choice": "6"
+          },
+          "TYPE_TEXT": {
+            "type": "choice",
+            "confidence": 0.0005896915019927285,
+            "answer_confidence": 0.5142948821032226,
+            "probabilities": {
+              "4": 0.4857051178967774,
+              "5": 0.5142948821032226
+            },
+            "choice": "5"
+          },
+          "SELECT": {
+            "type": "choice",
+            "confidence": 0.6423214545399141,
+            "answer_confidence": 0.8472267092776492,
+            "probabilities": {
+              "1:1": 0.8472267092776492,
+              "2:1": 0.10414953701338797,
+              "2:2": 0.012576002902634827,
+              "3:1": 0.016231988003231543,
+              "3:2": 0.01981576280309636
+            },
+            "choice": "1:1"
+          }
+        },
+        "url": "https://google-flights.diffcider.test/?site=google&today=2026-10-06",
+        "omitted_actions": 0,
+        "offered_targets": 10,
+        "target": "Where to?",
+        "element": 5,
+        "action_id": "e8",
+        "executed": true
+      },
+      {
+        "step": 2,
+        "mode": "generate",
+        "adapter": null,
+        "text": "Londonondon",
+        "milliseconds": 254.19
+      },
+      {
+        "step": 3,
+        "mode": "decide",
+        "adapter": "decision",
+        "operation": "TYPE_TEXT",
+        "milliseconds": 712.25,
+        "answers": {
+          "operation": {
+            "type": "choice",
+            "confidence": 0.49463210692784254,
+            "answer_confidence": 0.5402887138269279,
+            "probabilities": {
+              "CLICK": 0.39294689041611475,
+              "TYPE_TEXT": 0.5402887138269279,
+              "SELECT": 0.061237033988963234,
+              "WAIT": 0.001705385326741768,
+              "DONE": 0.0020302724700303576,
+              "BLOCKED": 0.001791703971221874
+            },
+            "choice": "TYPE_TEXT"
+          },
+          "CLICK": {
+            "type": "choice",
+            "confidence": 0.1488615745401446,
+            "answer_confidence": 0.5042292956905496,
+            "probabilities": {
+              "4": 0.08010491943218219,
+              "5": 0.14299751757978607,
+              "6": 0.27266826729748206,
+              "7": 0.5042292956905496
+            },
+            "choice": "7"
+          },
+          "TYPE_TEXT": {
+            "type": "choice",
+            "confidence": 0.004597019202414621,
+            "answer_confidence": 0.5398937655136314,
+            "probabilities": {
+              "4": 0.4601062344863686,
+              "5": 0.5398937655136314
+            },
+            "choice": "5"
+          },
+          "SELECT": {
+            "type": "choice",
+            "confidence": 0.7247046466270192,
+            "answer_confidence": 0.894167041910605,
+            "probabilities": {
+              "1:1": 0.894167041910605,
+              "2:1": 0.0705607699807052,
+              "2:2": 0.008534497044245385,
+              "3:1": 0.012524449649357701,
+              "3:2": 0.014213241415086553
+            },
+            "choice": "1:1"
+          }
+        },
+        "url": "https://google-flights.diffcider.test/?site=google&today=2026-10-06",
+        "omitted_actions": 0,
+        "offered_targets": 11,
+        "target": "Where to?",
+        "element": 5,
+        "action_id": "e8",
+        "executed": true
+      },
+      {
+        "step": 3,
+        "mode": "generate",
+        "adapter": null,
+        "text": "Londonondon",
+        "milliseconds": 250.27
+      },
+      {
+        "step": 4,
+        "mode": "decide",
+        "adapter": "decision",
+        "operation": "TYPE_TEXT",
+        "milliseconds": 630.58,
+        "answers": {
+          "operation": {
+            "type": "choice",
+            "confidence": 0.5038925967884602,
+            "answer_confidence": 0.566512376571746,
+            "probabilities": {
+              "CLICK": 0.37048109734509527,
+              "TYPE_TEXT": 0.566512376571746,
+              "SELECT": 0.05743605656344758,
+              "WAIT": 0.00166026107410715,
+              "DONE": 0.0020551234211229476,
+              "BLOCKED": 0.0018550850244810054
+            },
+            "choice": "TYPE_TEXT"
+          },
+          "CLICK": {
+            "type": "choice",
+            "confidence": 0.19743935475126528,
+            "answer_confidence": 0.4847585992584632,
+            "probabilities": {
+              "4": 0.05726708115437319,
+              "5": 0.09982812162828854,
+              "6": 0.358146197958875,
+              "7": 0.4847585992584632
+            },
+            "choice": "7"
+          },
+          "TYPE_TEXT": {
+            "type": "choice",
+            "confidence": 0.010257916916109222,
+            "answer_confidence": 0.5595540858285833,
+            "probabilities": {
+              "4": 0.4404459141714166,
+              "5": 0.5595540858285833
+            },
+            "choice": "5"
+          },
+          "SELECT": {
+            "type": "choice",
+            "confidence": 0.7141234230132849,
+            "answer_confidence": 0.8894805633554758,
+            "probabilities": {
+              "1:1": 0.8894805633554758,
+              "2:1": 0.07185030216222557,
+              "2:2": 0.008734780451079446,
+              "3:1": 0.012363919440366225,
+              "3:2": 0.017570434590852984
+            },
+            "choice": "1:1"
+          }
+        },
+        "url": "https://google-flights.diffcider.test/?site=google&today=2026-10-06",
+        "omitted_actions": 0,
+        "offered_targets": 11,
+        "target": "Where to?",
+        "element": 5,
+        "action_id": "e8",
+        "executed": true
+      },
+      {
+        "step": 4,
+        "mode": "generate",
+        "adapter": null,
+        "text": "Londonondon",
+        "milliseconds": 246.22
+      },
+      {
+        "step": 5,
+        "mode": "decide",
+        "adapter": "decision",
+        "operation": "TYPE_TEXT",
+        "milliseconds": 675.25,
+        "answers": {
+          "operation": {
+            "type": "choice",
+            "confidence": 0.5097401774030963,
+            "answer_confidence": 0.5495200111093202,
+            "probabilities": {
+              "CLICK": 0.39653250815696217,
+              "TYPE_TEXT": 0.5495200111093202,
+              "SELECT": 0.04803365654836752,
+              "WAIT": 0.0017423727407189034,
+              "DONE": 0.0022100065844048327,
+              "BLOCKED": 0.001961444860226277
+            },
+            "choice": "TYPE_TEXT"
+          },
+          "CLICK": {
+            "type": "choice",
+            "confidence": 0.16608154489014193,
+            "answer_confidence": 0.4496733896273257,
+            "probabilities": {
+              "4": 0.08163814244444884,
+              "5": 0.09548966691436106,
+              "6": 0.3731988010138643,
+              "7": 0.4496733896273257
+            },
+            "choice": "7"
+          },
+          "TYPE_TEXT": {
+            "type": "choice",
+            "confidence": 0.0031425624958292264,
+            "answer_confidence": 0.5329899702231304,
+            "probabilities": {
+              "4": 0.46701002977686956,
+              "5": 0.5329899702231304
+            },
+            "choice": "5"
+          },
+          "SELECT": {
+            "type": "choice",
+            "confidence": 0.7667878156177178,
+            "answer_confidence": 0.9158805825148473,
+            "probabilities": {
+              "1:1": 0.9158805825148473,
+              "2:1": 0.0541034279240537,
+              "2:2": 0.006888927504072708,
+              "3:1": 0.00945784351713407,
+              "3:2": 0.013669218539892244
+            },
+            "choice": "1:1"
+          }
+        },
+        "url": "https://google-flights.diffcider.test/?site=google&today=2026-10-06",
+        "omitted_actions": 0,
+        "offered_targets": 11,
+        "target": "Where to?",
+        "element": 5,
+        "action_id": "e8",
+        "executed": true
+      },
+      {
+        "step": 5,
+        "mode": "generate",
+        "adapter": null,
+        "text": "Londonondon",
+        "milliseconds": 253.18
+      },
+      {
+        "mode": "verify",
+        "passed": false,
+        "checks": {
+          "submitted": false,
+          "origin": false,
+          "destination": false,
+          "date": false,
+          "one_way": false,
+          "one_adult": false,
+          "economy": false,
+          "no_accommodation": false,
+          "visible_results": false
+        },
+        "search": {},
+        "description": "Z\u00fcrich \u2192 London on 2026-11-05",
+        "verified": false,
+        "seconds": 7.723240541992709
+      }
+    ]
+  },
+  {
+    "scenario": "Skyscanner (mock)",
+    "repeat": 1,
+    "goal": "Find one-way flights from Zurich to London on November 5, 2026, for one adult in economy, without adding a place to stay. Stop when matching flight options are visible. Do not select or book a flight.",
+    "departure": "2026-11-05",
+    "fixture_today": "2026-10-06",
+    "status": "Stopped \u2014 three actions made no page change \u00b7 5/9 checks passed",
+    "trace": [
+      {
+        "step": 1,
+        "mode": "decide",
+        "adapter": "decision",
+        "operation": "CLICK",
+        "milliseconds": 564.57,
+        "answers": {
+          "operation": {
+            "type": "choice",
+            "confidence": 0.4637856821239994,
+            "answer_confidence": 0.45485122479485235,
+            "probabilities": {
+              "CLICK": 0.45485122479485235,
+              "TYPE_TEXT": 0.45105615397593046,
+              "SELECT": 0.09008836139056052,
+              "WAIT": 0.0012177037874684172,
+              "DONE": 0.0014997303246817601,
+              "BLOCKED": 0.001286825726506217
+            },
+            "choice": "CLICK"
+          },
+          "CLICK": {
+            "type": "choice",
+            "confidence": 0.19158247269120232,
+            "answer_confidence": 0.34934745404888684,
+            "probabilities": {
+              "4": 0.34934745404888684,
+              "5": 0.3248857430424836,
+              "6": 0.3215164551613474,
+              "7": 0.0042503477472821734
+            },
+            "choice": "4"
+          },
+          "TYPE_TEXT": {
+            "type": "choice",
+            "confidence": 0.003893998776867691,
+            "answer_confidence": 0.5367197834415587,
+            "probabilities": {
+              "4": 0.4632802165584414,
+              "5": 0.5367197834415587
+            },
+            "choice": "5"
+          },
+          "SELECT": {
+            "type": "choice",
+            "confidence": 0.6945248355781131,
+            "answer_confidence": 0.8709595203439677,
+            "probabilities": {
+              "1:1": 0.8709595203439677,
+              "2:1": 0.0969701627202923,
+              "2:2": 0.008310140502625572,
+              "3:1": 0.01290167252083581,
+              "3:2": 0.010858503912278725
+            },
+            "choice": "1:1"
+          }
+        },
+        "url": "https://skyscanner-flights.diffcider.test/?site=skyscanner&today=2026-10-06",
+        "omitted_actions": 0,
+        "offered_targets": 11,
+        "target": "Open Where from?",
+        "element": 4,
+        "action_id": "e7",
+        "executed": true
+      },
+      {
+        "step": 2,
+        "mode": "decide",
+        "adapter": "decision",
+        "operation": "CLICK",
+        "milliseconds": 599.98,
+        "answers": {
+          "operation": {
+            "type": "choice",
+            "confidence": 0.4733094648503192,
+            "answer_confidence": 0.47831890639093233,
+            "probabilities": {
+              "CLICK": 0.47831890639093233,
+              "TYPE_TEXT": 0.43652160969282744,
+              "SELECT": 0.08144244859080443,
+              "WAIT": 0.0011521349290488918,
+              "DONE": 0.0013859686643526612,
+              "BLOCKED": 0.0011789317320342007
+            },
+            "choice": "CLICK"
+          },
+          "CLICK": {
+            "type": "choice",
+            "confidence": 0.22500709301772792,
+            "answer_confidence": 0.3611120959039007,
+            "probabilities": {
+              "4": 0.2660210152003527,
+              "9": 0.04228511551387052,
+              "5": 0.3611120959039007,
+              "6": 0.32518908888840575,
+              "7": 0.005392684493470214
+            },
+            "choice": "5"
+          },
+          "TYPE_TEXT": {
+            "type": "choice",
+            "confidence": 0.02369215504605282,
+            "answer_confidence": 0.5903660777345735,
+            "probabilities": {
+              "4": 0.40963392226542644,
+              "5": 0.5903660777345735
+            },
+            "choice": "5"
+          },
+          "SELECT": {
+            "type": "choice",
+            "confidence": 0.6282427071152817,
+            "answer_confidence": 0.8396414657616067,
+            "probabilities": {
+              "1:1": 0.8396414657616067,
+              "2:1": 0.10784743928882212,
+              "2:2": 0.012953674534286096,
+              "3:1": 0.02121240860532633,
+              "3:2": 0.018345011809958806
+            },
+            "choice": "1:1"
+          }
+        },
+        "url": "https://skyscanner-flights.diffcider.test/?site=skyscanner&today=2026-10-06",
+        "omitted_actions": 0,
+        "offered_targets": 12,
+        "target": "Open Where to?",
+        "element": 5,
+        "action_id": "e10",
+        "executed": true
+      },
+      {
+        "step": 3,
+        "mode": "decide",
+        "adapter": "decision",
+        "operation": "CLICK",
+        "milliseconds": 766.28,
+        "answers": {
+          "operation": {
+            "type": "choice",
+            "confidence": 0.46727063858003126,
+            "answer_confidence": 0.5144578174564246,
+            "probabilities": {
+              "CLICK": 0.5144578174564246,
+              "TYPE_TEXT": 0.38708460991319477,
+              "SELECT": 0.09540034737429935,
+              "WAIT": 0.0009410423449289844,
+              "DONE": 0.0011596805304232777,
+              "BLOCKED": 0.0009565023807291025
+            },
+            "choice": "CLICK"
+          },
+          "CLICK": {
+            "type": "choice",
+            "confidence": 0.39213735976117237,
+            "answer_confidence": 0.5593675371558289,
+            "probabilities": {
+              "4": 0.07998927093028516,
+              "5": 0.09020400800742633,
+              "10": 0.1442240497301122,
+              "11": 0.5593675371558289,
+              "12": 0.0030734469873897937,
+              "13": 0.0014983939691406878,
+              "14": 0.0026640293866730743,
+              "6": 0.11549658081894956,
+              "7": 0.0034826830141942568
+            },
+            "choice": "11"
+          },
+          "TYPE_TEXT": {
+            "type": "choice",
+            "confidence": 0.014048998331278928,
+            "answer_confidence": 0.5696648139310673,
+            "probabilities": {
+              "4": 0.4303351860689328,
+              "5": 0.5696648139310673
+            },
+            "choice": "5"
+          },
+          "SELECT": {
+            "type": "choice",
+            "confidence": 0.6983302884320282,
+            "answer_confidence": 0.8786315098870998,
+            "probabilities": {
+              "1:1": 0.8786315098870998,
+              "2:1": 0.08381275940401356,
+              "2:2": 0.009898713610522195,
+              "3:1": 0.013088475516249188,
+              "3:2": 0.014568541582115324
+            },
+            "choice": "1:1"
+          }
+        },
+        "url": "https://skyscanner-flights.diffcider.test/?site=skyscanner&today=2026-10-06",
+        "omitted_actions": 0,
+        "offered_targets": 16,
+        "target": "London (LON) \u2014 United Kingdom",
+        "element": 11,
+        "action_id": "e11",
+        "executed": true
+      },
+      {
+        "step": 4,
+        "mode": "decide",
+        "adapter": "decision",
+        "operation": "CLICK",
+        "milliseconds": 669.09,
+        "answers": {
+          "operation": {
+            "type": "choice",
+            "confidence": 0.45171379733984385,
+            "answer_confidence": 0.48989629297901066,
+            "probabilities": {
+              "CLICK": 0.48989629297901066,
+              "TYPE_TEXT": 0.39481351955849714,
+              "SELECT": 0.11236319646037737,
+              "WAIT": 0.0009286750794062101,
+              "DONE": 0.0010898720794416475,
+              "BLOCKED": 0.0009084438432672098
+            },
+            "choice": "CLICK"
+          },
+          "CLICK": {
+            "type": "choice",
+            "confidence": 0.15658684262085298,
+            "answer_confidence": 0.34885629638633525,
+            "probabilities": {
+              "4": 0.2097796609857654,
+              "5": 0.15062713250948945,
+              "6": 0.34885629638633525,
+              "7": 0.0033184535805744894,
+              "8": 0.28741845653783527
+            },
+            "choice": "6"
+          },
+          "TYPE_TEXT": {
+            "type": "choice",
+            "confidence": 0.028290670926761963,
+            "answer_confidence": 0.5986941763516904,
+            "probabilities": {
+              "4": 0.40130582364830963,
+              "5": 0.5986941763516904
+            },
+            "choice": "5"
+          },
+          "SELECT": {
+            "type": "choice",
+            "confidence": 0.7086008434804758,
+            "answer_confidence": 0.8841263868759558,
+            "probabilities": {
+              "1:1": 0.8841263868759558,
+              "2:1": 0.08015888485688172,
+              "2:2": 0.009317262740004058,
+              "3:1": 0.01334189861876075,
+              "3:2": 0.013055566908397617
+            },
+            "choice": "1:1"
+          }
+        },
+        "url": "https://skyscanner-flights.diffcider.test/?site=skyscanner&today=2026-10-06",
+        "omitted_actions": 0,
+        "offered_targets": 12,
+        "target": "Departure date: Select date",
+        "element": 6,
+        "action_id": "e10",
+        "executed": true
+      },
+      {
+        "step": 5,
+        "mode": "decide",
+        "adapter": "decision",
+        "operation": "CLICK",
+        "milliseconds": 735.05,
+        "answers": {
+          "operation": {
+            "type": "choice",
+            "confidence": 0.9668138632899087,
+            "answer_confidence": 0.9935430994184687,
+            "probabilities": {
+              "CLICK": 0.9935430994184687,
+              "WAIT": 0.001760057307368548,
+              "DONE": 0.002604611205397494,
+              "BLOCKED": 0.0020922320687651813
+            },
+            "choice": "CLICK"
+          },
+          "CLICK": {
+            "type": "choice",
+            "confidence": 0.010775518813449958,
+            "answer_confidence": 0.0831293406600245,
+            "probabilities": {
+              "15": 0.03500055813173315,
+              "16": 0.040658538524286324,
+              "17": 0.0831293406600245,
+              "18": 0.03498438522088966,
+              "19": 0.034385500708720165,
+              "20": 0.038429637655648906,
+              "21": 0.03161000832886912,
+              "22": 0.0349780495818599,
+              "23": 0.02771983375321836,
+              "24": 0.028650856414646503,
+              "25": 0.02895755668046575,
+              "26": 0.03256029761155512,
+              "27": 0.02759265593684402,
+              "28": 0.029213284701843697,
+              "29": 0.03399118024799743,
+              "30": 0.03455590541721084,
+              "31": 0.042769859576145895,
+              "32": 0.03514975298677297,
+              "33": 0.0326754098456996,
+              "34": 0.029506485513194503,
+              "35": 0.025849890777850458,
+              "36": 0.03190597654145648,
+              "37": 0.028107809976597432,
+              "38": 0.03286458307951998,
+              "39": 0.03253802566351052,
+              "40": 0.03802944500034984,
+              "41": 0.04206196813569698,
+              "42": 0.05212320332739171
+            },
+            "choice": "17"
+          }
+        },
+        "url": "https://skyscanner-flights.diffcider.test/?site=skyscanner&today=2026-10-06",
+        "omitted_actions": 0,
+        "offered_targets": 28,
+        "target": "Tuesday, October 6, 2026",
+        "element": 17,
+        "action_id": "e3",
+        "executed": true
+      },
+      {
+        "step": 6,
+        "mode": "decide",
+        "adapter": "decision",
+        "operation": "CLICK",
+        "milliseconds": 784.45,
+        "answers": {
+          "operation": {
+            "type": "choice",
+            "confidence": 0.9647009221349644,
+            "answer_confidence": 0.9930610096446648,
+            "probabilities": {
+              "CLICK": 0.9930610096446648,
+              "WAIT": 0.0019356458791599139,
+              "DONE": 0.002842395944437558,
+              "BLOCKED": 0.002160948531737606
+            },
+            "choice": "CLICK"
+          },
+          "CLICK": {
+            "type": "choice",
+            "confidence": 0.1277609399583799,
+            "answer_confidence": 0.2950712216412852,
+            "probabilities": {
+              "15": 0.02093097026213987,
+              "16": 0.02419348003121184,
+              "43": 0.05547354689325465,
+              "44": 0.025346092789121345,
+              "45": 0.0222956471597246,
+              "46": 0.023133033347382145,
+              "47": 0.02139004057331875,
+              "48": 0.021636284997008343,
+              "49": 0.02073457289744083,
+              "50": 0.023540446953807203,
+              "51": 0.02191204961996638,
+              "52": 0.024160892944197508,
+              "53": 0.02405994100024173,
+              "54": 0.022041136508601695,
+              "55": 0.022497851305094532,
+              "56": 0.022706214619982668,
+              "57": 0.03091809719834113,
+              "58": 0.022815533552839988,
+              "59": 0.02203076971076578,
+              "60": 0.026701218029072948,
+              "61": 0.02211005202385769,
+              "62": 0.026744355471565586,
+              "63": 0.0250820250204652,
+              "64": 0.026810854565636415,
+              "65": 0.021851583070419567,
+              "66": 0.023758555518057407,
+              "67": 0.028058267743888032,
+              "68": 0.03199526455131107,
+              "69": 0.2950712216412852
+            },
+            "choice": "69"
+          }
+        },
+        "url": "https://skyscanner-flights.diffcider.test/?site=skyscanner&today=2026-10-06",
+        "omitted_actions": 0,
+        "offered_targets": 29,
+        "target": "Done",
+        "element": 69,
+        "action_id": "e29",
+        "executed": true
+      },
+      {
+        "step": 7,
+        "mode": "decide",
+        "adapter": "decision",
+        "operation": "CLICK",
+        "milliseconds": 775.12,
+        "answers": {
+          "operation": {
+            "type": "choice",
+            "confidence": 0.3778178160035647,
+            "answer_confidence": 0.3653866045066194,
+            "probabilities": {
+              "CLICK": 0.3653866045066194,
+              "TYPE_TEXT": 0.32170437033809407,
+              "SELECT": 0.31018289430333784,
+              "WAIT": 0.000782047639835678,
+              "DONE": 0.0012796730849667945,
+              "BLOCKED": 0.0006644101271459853
+            },
+            "choice": "CLICK"
+          },
+          "CLICK": {
+            "type": "choice",
+            "confidence": 0.21277583232163,
+            "answer_confidence": 0.37300420906803894,
+            "probabilities": {
+              "4": 0.37300420906803894,
+              "5": 0.3105138201446174,
+              "6": 0.050042494341255205,
+              "7": 0.0073742543283727025,
+              "8": 0.2590652221177157
+            },
+            "choice": "4"
+          },
+          "TYPE_TEXT": {
+            "type": "choice",
+            "confidence": 0.03404477522709093,
+            "answer_confidence": 0.6081938655069131,
+            "probabilities": {
+              "4": 0.3918061344930868,
+              "5": 0.6081938655069131
+            },
+            "choice": "5"
+          },
+          "SELECT": {
+            "type": "choice",
+            "confidence": 0.7061018151066252,
+            "answer_confidence": 0.8830532906355283,
+            "probabilities": {
+              "1:1": 0.8830532906355283,
+              "2:1": 0.0804102039853512,
+              "2:2": 0.00928280397955924,
+              "3:1": 0.014016316208881215,
+              "3:2": 0.013237385190679922
+            },
+            "choice": "1:1"
+          }
+        },
+        "url": "https://skyscanner-flights.diffcider.test/?site=skyscanner&today=2026-10-06",
+        "omitted_actions": 0,
+        "offered_targets": 12,
+        "target": "Open Where from?",
+        "element": 4,
+        "action_id": "e7",
+        "executed": true
+      },
+      {
+        "step": 8,
+        "mode": "decide",
+        "adapter": "decision",
+        "operation": "CLICK",
+        "milliseconds": 754.43,
+        "answers": {
+          "operation": {
+            "type": "choice",
+            "confidence": 0.3790222012621821,
+            "answer_confidence": 0.38272538676574797,
+            "probabilities": {
+              "CLICK": 0.38272538676574797,
+              "TYPE_TEXT": 0.3245806615408921,
+              "SELECT": 0.28963474500333525,
+              "WAIT": 0.0007837585113198588,
+              "DONE": 0.001459207439563715,
+              "BLOCKED": 0.00081624073914091
+            },
+            "choice": "CLICK"
+          },
+          "CLICK": {
+            "type": "choice",
+            "confidence": 0.20631115036896497,
+            "answer_confidence": 0.4376186786088172,
+            "probabilities": {
+              "4": 0.15849149063930434,
+              "70": 0.08364489742840217,
+              "5": 0.2492500919583453,
+              "6": 0.06204977406988396,
+              "7": 0.008945067295246923,
+              "8": 0.4376186786088172
+            },
+            "choice": "8"
+          },
+          "TYPE_TEXT": {
+            "type": "choice",
+            "confidence": 0.048513064836259945,
+            "answer_confidence": 0.6289341911043752,
+            "probabilities": {
+              "4": 0.37106580889562474,
+              "5": 0.6289341911043752
+            },
+            "choice": "5"
+          },
+          "SELECT": {
+            "type": "choice",
+            "confidence": 0.710103801724659,
+            "answer_confidence": 0.8838042259914225,
+            "probabilities": {
+              "1:1": 0.8838042259914225,
+              "2:1": 0.08216561212923269,
+              "2:2": 0.009081384194938895,
+              "3:1": 0.012238835961474293,
+              "3:2": 0.012709941722931719
+            },
+            "choice": "1:1"
+          }
+        },
+        "url": "https://skyscanner-flights.diffcider.test/?site=skyscanner&today=2026-10-06",
+        "omitted_actions": 0,
+        "offered_targets": 13,
+        "target": "Search flights",
+        "element": 8,
+        "action_id": "e13",
+        "executed": true
+      },
+      {
+        "step": 9,
+        "mode": "decide",
+        "adapter": "decision",
+        "operation": "CLICK",
+        "milliseconds": 739.17,
+        "answers": {
+          "operation": {
+            "type": "choice",
+            "confidence": 0.6208401917212272,
+            "answer_confidence": 0.666871972742211,
+            "probabilities": {
+              "CLICK": 0.666871972742211,
+              "TYPE_TEXT": 0.32623188722031815,
+              "WAIT": 0.0016964037764588403,
+              "SCROLL_UP": 0.0013689345729485847,
+              "DONE": 0.002288312925749291,
+              "BLOCKED": 0.0015424887623139425
+            },
+            "choice": "CLICK"
+          },
+          "CLICK": {
+            "type": "choice",
+            "confidence": 0.48998383405988377,
+            "answer_confidence": 0.756418878874461,
+            "probabilities": {
+              "4": 0.11071987511190536,
+              "5": 0.09667539389883005,
+              "6": 0.02741998994879475,
+              "7": 0.008765862166008791,
+              "8": 0.756418878874461
+            },
+            "choice": "8"
+          },
+          "TYPE_TEXT": {
+            "type": "choice",
+            "confidence": 0.039586735012033136,
+            "answer_confidence": 0.6165922940323818,
+            "probabilities": {
+              "4": 0.38340770596761825,
+              "5": 0.6165922940323818
+            },
+            "choice": "5"
+          }
+        },
+        "url": "https://skyscanner-flights.diffcider.test/search?site=skyscanner&today=2026-10-06&origin=ZRH&destination=LON&date=2026-10-06&trip=roundtrip&adults=1&cabin=Economy&hotel=true",
+        "omitted_actions": 0,
+        "offered_targets": 7,
+        "target": "Search flights",
+        "element": 8,
+        "action_id": "e7",
+        "executed": true
+      },
+      {
+        "step": 10,
+        "mode": "decide",
+        "adapter": "decision",
+        "operation": "CLICK",
+        "milliseconds": 725.92,
+        "answers": {
+          "operation": {
+            "type": "choice",
+            "confidence": 0.6111836890427921,
+            "answer_confidence": 0.6433291891851259,
+            "probabilities": {
+              "CLICK": 0.6433291891851259,
+              "TYPE_TEXT": 0.349450020637143,
+              "WAIT": 0.0018208108012956995,
+              "SCROLL_UP": 0.0013787526129195027,
+              "DONE": 0.0023367941506222626,
+              "BLOCKED": 0.001684432612893815
+            },
+            "choice": "CLICK"
+          },
+          "CLICK": {
+            "type": "choice",
+            "confidence": 0.2495556274197459,
+            "answer_confidence": 0.5273443804791522,
+            "probabilities": {
+              "4": 0.2257628144506894,
+              "5": 0.17107395987626411,
+              "6": 0.061510827425879266,
+              "7": 0.014308017768015026,
+              "8": 0.5273443804791522
+            },
+            "choice": "8"
+          },
+          "TYPE_TEXT": {
+            "type": "choice",
+            "confidence": 0.04841015908517177,
+            "answer_confidence": 0.6287989340141339,
+            "probabilities": {
+              "4": 0.37120106598586605,
+              "5": 0.6287989340141339
+            },
+            "choice": "5"
+          }
+        },
+        "url": "https://skyscanner-flights.diffcider.test/search?site=skyscanner&today=2026-10-06&origin=ZRH&destination=LON&date=2026-10-06&trip=roundtrip&adults=1&cabin=Economy&hotel=true",
+        "omitted_actions": 0,
+        "offered_targets": 7,
+        "target": "Search flights",
+        "element": 8,
+        "action_id": "e7",
+        "executed": true
+      },
+      {
+        "step": 11,
+        "mode": "decide",
+        "adapter": "decision",
+        "operation": "CLICK",
+        "milliseconds": 734.1,
+        "answers": {
+          "operation": {
+            "type": "choice",
+            "confidence": 0.6034423651393841,
+            "answer_confidence": 0.6184783350398658,
+            "probabilities": {
+              "CLICK": 0.6184783350398658,
+              "TYPE_TEXT": 0.37429466723195476,
+              "WAIT": 0.0018295248188453,
+              "SCROLL_UP": 0.0014407561117334852,
+              "DONE": 0.0023046186148621525,
+              "BLOCKED": 0.0016520981827386316
+            },
+            "choice": "CLICK"
+          },
+          "CLICK": {
+            "type": "choice",
+            "confidence": 0.22628612342716314,
+            "answer_confidence": 0.4881099512286642,
+            "probabilities": {
+              "4": 0.27681196509375416,
+              "5": 0.14515929851587056,
+              "6": 0.07340849083884764,
+              "7": 0.016510294322863554,
+              "8": 0.4881099512286642
+            },
+            "choice": "8"
+          },
+          "TYPE_TEXT": {
+            "type": "choice",
+            "confidence": 0.03927484089414868,
+            "answer_confidence": 0.6161363394619169,
+            "probabilities": {
+              "4": 0.38386366053808313,
+              "5": 0.6161363394619169
+            },
+            "choice": "5"
+          }
+        },
+        "url": "https://skyscanner-flights.diffcider.test/search?site=skyscanner&today=2026-10-06&origin=ZRH&destination=LON&date=2026-10-06&trip=roundtrip&adults=1&cabin=Economy&hotel=true",
+        "omitted_actions": 0,
+        "offered_targets": 7,
+        "target": "Search flights",
+        "element": 8,
+        "action_id": "e7",
+        "executed": true
+      },
+      {
+        "mode": "verify",
+        "passed": false,
+        "checks": {
+          "submitted": true,
+          "origin": true,
+          "destination": true,
+          "date": false,
+          "one_way": false,
+          "one_adult": true,
+          "economy": true,
+          "no_accommodation": false,
+          "visible_results": false
+        },
+        "search": {
+          "origin": "ZRH",
+          "destination": "LON",
+          "date": "2026-10-06",
+          "trip": "roundtrip",
+          "adults": "1",
+          "cabin": "Economy",
+          "hotel": true
+        },
+        "description": "Z\u00fcrich \u2192 London on 2026-11-05",
+        "verified": false,
+        "seconds": 13.861782042004052
+      }
+    ]
+  }
+]

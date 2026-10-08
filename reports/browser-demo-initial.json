@@ -1,0 +1,560 @@
+[
+  {
+    "goal": "Search for Ada Lovelace and open the article.",
+    "status": "Stopped \u2014 three actions made no page change",
+    "trace": [
+      {
+        "step": 1,
+        "mode": "decide",
+        "adapter": "decision",
+        "operation": "CLICK",
+        "milliseconds": 381.81,
+        "answers": {
+          "operation": {
+            "type": "choice",
+            "confidence": 0.5593633915011922,
+            "answer_confidence": 0.5146181348835074,
+            "probabilities": {
+              "CLICK": 0.5146181348835074,
+              "TYPE_TEXT": 0.48318411903352904,
+              "WAIT": 0.0006262429712379655,
+              "DONE": 0.0007970670499477132,
+              "BLOCKED": 0.0007744360617779
+            },
+            "choice": "CLICK"
+          },
+          "CLICK": {
+            "type": "choice",
+            "confidence": 1.0,
+            "answer_confidence": 1.0,
+            "probabilities": {
+              "1": 1.0
+            },
+            "choice": "1"
+          },
+          "TYPE_TEXT": {
+            "type": "choice",
+            "confidence": 1.0,
+            "answer_confidence": 1.0,
+            "probabilities": {
+              "1": 1.0
+            },
+            "choice": "1"
+          }
+        },
+        "url": "https://reading-room.diffcider.test/",
+        "omitted_actions": 0,
+        "offered_targets": 2,
+        "target": "Search",
+        "executed": true
+      },
+      {
+        "step": 2,
+        "mode": "decide",
+        "adapter": "decision",
+        "operation": "CLICK",
+        "milliseconds": 423.4,
+        "answers": {
+          "operation": {
+            "type": "choice",
+            "confidence": 0.5750817174457435,
+            "answer_confidence": 0.6197195404033802,
+            "probabilities": {
+              "CLICK": 0.6197195404033802,
+              "TYPE_TEXT": 0.3774682276826641,
+              "WAIT": 0.0008273086986785861,
+              "DONE": 0.0010427090276942086,
+              "BLOCKED": 0.000942214187583008
+            },
+            "choice": "CLICK"
+          },
+          "CLICK": {
+            "type": "choice",
+            "confidence": 1.0,
+            "answer_confidence": 1.0,
+            "probabilities": {
+              "1": 1.0
+            },
+            "choice": "1"
+          },
+          "TYPE_TEXT": {
+            "type": "choice",
+            "confidence": 1.0,
+            "answer_confidence": 1.0,
+            "probabilities": {
+              "1": 1.0
+            },
+            "choice": "1"
+          }
+        },
+        "url": "https://reading-room.diffcider.test/",
+        "omitted_actions": 0,
+        "offered_targets": 2,
+        "target": "Search",
+        "executed": true
+      },
+      {
+        "step": 3,
+        "mode": "decide",
+        "adapter": "decision",
+        "operation": "CLICK",
+        "milliseconds": 390.11,
+        "answers": {
+          "operation": {
+            "type": "choice",
+            "confidence": 0.5914767109313606,
+            "answer_confidence": 0.6626545838354027,
+            "probabilities": {
+              "CLICK": 0.6626545838354027,
+              "TYPE_TEXT": 0.33472174616864414,
+              "WAIT": 0.0008254655958840459,
+              "DONE": 0.0009394082208194499,
+              "BLOCKED": 0.000858796179249723
+            },
+            "choice": "CLICK"
+          },
+          "CLICK": {
+            "type": "choice",
+            "confidence": 1.0,
+            "answer_confidence": 1.0,
+            "probabilities": {
+              "1": 1.0
+            },
+            "choice": "1"
+          },
+          "TYPE_TEXT": {
+            "type": "choice",
+            "confidence": 1.0,
+            "answer_confidence": 1.0,
+            "probabilities": {
+              "1": 1.0
+            },
+            "choice": "1"
+          }
+        },
+        "url": "https://reading-room.diffcider.test/",
+        "omitted_actions": 0,
+        "offered_targets": 2,
+        "target": "Search",
+        "executed": true
+      },
+      {
+        "step": 4,
+        "mode": "decide",
+        "adapter": "decision",
+        "operation": "CLICK",
+        "milliseconds": 414.57,
+        "answers": {
+          "operation": {
+            "type": "choice",
+            "confidence": 0.5987012796251254,
+            "answer_confidence": 0.6786296138799188,
+            "probabilities": {
+              "CLICK": 0.6786296138799188,
+              "TYPE_TEXT": 0.31877043880231154,
+              "WAIT": 0.0008280939557786345,
+              "DONE": 0.0009209286113276802,
+              "BLOCKED": 0.000850924750663196
+            },
+            "choice": "CLICK"
+          },
+          "CLICK": {
+            "type": "choice",
+            "confidence": 1.0,
+            "answer_confidence": 1.0,
+            "probabilities": {
+              "1": 1.0
+            },
+            "choice": "1"
+          },
+          "TYPE_TEXT": {
+            "type": "choice",
+            "confidence": 1.0,
+            "answer_confidence": 1.0,
+            "probabilities": {
+              "1": 1.0
+            },
+            "choice": "1"
+          }
+        },
+        "url": "https://reading-room.diffcider.test/",
+        "omitted_actions": 0,
+        "offered_targets": 2,
+        "target": "Search",
+        "executed": true
+      }
+    ]
+  },
+  {
+    "goal": "Search for Grace Hopper and open the article.",
+    "status": "Stopped \u2014 three actions made no page change",
+    "trace": [
+      {
+        "step": 1,
+        "mode": "decide",
+        "adapter": "decision",
+        "operation": "CLICK",
+        "milliseconds": 349.97,
+        "answers": {
+          "operation": {
+            "type": "choice",
+            "confidence": 0.5592824223316644,
+            "answer_confidence": 0.5245377184082529,
+            "probabilities": {
+              "CLICK": 0.5245377184082529,
+              "TYPE_TEXT": 0.47311644054180557,
+              "WAIT": 0.0006701649090490145,
+              "DONE": 0.0008286019563383603,
+              "BLOCKED": 0.0008470741845540904
+            },
+            "choice": "CLICK"
+          },
+          "CLICK": {
+            "type": "choice",
+            "confidence": 1.0,
+            "answer_confidence": 1.0,
+            "probabilities": {
+              "1": 1.0
+            },
+            "choice": "1"
+          },
+          "TYPE_TEXT": {
+            "type": "choice",
+            "confidence": 1.0,
+            "answer_confidence": 1.0,
+            "probabilities": {
+              "1": 1.0
+            },
+            "choice": "1"
+          }
+        },
+        "url": "https://reading-room.diffcider.test/",
+        "omitted_actions": 0,
+        "offered_targets": 2,
+        "target": "Search",
+        "executed": true
+      },
+      {
+        "step": 2,
+        "mode": "decide",
+        "adapter": "decision",
+        "operation": "CLICK",
+        "milliseconds": 368.97,
+        "answers": {
+          "operation": {
+            "type": "choice",
+            "confidence": 0.5711513559275377,
+            "answer_confidence": 0.6061588281268202,
+            "probabilities": {
+              "CLICK": 0.6061588281268202,
+              "TYPE_TEXT": 0.39103039140816953,
+              "WAIT": 0.0008325929772853469,
+              "DONE": 0.0010345099284941807,
+              "BLOCKED": 0.0009436775592307726
+            },
+            "choice": "CLICK"
+          },
+          "CLICK": {
+            "type": "choice",
+            "confidence": 1.0,
+            "answer_confidence": 1.0,
+            "probabilities": {
+              "1": 1.0
+            },
+            "choice": "1"
+          },
+          "TYPE_TEXT": {
+            "type": "choice",
+            "confidence": 1.0,
+            "answer_confidence": 1.0,
+            "probabilities": {
+              "1": 1.0
+            },
+            "choice": "1"
+          }
+        },
+        "url": "https://reading-room.diffcider.test/",
+        "omitted_actions": 0,
+        "offered_targets": 2,
+        "target": "Search",
+        "executed": true
+      },
+      {
+        "step": 3,
+        "mode": "decide",
+        "adapter": "decision",
+        "operation": "CLICK",
+        "milliseconds": 390.11,
+        "answers": {
+          "operation": {
+            "type": "choice",
+            "confidence": 0.5957308979035241,
+            "answer_confidence": 0.6730156549962609,
+            "probabilities": {
+              "CLICK": 0.6730156549962609,
+              "TYPE_TEXT": 0.32428063606277574,
+              "WAIT": 0.0008406166967911137,
+              "DONE": 0.0009645932102487041,
+              "BLOCKED": 0.0008984990339234564
+            },
+            "choice": "CLICK"
+          },
+          "CLICK": {
+            "type": "choice",
+            "confidence": 1.0,
+            "answer_confidence": 1.0,
+            "probabilities": {
+              "1": 1.0
+            },
+            "choice": "1"
+          },
+          "TYPE_TEXT": {
+            "type": "choice",
+            "confidence": 1.0,
+            "answer_confidence": 1.0,
+            "probabilities": {
+              "1": 1.0
+            },
+            "choice": "1"
+          }
+        },
+        "url": "https://reading-room.diffcider.test/",
+        "omitted_actions": 0,
+        "offered_targets": 2,
+        "target": "Search",
+        "executed": true
+      },
+      {
+        "step": 4,
+        "mode": "decide",
+        "adapter": "decision",
+        "operation": "CLICK",
+        "milliseconds": 405.75,
+        "answers": {
+          "operation": {
+            "type": "choice",
+            "confidence": 0.5999864828783132,
+            "answer_confidence": 0.6817559683769717,
+            "probabilities": {
+              "CLICK": 0.6817559683769717,
+              "TYPE_TEXT": 0.3155904210133776,
+              "WAIT": 0.000845693139361043,
+              "DONE": 0.0009328612854114755,
+              "BLOCKED": 0.000875056184878012
+            },
+            "choice": "CLICK"
+          },
+          "CLICK": {
+            "type": "choice",
+            "confidence": 1.0,
+            "answer_confidence": 1.0,
+            "probabilities": {
+              "1": 1.0
+            },
+            "choice": "1"
+          },
+          "TYPE_TEXT": {
+            "type": "choice",
+            "confidence": 1.0,
+            "answer_confidence": 1.0,
+            "probabilities": {
+              "1": 1.0
+            },
+            "choice": "1"
+          }
+        },
+        "url": "https://reading-room.diffcider.test/",
+        "omitted_actions": 0,
+        "offered_targets": 2,
+        "target": "Search",
+        "executed": true
+      }
+    ]
+  },
+  {
+    "goal": "Search for Alan Turing and open the article.",
+    "status": "Stopped \u2014 three actions made no page change",
+    "trace": [
+      {
+        "step": 1,
+        "mode": "decide",
+        "adapter": "decision",
+        "operation": "CLICK",
+        "milliseconds": 321.22,
+        "answers": {
+          "operation": {
+            "type": "choice",
+            "confidence": 0.5596797569469394,
+            "answer_confidence": 0.5353447675729004,
+            "probabilities": {
+              "CLICK": 0.5353447675729004,
+              "TYPE_TEXT": 0.4621976418462672,
+              "WAIT": 0.0007039105280135514,
+              "DONE": 0.0008758210371664473,
+              "BLOCKED": 0.0008778590156523483
+            },
+            "choice": "CLICK"
+          },
+          "CLICK": {
+            "type": "choice",
+            "confidence": 1.0,
+            "answer_confidence": 1.0,
+            "probabilities": {
+              "1": 1.0
+            },
+            "choice": "1"
+          },
+          "TYPE_TEXT": {
+            "type": "choice",
+            "confidence": 1.0,
+            "answer_confidence": 1.0,
+            "probabilities": {
+              "1": 1.0
+            },
+            "choice": "1"
+          }
+        },
+        "url": "https://reading-room.diffcider.test/",
+        "omitted_actions": 0,
+        "offered_targets": 2,
+        "target": "Search",
+        "executed": true
+      },
+      {
+        "step": 2,
+        "mode": "decide",
+        "adapter": "decision",
+        "operation": "CLICK",
+        "milliseconds": 341.12,
+        "answers": {
+          "operation": {
+            "type": "choice",
+            "confidence": 0.5734685571503,
+            "answer_confidence": 0.6144303265818667,
+            "probabilities": {
+              "CLICK": 0.6144303265818667,
+              "TYPE_TEXT": 0.38275177067985583,
+              "WAIT": 0.0008311067497052337,
+              "DONE": 0.001052207777065069,
+              "BLOCKED": 0.0009345882115071172
+            },
+            "choice": "CLICK"
+          },
+          "CLICK": {
+            "type": "choice",
+            "confidence": 1.0,
+            "answer_confidence": 1.0,
+            "probabilities": {
+              "1": 1.0
+            },
+            "choice": "1"
+          },
+          "TYPE_TEXT": {
+            "type": "choice",
+            "confidence": 1.0,
+            "answer_confidence": 1.0,
+            "probabilities": {
+              "1": 1.0
+            },
+            "choice": "1"
+          }
+        },
+        "url": "https://reading-room.diffcider.test/",
+        "omitted_actions": 0,
+        "offered_targets": 2,
+        "target": "Search",
+        "executed": true
+      },
+      {
+        "step": 3,
+        "mode": "decide",
+        "adapter": "decision",
+        "operation": "CLICK",
+        "milliseconds": 363.05,
+        "answers": {
+          "operation": {
+            "type": "choice",
+            "confidence": 0.6101813722128547,
+            "answer_confidence": 0.70313619670276,
+            "probabilities": {
+              "CLICK": 0.70313619670276,
+              "TYPE_TEXT": 0.294013150389082,
+              "WAIT": 0.0008752323442533873,
+              "DONE": 0.0010343213908496152,
+              "BLOCKED": 0.0009410991730549278
+            },
+            "choice": "CLICK"
+          },
+          "CLICK": {
+            "type": "choice",
+            "confidence": 1.0,
+            "answer_confidence": 1.0,
+            "probabilities": {
+              "1": 1.0
+            },
+            "choice": "1"
+          },
+          "TYPE_TEXT": {
+            "type": "choice",
+            "confidence": 1.0,
+            "answer_confidence": 1.0,
+            "probabilities": {
+              "1": 1.0
+            },
+            "choice": "1"
+          }
+        },
+        "url": "https://reading-room.diffcider.test/",
+        "omitted_actions": 0,
+        "offered_targets": 2,
+        "target": "Search",
+        "executed": true
+      },
+      {
+        "step": 4,
+        "mode": "decide",
+        "adapter": "decision",
+        "operation": "CLICK",
+        "milliseconds": 381.84,
+        "answers": {
+          "operation": {
+            "type": "choice",
+            "confidence": 0.6080790218720329,
+            "answer_confidence": 0.6983715253408705,
+            "probabilities": {
+              "CLICK": 0.6983715253408705,
+              "TYPE_TEXT": 0.2989026450438836,
+              "WAIT": 0.0008745566301995841,
+              "DONE": 0.0009611990274137647,
+              "BLOCKED": 0.0008900739576325774
+            },
+            "choice": "CLICK"
+          },
+          "CLICK": {
+            "type": "choice",
+            "confidence": 1.0,
+            "answer_confidence": 1.0,
+            "probabilities": {
+              "1": 1.0
+            },
+            "choice": "1"
+          },
+          "TYPE_TEXT": {
+            "type": "choice",
+            "confidence": 1.0,
+            "answer_confidence": 1.0,
+            "probabilities": {
+              "1": 1.0
+            },
+            "choice": "1"
+          }
+        },
+        "url": "https://reading-room.diffcider.test/",
+        "omitted_actions": 0,
+        "offered_targets": 2,
+        "target": "Search",
+        "executed": true
+      }
+    ]
+  }
+]

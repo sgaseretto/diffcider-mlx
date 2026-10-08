@@ -156,9 +156,16 @@ class AdapterManager:
         grouped = {}
         for key, value in tensors.items():
             match = re.fullmatch(r"base_model\.model\.(.+)\.lora_([AB])\.weight", key)
-            if match is None or match[1] not in expected:
+            module = match[1] if match else ""
+            # PEFT exports a bare Qwen3 backbone without the CausalLM's model prefix.
+            if module.startswith("layers."):
+                module = "model." + module
+            if match is None or module not in expected:
                 raise ValueError(f"Unsupported or unexpected adapter tensor: {key}")
-            grouped.setdefault(match[1], {})[match[2]] = value
+            pair = grouped.setdefault(module, {})
+            if match[2] in pair:
+                raise ValueError(f"Duplicate adapter tensor for {module}: {key}")
+            pair[match[2]] = value
         if grouped.keys() != expected:
             raise ValueError(
                 f"Adapter target tensors are missing: {sorted(expected - grouped.keys())}"

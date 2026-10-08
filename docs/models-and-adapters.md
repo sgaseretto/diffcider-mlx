@@ -4,6 +4,13 @@
 generation. Named adapters load once; each request explicitly selects one or
 uses the unchanged base. MLX inference does not require PyTorch or PEFT.
 
+For **sysone exports with a learned decision head**, such as
+`sgaseretto/diffcider-browser`, use `SysoneDiffcider.from_pretrained(...)`.
+Its `decide`/`predict` methods preserve the trained head and calibration;
+`generate` uses the same backbone with the adapter off. See the
+[browser model guide](browser-demo.md). Loading only its PEFT subdirectory
+through `Diffcider` would omit the trained head.
+
 ## Supported workflows
 
 | Capability | API |

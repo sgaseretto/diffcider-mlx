@@ -1,0 +1,91 @@
+{
+  "installation": "wheel in isolated environment, cwd outside checkout",
+  "offline": true,
+  "torch_installed": false,
+  "peft_installed": false,
+  "versions": {
+    "diffcider-mlx": "0.1.0",
+    "mlx": "0.32.3",
+    "gradio": "6.17.3",
+    "playwright": "1.63.0",
+    "transformers": "4.57.6"
+  },
+  "verified_files": 17,
+  "answers": [
+    {
+      "type": "choice",
+      "confidence": 0.6296738497321681,
+      "answer_confidence": 0.5106733052414371,
+      "probabilities": {
+        "CLICK": 0.5106733052414371,
+        "TYPE_TEXT": 0.4856257049655031,
+        "WAIT": 0.0008799859953551029,
+        "SCROLL_DOWN": 0.0007235078025394511,
+        "SCROLL_UP": 0.0006744488126692342,
+        "DONE": 0.0006753239703096079,
+        "BLOCKED": 0.0007477232121864809
+      },
+      "choice": "CLICK"
+    },
+    {
+      "type": "choice",
+      "confidence": 0.5758046694234937,
+      "answer_confidence": 0.8736486769438542,
+      "probabilities": {
+        "1": 0.055457637071472304,
+        "2": 0.8736486769438542,
+        "3": 0.07089368598467352
+      },
+      "choice": "2"
+    },
+    {
+      "type": "choice",
+      "confidence": 0.32851009156975586,
+      "answer_confidence": 0.6086816820939073,
+      "probabilities": {
+        "4": 0.01649491922866035,
+        "5": 0.6086816820939073,
+        "6": 0.37482339867743236
+      },
+      "choice": "5"
+    }
+  ],
+  "generation_before": [
+    46175,
+    151645,
+    198,
+    151643,
+    151643,
+    151643,
+    151643,
+    151643,
+    151643,
+    151643,
+    151643,
+    151643,
+    151643,
+    151643,
+    151643,
+    151643
+  ],
+  "generation_after": [
+    46175,
+    151645,
+    198,
+    151643,
+    151643,
+    151643,
+    151643,
+    151643,
+    151643,
+    151643,
+    151643,
+    151643,
+    151643,
+    151643,
+    151643,
+    151643
+  ],
+  "base_restored_exactly": true,
+  "gradio_components": 19
+}

@@ -14,8 +14,10 @@ See `README.md` for usage, supported behavior, and benchmark methodology.
 
 ## Correctness
 
-- `diffcider/model.py` owns the shared backbone; `inference.py` owns prompts and
-  sampling. `reference*.py` provides the independent PyTorch baseline.
+- `diffcider/model.py` owns the shared backbone; `inference.py` owns the original
+  prompts/sampler. `reference*.py` provides the independent PyTorch baseline.
+- `sysone.py` preserves saved templates, learned heads, calibration, and sysone
+  sampling. Keep its adapter off for generation and on for trained decisions.
 - `engine.py` manages per-request adapters; `adapters.py` handles PEFT loading.
   Keep base weights immutable and verify exact restoration when adapters are disabled.
 - Preserve bidirectional attention, padding semantics, tied embeddings, and exact
@@ -39,3 +41,5 @@ comparison from `README.md`. Match weights, precision, inputs, and settings;
 warm up and synchronize GPU work. Avoid concurrent GPU workloads while timing.
 Retain mismatches and raw measurements in `reports/`, and update documented
 results when rerunning benchmarks. Keep downloaded weights and datasets out of Git.
+For browser changes, install the `browser-demo` extra and Playwright Chromium;
+follow `docs/browser-demo.md` for browser tests and the independent sysone comparison.

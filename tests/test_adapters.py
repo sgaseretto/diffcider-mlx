@@ -681,3 +681,39 @@ def test_batch_decision_cli(bundle, decision_requests, tmp_path, monkeypatch, ca
     monkeypatch.setattr(sys, "argv", ["diffcider", "--decisions", str(path), "--max-length", "1"])
     with pytest.raises(ValueError, match="limit"):
         cli.main()
+
+
+def test_bare_backbone_peft_export(bundle, tmp_path):
+    """A real Qwen3Model PEFT export omits the CausalLM's inner model prefix."""
+    oracle = peft.get_peft_model(
+        copy.deepcopy(bundle.base.model),
+        peft.LoraConfig(r=2, lora_alpha=4, target_modules=["q_proj", "v_proj"]),
+    )
+    oracle.peft_config["default"].base_model_name_or_path = str(bundle.path)
+    with torch.no_grad():
+        for name, value in oracle.named_parameters():
+            if "lora_" in name:
+                value.uniform_(-0.1, 0.1)
+    path = tmp_path / "backbone-adapter"
+    oracle.save_pretrained(path, safe_serialization=True)
+    oracle.eval()
+    engine = Diffcider.from_pretrained(bundle.path, adapters={"decision": path})
+    ids = [[7, 8, 1, 1]]
+    base = np.array(engine.model.model(mx.array(ids)))
+    with torch.inference_mode():
+        expected = oracle(
+            torch.tensor(ids), attention_mask=torch.ones((1, 1, 1, 4), dtype=torch.bool)
+        ).last_hidden_state.numpy()
+    with engine._request("decision"):
+        actual = np.array(engine.model.model(mx.array(ids)))
+    np.testing.assert_allclose(actual, expected, atol=2e-5, rtol=2e-5)
+    np.testing.assert_array_equal(np.array(engine.model.model(mx.array(ids))), base)
+    tensors = mx.load(str(path / "adapter_model.safetensors"))
+    first = next(iter(tensors))
+    tensors[first.replace("base_model.model.layers.", "base_model.model.model.layers.")] = tensors[
+        first
+    ]
+    mx.save_safetensors(str(path / "adapter_model.safetensors"), tensors)
+    with pytest.raises(ValueError, match="Duplicate"):
+        engine.load_adapter(path, name="duplicate")
+    assert engine.loaded_adapters == ("decision",)

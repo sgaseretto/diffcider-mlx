@@ -1,0 +1,1975 @@
+{
+  "scope": "First six format-eligible evaluation cases; no fitting or template changes",
+  "dtype": "float32",
+  "backend": "mlx",
+  "rows": [
+    {
+      "case_id": "clinc:df6116dde2dd7f0afb2a2d8f291e0e0236a9b34afccf46c1c83f07c33c85f181",
+      "type": "choice",
+      "readout": "letters",
+      "passes": 1,
+      "allowed_label_mass_by_slot": [
+        0.9789407849311829
+      ],
+      "full_vocab_argmax_ids": [
+        32
+      ],
+      "full_vocab_argmax_tokens": [
+        "A"
+      ],
+      "restricted_probabilities": [
+        0.9777601971794759,
+        0.018634621429761702,
+        0.0025246409881082886,
+        0.0010805404026542303
+      ],
+      "gold": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "correct": false,
+      "hazard": [
+        0.3652428984642029
+      ]
+    },
+    {
+      "case_id": "clinc:df6116dde2dd7f0afb2a2d8f291e0e0236a9b34afccf46c1c83f07c33c85f181",
+      "type": "choice",
+      "readout": "letters",
+      "passes": 2,
+      "allowed_label_mass_by_slot": [
+        0.9778845310211182
+      ],
+      "full_vocab_argmax_ids": [
+        32
+      ],
+      "full_vocab_argmax_tokens": [
+        "A"
+      ],
+      "restricted_probabilities": [
+        0.8845401048966214,
+        0.090818133779238,
+        0.01894989719242078,
+        0.005691864131719823
+      ],
+      "gold": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "correct": false,
+      "hazard": [
+        0.6600772142410278
+      ]
+    },
+    {
+      "case_id": "clinc:df6116dde2dd7f0afb2a2d8f291e0e0236a9b34afccf46c1c83f07c33c85f181",
+      "type": "choice",
+      "readout": "letters",
+      "passes": 3,
+      "allowed_label_mass_by_slot": [
+        0.9628028273582458
+      ],
+      "full_vocab_argmax_ids": [
+        32
+      ],
+      "full_vocab_argmax_tokens": [
+        "A"
+      ],
+      "restricted_probabilities": [
+        0.7503998865807615,
+        0.20460044962840374,
+        0.03192079293944785,
+        0.01307887085138678
+      ],
+      "gold": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "correct": false,
+      "hazard": [
+        0.8155441880226135
+      ]
+    },
+    {
+      "case_id": "clinc:df6116dde2dd7f0afb2a2d8f291e0e0236a9b34afccf46c1c83f07c33c85f181",
+      "type": "choice",
+      "readout": "letters",
+      "passes": 4,
+      "allowed_label_mass_by_slot": [
+        0.960841715335846
+      ],
+      "full_vocab_argmax_ids": [
+        32
+      ],
+      "full_vocab_argmax_tokens": [
+        "A"
+      ],
+      "restricted_probabilities": [
+        0.6445483335262383,
+        0.2839900543627627,
+        0.045839396139381476,
+        0.025622215971617474
+      ],
+      "gold": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "correct": false,
+      "hazard": [
+        0.6383692026138306
+      ]
+    },
+    {
+      "case_id": "clinc:df6116dde2dd7f0afb2a2d8f291e0e0236a9b34afccf46c1c83f07c33c85f181",
+      "type": "choice",
+      "readout": "yesno",
+      "passes": 1,
+      "allowed_label_mass_by_slot": [
+        0.01089437771588564,
+        0.0013750175712630153,
+        0.011769143864512444,
+        0.00760410213842988
+      ],
+      "full_vocab_argmax_ids": [
+        32,
+        13,
+        25,
+        151645
+      ],
+      "full_vocab_argmax_tokens": [
+        "A",
+        ".",
+        ":",
+        "<|im_end|>"
+      ],
+      "restricted_probabilities": [
+        0.8213960539822486,
+        0.1458222891936974,
+        0.017797144866522948,
+        0.014984511957530908
+      ],
+      "gold": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "correct": false,
+      "hazard": [
+        0.47578418254852295,
+        0.03407365083694458,
+        0.031447023153305054,
+        0.07996849715709686
+      ]
+    },
+    {
+      "case_id": "clinc:df6116dde2dd7f0afb2a2d8f291e0e0236a9b34afccf46c1c83f07c33c85f181",
+      "type": "choice",
+      "readout": "yesno",
+      "passes": 2,
+      "allowed_label_mass_by_slot": [
+        0.031505294144153595,
+        0.0026247564237564802,
+        0.026087790727615356,
+        0.01111904438585043
+      ],
+      "full_vocab_argmax_ids": [
+        32,
+        13,
+        2308,
+        151645
+      ],
+      "full_vocab_argmax_tokens": [
+        "A",
+        ".",
+        " No",
+        "<|im_end|>"
+      ],
+      "restricted_probabilities": [
+        0.7118396322447413,
+        0.18532683003022055,
+        0.04406850245487671,
+        0.058765035270161366
+      ],
+      "gold": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "correct": false,
+      "hazard": [
+        0.7771316766738892,
+        0.060092855244874954,
+        0.06441276520490646,
+        0.14665314555168152
+      ]
+    },
+    {
+      "case_id": "clinc:df6116dde2dd7f0afb2a2d8f291e0e0236a9b34afccf46c1c83f07c33c85f181",
+      "type": "choice",
+      "readout": "yesno",
+      "passes": 3,
+      "allowed_label_mass_by_slot": [
+        0.10319023579359055,
+        0.004506101831793785,
+        0.043051380664110184,
+        0.01013974566012621
+      ],
+      "full_vocab_argmax_ids": [
+        32,
+        13,
+        90,
+        151645
+      ],
+      "full_vocab_argmax_tokens": [
+        "A",
+        ".",
+        "{",
+        "<|im_end|>"
+      ],
+      "restricted_probabilities": [
+        0.5176496876096348,
+        0.3009686600293711,
+        0.0718685052235398,
+        0.10951314713745439
+      ],
+      "gold": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "correct": false,
+      "hazard": [
+        0.9044163823127747,
+        0.15066954493522644,
+        0.11539473384618759,
+        0.2972677946090698
+      ]
+    },
+    {
+      "case_id": "clinc:df6116dde2dd7f0afb2a2d8f291e0e0236a9b34afccf46c1c83f07c33c85f181",
+      "type": "choice",
+      "readout": "yesno",
+      "passes": 4,
+      "allowed_label_mass_by_slot": [
+        0.20231777429580688,
+        0.005058197770267725,
+        0.05429648980498314,
+        0.012748351320624352
+      ],
+      "full_vocab_argmax_ids": [
+        32,
+        13,
+        90,
+        151645
+      ],
+      "full_vocab_argmax_tokens": [
+        "A",
+        ".",
+        "{",
+        "<|im_end|>"
+      ],
+      "restricted_probabilities": [
+        0.3883935911107747,
+        0.2933292398819956,
+        0.1276943104183743,
+        0.19058285858885546
+      ],
+      "gold": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "correct": false,
+      "hazard": [
+        0.8286800384521484,
+        0.07001220434904099,
+        0.049594566226005554,
+        0.14357027411460876
+      ]
+    },
+    {
+      "case_id": "snli:6fbae4becc4a6414b7edb5cee1d4360a7a5d59e6433cd7c462f6759cc07bf044",
+      "type": "noul",
+      "readout": "letters",
+      "passes": 1,
+      "allowed_label_mass_by_slot": [
+        0.8703393340110779
+      ],
+      "full_vocab_argmax_ids": [
+        33
+      ],
+      "full_vocab_argmax_tokens": [
+        "B"
+      ],
+      "restricted_probabilities": [
+        0.2867887612096376,
+        0.7132112387903624
+      ],
+      "gold": [
+        0.0,
+        1.0
+      ],
+      "correct": true,
+      "hazard": [
+        0.5392400026321411
+      ]
+    },
+    {
+      "case_id": "snli:6fbae4becc4a6414b7edb5cee1d4360a7a5d59e6433cd7c462f6759cc07bf044",
+      "type": "noul",
+      "readout": "letters",
+      "passes": 2,
+      "allowed_label_mass_by_slot": [
+        0.9070834517478943
+      ],
+      "full_vocab_argmax_ids": [
+        33
+      ],
+      "full_vocab_argmax_tokens": [
+        "B"
+      ],
+      "restricted_probabilities": [
+        0.2483012873378587,
+        0.7516987126621414
+      ],
+      "gold": [
+        0.0,
+        1.0
+      ],
+      "correct": true,
+      "hazard": [
+        0.7898554801940918
+      ]
+    },
+    {
+      "case_id": "snli:6fbae4becc4a6414b7edb5cee1d4360a7a5d59e6433cd7c462f6759cc07bf044",
+      "type": "noul",
+      "readout": "letters",
+      "passes": 3,
+      "allowed_label_mass_by_slot": [
+        0.9091949462890625
+      ],
+      "full_vocab_argmax_ids": [
+        33
+      ],
+      "full_vocab_argmax_tokens": [
+        "B"
+      ],
+      "restricted_probabilities": [
+        0.1842603890019304,
+        0.8157396109980696
+      ],
+      "gold": [
+        0.0,
+        1.0
+      ],
+      "correct": true,
+      "hazard": [
+        0.8931068778038025
+      ]
+    },
+    {
+      "case_id": "snli:6fbae4becc4a6414b7edb5cee1d4360a7a5d59e6433cd7c462f6759cc07bf044",
+      "type": "noul",
+      "readout": "letters",
+      "passes": 4,
+      "allowed_label_mass_by_slot": [
+        0.9268761277198792
+      ],
+      "full_vocab_argmax_ids": [
+        33
+      ],
+      "full_vocab_argmax_tokens": [
+        "B"
+      ],
+      "restricted_probabilities": [
+        0.15250421734068875,
+        0.8474957826593111
+      ],
+      "gold": [
+        0.0,
+        1.0
+      ],
+      "correct": true,
+      "hazard": [
+        0.7600317597389221
+      ]
+    },
+    {
+      "case_id": "snli:6fbae4becc4a6414b7edb5cee1d4360a7a5d59e6433cd7c462f6759cc07bf044",
+      "type": "noul",
+      "readout": "yesno",
+      "passes": 1,
+      "allowed_label_mass_by_slot": [
+        0.8508998155593872
+      ],
+      "full_vocab_argmax_ids": [
+        9454
+      ],
+      "full_vocab_argmax_tokens": [
+        "Yes"
+      ],
+      "restricted_probabilities": [
+        0.2596635389220589,
+        0.7403364610779412
+      ],
+      "gold": [
+        0.0,
+        1.0
+      ],
+      "correct": true,
+      "hazard": [
+        0.701111912727356
+      ]
+    },
+    {
+      "case_id": "snli:6fbae4becc4a6414b7edb5cee1d4360a7a5d59e6433cd7c462f6759cc07bf044",
+      "type": "noul",
+      "readout": "yesno",
+      "passes": 2,
+      "allowed_label_mass_by_slot": [
+        0.9560794830322266
+      ],
+      "full_vocab_argmax_ids": [
+        9454
+      ],
+      "full_vocab_argmax_tokens": [
+        "Yes"
+      ],
+      "restricted_probabilities": [
+        0.2845550353002608,
+        0.7154449646997393
+      ],
+      "gold": [
+        0.0,
+        1.0
+      ],
+      "correct": true,
+      "hazard": [
+        0.8802457451820374
+      ]
+    },
+    {
+      "case_id": "snli:6fbae4becc4a6414b7edb5cee1d4360a7a5d59e6433cd7c462f6759cc07bf044",
+      "type": "noul",
+      "readout": "yesno",
+      "passes": 3,
+      "allowed_label_mass_by_slot": [
+        0.959365725517273
+      ],
+      "full_vocab_argmax_ids": [
+        9454
+      ],
+      "full_vocab_argmax_tokens": [
+        "Yes"
+      ],
+      "restricted_probabilities": [
+        0.38460512009288533,
+        0.6153948799071146
+      ],
+      "gold": [
+        0.0,
+        1.0
+      ],
+      "correct": true,
+      "hazard": [
+        0.9539045095443726
+      ]
+    },
+    {
+      "case_id": "snli:6fbae4becc4a6414b7edb5cee1d4360a7a5d59e6433cd7c462f6759cc07bf044",
+      "type": "noul",
+      "readout": "yesno",
+      "passes": 4,
+      "allowed_label_mass_by_slot": [
+        0.9590949416160583
+      ],
+      "full_vocab_argmax_ids": [
+        9454
+      ],
+      "full_vocab_argmax_tokens": [
+        "Yes"
+      ],
+      "restricted_probabilities": [
+        0.4693235888531432,
+        0.5306764111468568
+      ],
+      "gold": [
+        0.0,
+        1.0
+      ],
+      "correct": true,
+      "hazard": [
+        0.8979805707931519
+      ]
+    },
+    {
+      "case_id": "synthetic_ordinal:shipment:0321:base",
+      "type": "score",
+      "readout": "letters",
+      "passes": 1,
+      "allowed_label_mass_by_slot": [
+        0.7913669347763062
+      ],
+      "full_vocab_argmax_ids": [
+        34
+      ],
+      "full_vocab_argmax_tokens": [
+        "C"
+      ],
+      "restricted_probabilities": [
+        0.4158110806839501,
+        0.0413257042890772,
+        0.5428632150269727
+      ],
+      "gold": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "correct": false,
+      "hazard": [
+        0.5229697823524475
+      ]
+    },
+    {
+      "case_id": "synthetic_ordinal:shipment:0321:base",
+      "type": "score",
+      "readout": "letters",
+      "passes": 2,
+      "allowed_label_mass_by_slot": [
+        0.9028562903404236
+      ],
+      "full_vocab_argmax_ids": [
+        34
+      ],
+      "full_vocab_argmax_tokens": [
+        "C"
+      ],
+      "restricted_probabilities": [
+        0.09570432889752518,
+        0.06577969573069038,
+        0.8385159753717845
+      ],
+      "gold": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "correct": false,
+      "hazard": [
+        0.7619469165802002
+      ]
+    },
+    {
+      "case_id": "synthetic_ordinal:shipment:0321:base",
+      "type": "score",
+      "readout": "letters",
+      "passes": 3,
+      "allowed_label_mass_by_slot": [
+        0.8722304701805115
+      ],
+      "full_vocab_argmax_ids": [
+        34
+      ],
+      "full_vocab_argmax_tokens": [
+        "C"
+      ],
+      "restricted_probabilities": [
+        0.10405751408942748,
+        0.07542694072749044,
+        0.8205155451830821
+      ],
+      "gold": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "correct": false,
+      "hazard": [
+        0.8844643235206604
+      ]
+    },
+    {
+      "case_id": "synthetic_ordinal:shipment:0321:base",
+      "type": "score",
+      "readout": "letters",
+      "passes": 4,
+      "allowed_label_mass_by_slot": [
+        0.8880555033683777
+      ],
+      "full_vocab_argmax_ids": [
+        34
+      ],
+      "full_vocab_argmax_tokens": [
+        "C"
+      ],
+      "restricted_probabilities": [
+        0.07963370517502778,
+        0.07664889195492137,
+        0.8437174028700508
+      ],
+      "gold": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "correct": false,
+      "hazard": [
+        0.7884851694107056
+      ]
+    },
+    {
+      "case_id": "synthetic_ordinal:shipment:0321:base",
+      "type": "score",
+      "readout": "yesno",
+      "passes": 1,
+      "allowed_label_mass_by_slot": [
+        0.022358078509569168,
+        0.0019164197146892548,
+        0.01873975619673729
+      ],
+      "full_vocab_argmax_ids": [
+        32,
+        13,
+        151645
+      ],
+      "full_vocab_argmax_tokens": [
+        "A",
+        ".",
+        "<|im_end|>"
+      ],
+      "restricted_probabilities": [
+        0.839994749095674,
+        0.10248026130416041,
+        0.05752498960016565
+      ],
+      "gold": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "correct": true,
+      "hazard": [
+        0.44987520575523376,
+        0.04299989342689514,
+        0.06863591074943542
+      ]
+    },
+    {
+      "case_id": "synthetic_ordinal:shipment:0321:base",
+      "type": "score",
+      "readout": "yesno",
+      "passes": 2,
+      "allowed_label_mass_by_slot": [
+        0.05286912992596626,
+        0.0016470575938001275,
+        0.031688142567873
+      ],
+      "full_vocab_argmax_ids": [
+        12,
+        25,
+        2308
+      ],
+      "full_vocab_argmax_tokens": [
+        "-",
+        ":",
+        " No"
+      ],
+      "restricted_probabilities": [
+        0.7806466509162949,
+        0.14269320679219527,
+        0.07666014229150978
+      ],
+      "gold": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "correct": true,
+      "hazard": [
+        0.7860521078109741,
+        0.14131982624530792,
+        0.2026180922985077
+      ]
+    },
+    {
+      "case_id": "synthetic_ordinal:shipment:0321:base",
+      "type": "score",
+      "readout": "yesno",
+      "passes": 3,
+      "allowed_label_mass_by_slot": [
+        0.12992967665195465,
+        0.0028497930616140366,
+        0.0370558463037014
+      ],
+      "full_vocab_argmax_ids": [
+        12,
+        25,
+        2308
+      ],
+      "full_vocab_argmax_tokens": [
+        "-",
+        ":",
+        " No"
+      ],
+      "restricted_probabilities": [
+        0.615736020347759,
+        0.21094852530264863,
+        0.17331545434959222
+      ],
+      "gold": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "correct": true,
+      "hazard": [
+        0.9124406576156616,
+        0.33353838324546814,
+        0.41415247321128845
+      ]
+    },
+    {
+      "case_id": "synthetic_ordinal:shipment:0321:base",
+      "type": "score",
+      "readout": "yesno",
+      "passes": 4,
+      "allowed_label_mass_by_slot": [
+        0.21261116862297058,
+        0.0036299237981438637,
+        0.07562673836946487
+      ],
+      "full_vocab_argmax_ids": [
+        12,
+        13,
+        151645
+      ],
+      "full_vocab_argmax_tokens": [
+        "-",
+        ".",
+        "<|im_end|>"
+      ],
+      "restricted_probabilities": [
+        0.403483597951883,
+        0.19676713712890564,
+        0.39974926491921137
+      ],
+      "gold": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "correct": true,
+      "hazard": [
+        0.8546372652053833,
+        0.23233969509601593,
+        0.2575198709964752
+      ]
+    },
+    {
+      "case_id": "clinc:f795f641320ef0c9964ac61e92e632168bfba09a2678a28afe2a522a1145987b",
+      "type": "choice",
+      "readout": "letters",
+      "passes": 1,
+      "allowed_label_mass_by_slot": [
+        0.9524737596511841
+      ],
+      "full_vocab_argmax_ids": [
+        32
+      ],
+      "full_vocab_argmax_tokens": [
+        "A"
+      ],
+      "restricted_probabilities": [
+        0.8912369647805805,
+        0.004369137771616556,
+        0.062261309916512506,
+        0.0016726787927085131,
+        0.010945780615366022,
+        0.0008398517826797866,
+        0.007091797085274344,
+        0.0030654624141001766,
+        0.004136009017825626,
+        0.0018907878339863413,
+        0.00885842519164622,
+        0.0005146362085265421,
+        0.001200545065394581,
+        0.0005963408970518413,
+        0.0006490707165601065,
+        0.0006712019101702961
+      ],
+      "gold": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "correct": false,
+      "hazard": [
+        0.5201930403709412
+      ]
+    },
+    {
+      "case_id": "clinc:f795f641320ef0c9964ac61e92e632168bfba09a2678a28afe2a522a1145987b",
+      "type": "choice",
+      "readout": "letters",
+      "passes": 2,
+      "allowed_label_mass_by_slot": [
+        0.9592376351356506
+      ],
+      "full_vocab_argmax_ids": [
+        32
+      ],
+      "full_vocab_argmax_tokens": [
+        "A"
+      ],
+      "restricted_probabilities": [
+        0.46307013695256444,
+        0.09616403259343456,
+        0.11636270360430927,
+        0.021070713609885303,
+        0.007102219674670544,
+        0.018286661367347558,
+        0.09568102527433528,
+        0.04515636214997921,
+        0.02385894747797686,
+        0.03286727642772293,
+        0.009871915827523423,
+        0.062476860170896105,
+        0.005765402862641414,
+        0.001508094326786412,
+        0.000265332978145982,
+        0.000492314701780811
+      ],
+      "gold": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "correct": false,
+      "hazard": [
+        0.7718485593795776
+      ]
+    },
+    {
+      "case_id": "clinc:f795f641320ef0c9964ac61e92e632168bfba09a2678a28afe2a522a1145987b",
+      "type": "choice",
+      "readout": "letters",
+      "passes": 3,
+      "allowed_label_mass_by_slot": [
+        0.9516929388046265
+      ],
+      "full_vocab_argmax_ids": [
+        32
+      ],
+      "full_vocab_argmax_tokens": [
+        "A"
+      ],
+      "restricted_probabilities": [
+        0.28133631039749174,
+        0.10843812565784015,
+        0.17614678961548225,
+        0.023969912530210677,
+        0.01257481425262663,
+        0.04308198884710064,
+        0.13433322850676274,
+        0.06186176817562186,
+        0.026960533948950528,
+        0.038368595911358085,
+        0.013319043811320121,
+        0.06959445837536903,
+        0.006993913899580751,
+        0.0020454791470644502,
+        0.00025886158386023695,
+        0.0007161753393601462
+      ],
+      "gold": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "correct": false,
+      "hazard": [
+        0.8863786458969116
+      ]
+    },
+    {
+      "case_id": "clinc:f795f641320ef0c9964ac61e92e632168bfba09a2678a28afe2a522a1145987b",
+      "type": "choice",
+      "readout": "letters",
+      "passes": 4,
+      "allowed_label_mass_by_slot": [
+        0.9451282620429993
+      ],
+      "full_vocab_argmax_ids": [
+        32
+      ],
+      "full_vocab_argmax_tokens": [
+        "A"
+      ],
+      "restricted_probabilities": [
+        0.21977524656579359,
+        0.11178892018727708,
+        0.17188676498589273,
+        0.01805698136228607,
+        0.0077002788360999415,
+        0.046634254074122014,
+        0.12594755756476855,
+        0.06012528175602632,
+        0.02814529063823059,
+        0.04250172797901113,
+        0.02135584906403505,
+        0.12717068315888652,
+        0.014801287678450785,
+        0.00307532276813446,
+        0.00025730140068396076,
+        0.0007772519803013517
+      ],
+      "gold": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "correct": false,
+      "hazard": [
+        0.7661073207855225
+      ]
+    },
+    {
+      "case_id": "clinc:f795f641320ef0c9964ac61e92e632168bfba09a2678a28afe2a522a1145987b",
+      "type": "choice",
+      "readout": "yesno",
+      "passes": 1,
+      "allowed_label_mass_by_slot": [
+        0.011792860925197601,
+        0.001667311997152865,
+        0.020390311256051064,
+        0.020301230251789093,
+        0.03435489162802696,
+        0.03415307402610779,
+        0.02118668146431446,
+        0.013013980351388454,
+        0.014909038320183754,
+        0.016779491677880287,
+        0.016263257712125778,
+        0.01568043977022171,
+        0.015077474527060986,
+        0.015604107640683651,
+        0.015927599743008614,
+        0.022554567083716393
+      ],
+      "full_vocab_argmax_ids": [
+        32,
+        13,
+        362,
+        25,
+        198,
+        198,
+        198,
+        198,
+        198,
+        198,
+        198,
+        198,
+        198,
+        25,
+        25,
+        151645
+      ],
+      "full_vocab_argmax_tokens": [
+        "A",
+        ".",
+        " A",
+        ":",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        ":",
+        ":",
+        "<|im_end|>"
+      ],
+      "restricted_probabilities": [
+        0.5891368377572795,
+        0.29966038323483946,
+        0.027470230919849875,
+        0.006337753846224482,
+        0.006721445163883778,
+        0.005348296097974393,
+        0.007682883813926045,
+        0.010624971660534511,
+        0.00922790503308729,
+        0.007695863500798377,
+        0.0069206615782430505,
+        0.0061767979846525985,
+        0.005513776759072428,
+        0.004702991916246242,
+        0.0027568791721929273,
+        0.0040223215611951075
+      ],
+      "gold": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "correct": false,
+      "hazard": [
+        0.6994998455047607,
+        0.052237872034311295,
+        0.020884240046143532,
+        0.013917074538767338,
+        0.018286200240254402,
+        0.012875251471996307,
+        0.0073454719968140125,
+        0.0061728814616799355,
+        0.007406462449580431,
+        0.008817795664072037,
+        0.009833927266299725,
+        0.010695382952690125,
+        0.010992311872541904,
+        0.013334134593605995,
+        0.0255848690867424,
+        0.102442666888237
+      ]
+    },
+    {
+      "case_id": "clinc:f795f641320ef0c9964ac61e92e632168bfba09a2678a28afe2a522a1145987b",
+      "type": "choice",
+      "readout": "yesno",
+      "passes": 2,
+      "allowed_label_mass_by_slot": [
+        0.018659578636288643,
+        0.003367475001141429,
+        0.03340372443199158,
+        0.030586721375584602,
+        0.027885591611266136,
+        0.00884060189127922,
+        0.01998020149767399,
+        0.019598795101046562,
+        0.02285628393292427,
+        0.022422051057219505,
+        0.014552106149494648,
+        0.010308689437806606,
+        0.014411442913115025,
+        0.017365291714668274,
+        0.01456968579441309,
+        0.02391989715397358
+      ],
+      "full_vocab_argmax_ids": [
+        32,
+        13,
+        2308,
+        198,
+        198,
+        25,
+        25,
+        198,
+        198,
+        198,
+        198,
+        25,
+        25,
+        25,
+        25,
+        151645
+      ],
+      "full_vocab_argmax_tokens": [
+        "A",
+        ".",
+        " No",
+        "\n",
+        "\n",
+        ":",
+        ":",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        ":",
+        ":",
+        ":",
+        ":",
+        "<|im_end|>"
+      ],
+      "restricted_probabilities": [
+        0.5902311961048757,
+        0.11175987939658658,
+        0.01974764624866348,
+        0.017296548199973852,
+        0.012742210461454417,
+        0.036528515636556035,
+        0.03122054749901979,
+        0.02194644352316373,
+        0.021531979382724616,
+        0.020437497998490883,
+        0.021794623365482397,
+        0.024165735533794478,
+        0.022971507155161892,
+        0.023334279385120685,
+        0.013944980339556518,
+        0.01034640976937489
+      ],
+      "gold": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "correct": false,
+      "hazard": [
+        0.7976421117782593,
+        0.04487365484237671,
+        0.09736035764217377,
+        0.07286814600229263,
+        0.04029664397239685,
+        0.023160865530371666,
+        0.02449282631278038,
+        0.025029417127370834,
+        0.02894107811152935,
+        0.03135451674461365,
+        0.030726104974746704,
+        0.028150619938969612,
+        0.029650351032614708,
+        0.036746684461832047,
+        0.0755828395485878,
+        0.25928589701652527
+      ]
+    },
+    {
+      "case_id": "clinc:f795f641320ef0c9964ac61e92e632168bfba09a2678a28afe2a522a1145987b",
+      "type": "choice",
+      "readout": "yesno",
+      "passes": 3,
+      "allowed_label_mass_by_slot": [
+        0.039494190365076065,
+        0.0073573109693825245,
+        0.040900956839323044,
+        0.03421889990568161,
+        0.0285952165722847,
+        0.012646561488509178,
+        0.03686659410595894,
+        0.022002695128321648,
+        0.028762325644493103,
+        0.016607318073511124,
+        0.01715877279639244,
+        0.02664322778582573,
+        0.022952087223529816,
+        0.028101487085223198,
+        0.02978898584842682,
+        0.023560039699077606
+      ],
+      "full_vocab_argmax_ids": [
+        32,
+        13,
+        2308,
+        198,
+        198,
+        25,
+        151645,
+        198,
+        198,
+        198,
+        25,
+        198,
+        198,
+        25,
+        25,
+        151645
+      ],
+      "full_vocab_argmax_tokens": [
+        "A",
+        ".",
+        " No",
+        "\n",
+        "\n",
+        ":",
+        "<|im_end|>",
+        "\n",
+        "\n",
+        "\n",
+        ":",
+        "\n",
+        "\n",
+        ":",
+        ":",
+        "<|im_end|>"
+      ],
+      "restricted_probabilities": [
+        0.4772976182687427,
+        0.16627697349228693,
+        0.032310127311314545,
+        0.02210696525555016,
+        0.016437465819462344,
+        0.04446292173791309,
+        0.030243046626770093,
+        0.036648816083414124,
+        0.0225235811363829,
+        0.021880376505715008,
+        0.02278332337016292,
+        0.021606414540996714,
+        0.028626169084229804,
+        0.03231006568469616,
+        0.013808060920565109,
+        0.010678074161797481
+      ],
+      "gold": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "correct": false,
+      "hazard": [
+        0.9192816615104675,
+        0.1262580156326294,
+        0.15780092775821686,
+        0.12625673413276672,
+        0.11249972879886627,
+        0.08084128051996231,
+        0.08317948877811432,
+        0.08643356710672379,
+        0.09811259806156158,
+        0.07888498902320862,
+        0.0666949674487114,
+        0.07303303480148315,
+        0.09154929965734482,
+        0.1159425675868988,
+        0.23956385254859924,
+        0.4928297996520996
+      ]
+    },
+    {
+      "case_id": "clinc:f795f641320ef0c9964ac61e92e632168bfba09a2678a28afe2a522a1145987b",
+      "type": "choice",
+      "readout": "yesno",
+      "passes": 4,
+      "allowed_label_mass_by_slot": [
+        0.04791858419775963,
+        0.0068783871829509735,
+        0.05119284242391586,
+        0.02735077403485775,
+        0.03067225031554699,
+        0.01632012240588665,
+        0.03321363776922226,
+        0.023280227556824684,
+        0.030346320942044258,
+        0.02092609368264675,
+        0.024140402674674988,
+        0.02204466052353382,
+        0.02497999370098114,
+        0.03298642486333847,
+        0.027033725753426552,
+        0.023726804181933403
+      ],
+      "full_vocab_argmax_ids": [
+        32,
+        13,
+        2308,
+        198,
+        198,
+        25,
+        198,
+        198,
+        198,
+        198,
+        198,
+        198,
+        198,
+        25,
+        25,
+        151645
+      ],
+      "full_vocab_argmax_tokens": [
+        "A",
+        ".",
+        " No",
+        "\n",
+        "\n",
+        ":",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        ":",
+        ":",
+        "<|im_end|>"
+      ],
+      "restricted_probabilities": [
+        0.298161499893769,
+        0.12428248560486979,
+        0.05319103885522739,
+        0.043668548511423655,
+        0.03065807298060258,
+        0.05881740003642336,
+        0.047104833564879406,
+        0.05559433458226035,
+        0.03982430646634447,
+        0.037123202882067136,
+        0.034164355981755046,
+        0.04216333625368516,
+        0.047050553355254335,
+        0.04380322932971956,
+        0.022708589422903852,
+        0.021684212278814893
+      ],
+      "gold": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "correct": false,
+      "hazard": [
+        0.8204153776168823,
+        0.060729432851076126,
+        0.08144214004278183,
+        0.057244881987571716,
+        0.052070580422878265,
+        0.03786856681108475,
+        0.037008706480264664,
+        0.038312800228595734,
+        0.044768016785383224,
+        0.044276297092437744,
+        0.03824743628501892,
+        0.03740135580301285,
+        0.04909489303827286,
+        0.061554379761219025,
+        0.12379228323698044,
+        0.3687000274658203
+      ]
+    },
+    {
+      "case_id": "snli:8d518897bc0a38c0df1aa8fec3e1a4c4faa9fced2b1e6e5a45fc207dbea4f88b",
+      "type": "noul",
+      "readout": "letters",
+      "passes": 1,
+      "allowed_label_mass_by_slot": [
+        0.8763577342033386
+      ],
+      "full_vocab_argmax_ids": [
+        33
+      ],
+      "full_vocab_argmax_tokens": [
+        "B"
+      ],
+      "restricted_probabilities": [
+        0.2533274034072667,
+        0.7466725965927333
+      ],
+      "gold": [
+        1.0,
+        0.0
+      ],
+      "correct": false,
+      "hazard": [
+        0.5271984338760376
+      ]
+    },
+    {
+      "case_id": "snli:8d518897bc0a38c0df1aa8fec3e1a4c4faa9fced2b1e6e5a45fc207dbea4f88b",
+      "type": "noul",
+      "readout": "letters",
+      "passes": 2,
+      "allowed_label_mass_by_slot": [
+        0.9186164736747742
+      ],
+      "full_vocab_argmax_ids": [
+        33
+      ],
+      "full_vocab_argmax_tokens": [
+        "B"
+      ],
+      "restricted_probabilities": [
+        0.2746826121322158,
+        0.7253173878677842
+      ],
+      "gold": [
+        1.0,
+        0.0
+      ],
+      "correct": false,
+      "hazard": [
+        0.790094256401062
+      ]
+    },
+    {
+      "case_id": "snli:8d518897bc0a38c0df1aa8fec3e1a4c4faa9fced2b1e6e5a45fc207dbea4f88b",
+      "type": "noul",
+      "readout": "letters",
+      "passes": 3,
+      "allowed_label_mass_by_slot": [
+        0.9235655069351196
+      ],
+      "full_vocab_argmax_ids": [
+        33
+      ],
+      "full_vocab_argmax_tokens": [
+        "B"
+      ],
+      "restricted_probabilities": [
+        0.2428503561813987,
+        0.7571496438186013
+      ],
+      "gold": [
+        1.0,
+        0.0
+      ],
+      "correct": false,
+      "hazard": [
+        0.8954492211341858
+      ]
+    },
+    {
+      "case_id": "snli:8d518897bc0a38c0df1aa8fec3e1a4c4faa9fced2b1e6e5a45fc207dbea4f88b",
+      "type": "noul",
+      "readout": "letters",
+      "passes": 4,
+      "allowed_label_mass_by_slot": [
+        0.9402860403060913
+      ],
+      "full_vocab_argmax_ids": [
+        33
+      ],
+      "full_vocab_argmax_tokens": [
+        "B"
+      ],
+      "restricted_probabilities": [
+        0.19245218860629,
+        0.8075478113937099
+      ],
+      "gold": [
+        1.0,
+        0.0
+      ],
+      "correct": false,
+      "hazard": [
+        0.7621553540229797
+      ]
+    },
+    {
+      "case_id": "snli:8d518897bc0a38c0df1aa8fec3e1a4c4faa9fced2b1e6e5a45fc207dbea4f88b",
+      "type": "noul",
+      "readout": "yesno",
+      "passes": 1,
+      "allowed_label_mass_by_slot": [
+        0.8739007115364075
+      ],
+      "full_vocab_argmax_ids": [
+        9454
+      ],
+      "full_vocab_argmax_tokens": [
+        "Yes"
+      ],
+      "restricted_probabilities": [
+        0.20333156795508525,
+        0.7966684320449148
+      ],
+      "gold": [
+        1.0,
+        0.0
+      ],
+      "correct": false,
+      "hazard": [
+        0.6902129650115967
+      ]
+    },
+    {
+      "case_id": "snli:8d518897bc0a38c0df1aa8fec3e1a4c4faa9fced2b1e6e5a45fc207dbea4f88b",
+      "type": "noul",
+      "readout": "yesno",
+      "passes": 2,
+      "allowed_label_mass_by_slot": [
+        0.9560648798942566
+      ],
+      "full_vocab_argmax_ids": [
+        9454
+      ],
+      "full_vocab_argmax_tokens": [
+        "Yes"
+      ],
+      "restricted_probabilities": [
+        0.34622649437065045,
+        0.6537735056293497
+      ],
+      "gold": [
+        1.0,
+        0.0
+      ],
+      "correct": false,
+      "hazard": [
+        0.8784517645835876
+      ]
+    },
+    {
+      "case_id": "snli:8d518897bc0a38c0df1aa8fec3e1a4c4faa9fced2b1e6e5a45fc207dbea4f88b",
+      "type": "noul",
+      "readout": "yesno",
+      "passes": 3,
+      "allowed_label_mass_by_slot": [
+        0.9595890045166016
+      ],
+      "full_vocab_argmax_ids": [
+        9454
+      ],
+      "full_vocab_argmax_tokens": [
+        "Yes"
+      ],
+      "restricted_probabilities": [
+        0.4350335971851309,
+        0.5649664028148691
+      ],
+      "gold": [
+        1.0,
+        0.0
+      ],
+      "correct": false,
+      "hazard": [
+        0.9501696228981018
+      ]
+    },
+    {
+      "case_id": "snli:8d518897bc0a38c0df1aa8fec3e1a4c4faa9fced2b1e6e5a45fc207dbea4f88b",
+      "type": "noul",
+      "readout": "yesno",
+      "passes": 4,
+      "allowed_label_mass_by_slot": [
+        0.9494338631629944
+      ],
+      "full_vocab_argmax_ids": [
+        2753
+      ],
+      "full_vocab_argmax_tokens": [
+        "No"
+      ],
+      "restricted_probabilities": [
+        0.5026898124609224,
+        0.4973101875390776
+      ],
+      "gold": [
+        1.0,
+        0.0
+      ],
+      "correct": true,
+      "hazard": [
+        0.8894549608230591
+      ]
+    },
+    {
+      "case_id": "synthetic_ordinal:laboratory:0385:base",
+      "type": "score",
+      "readout": "letters",
+      "passes": 1,
+      "allowed_label_mass_by_slot": [
+        0.8978281021118164
+      ],
+      "full_vocab_argmax_ids": [
+        35
+      ],
+      "full_vocab_argmax_tokens": [
+        "D"
+      ],
+      "restricted_probabilities": [
+        0.17781846754133124,
+        0.026402140050564217,
+        0.04584944523994859,
+        0.749929947168156
+      ],
+      "gold": [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "correct": false,
+      "hazard": [
+        0.5838639140129089
+      ]
+    },
+    {
+      "case_id": "synthetic_ordinal:laboratory:0385:base",
+      "type": "score",
+      "readout": "letters",
+      "passes": 2,
+      "allowed_label_mass_by_slot": [
+        0.9016945958137512
+      ],
+      "full_vocab_argmax_ids": [
+        35
+      ],
+      "full_vocab_argmax_tokens": [
+        "D"
+      ],
+      "restricted_probabilities": [
+        0.10170117467841337,
+        0.06806491332612771,
+        0.11728663295486647,
+        0.7129472790405924
+      ],
+      "gold": [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "correct": false,
+      "hazard": [
+        0.7796323299407959
+      ]
+    },
+    {
+      "case_id": "synthetic_ordinal:laboratory:0385:base",
+      "type": "score",
+      "readout": "letters",
+      "passes": 3,
+      "allowed_label_mass_by_slot": [
+        0.8125787973403931
+      ],
+      "full_vocab_argmax_ids": [
+        35
+      ],
+      "full_vocab_argmax_tokens": [
+        "D"
+      ],
+      "restricted_probabilities": [
+        0.1029285251634818,
+        0.1122670282945712,
+        0.1499876663539336,
+        0.6348167801880135
+      ],
+      "gold": [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "correct": false,
+      "hazard": [
+        0.8898293375968933
+      ]
+    },
+    {
+      "case_id": "synthetic_ordinal:laboratory:0385:base",
+      "type": "score",
+      "readout": "letters",
+      "passes": 4,
+      "allowed_label_mass_by_slot": [
+        0.8566514849662781
+      ],
+      "full_vocab_argmax_ids": [
+        35
+      ],
+      "full_vocab_argmax_tokens": [
+        "D"
+      ],
+      "restricted_probabilities": [
+        0.08745327036943852,
+        0.12719935154622702,
+        0.1513199936529074,
+        0.6340273844314271
+      ],
+      "gold": [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "correct": false,
+      "hazard": [
+        0.7707757949829102
+      ]
+    },
+    {
+      "case_id": "synthetic_ordinal:laboratory:0385:base",
+      "type": "score",
+      "readout": "yesno",
+      "passes": 1,
+      "allowed_label_mass_by_slot": [
+        0.017537778243422508,
+        0.0019308720948174596,
+        0.02867019921541214,
+        0.01935146190226078
+      ],
+      "full_vocab_argmax_ids": [
+        32,
+        13,
+        25,
+        151645
+      ],
+      "full_vocab_argmax_tokens": [
+        "A",
+        ".",
+        ":",
+        "<|im_end|>"
+      ],
+      "restricted_probabilities": [
+        0.6440019042101446,
+        0.30795393159125733,
+        0.01966324099907983,
+        0.028380923199518394
+      ],
+      "gold": [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "correct": false,
+      "hazard": [
+        0.5628775358200073,
+        0.03688458725810051,
+        0.03545672073960304,
+        0.052657417953014374
+      ]
+    },
+    {
+      "case_id": "synthetic_ordinal:laboratory:0385:base",
+      "type": "score",
+      "readout": "yesno",
+      "passes": 2,
+      "allowed_label_mass_by_slot": [
+        0.07903091609477997,
+        0.00302154291421175,
+        0.032033249735832214,
+        0.03672955557703972
+      ],
+      "full_vocab_argmax_ids": [
+        32,
+        79075,
+        25,
+        151645
+      ],
+      "full_vocab_argmax_tokens": [
+        "A",
+        "boxed",
+        ":",
+        "<|im_end|>"
+      ],
+      "restricted_probabilities": [
+        0.641475528137479,
+        0.2788054743109777,
+        0.04039360619734301,
+        0.03932539135420035
+      ],
+      "gold": [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "correct": false,
+      "hazard": [
+        0.7861365079879761,
+        0.0643351823091507,
+        0.12341322004795074,
+        0.22959347069263458
+      ]
+    },
+    {
+      "case_id": "synthetic_ordinal:laboratory:0385:base",
+      "type": "score",
+      "readout": "yesno",
+      "passes": 3,
+      "allowed_label_mass_by_slot": [
+        0.16549839079380035,
+        0.004034585785120726,
+        0.04311790317296982,
+        0.039401307702064514
+      ],
+      "full_vocab_argmax_ids": [
+        32,
+        79075,
+        25,
+        151645
+      ],
+      "full_vocab_argmax_tokens": [
+        "A",
+        "boxed",
+        ":",
+        "<|im_end|>"
+      ],
+      "restricted_probabilities": [
+        0.43061978334180473,
+        0.40472086057405965,
+        0.08335566808489711,
+        0.08130368799923844
+      ],
+      "gold": [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "correct": false,
+      "hazard": [
+        0.9198223948478699,
+        0.1651606261730194,
+        0.2283230721950531,
+        0.4441145658493042
+      ]
+    },
+    {
+      "case_id": "synthetic_ordinal:laboratory:0385:base",
+      "type": "score",
+      "readout": "yesno",
+      "passes": 4,
+      "allowed_label_mass_by_slot": [
+        0.2696370482444763,
+        0.006519770715385675,
+        0.07137451320886612,
+        0.07476761937141418
+      ],
+      "full_vocab_argmax_ids": [
+        32,
+        79075,
+        90,
+        151645
+      ],
+      "full_vocab_argmax_tokens": [
+        "A",
+        "boxed",
+        "{",
+        "<|im_end|>"
+      ],
+      "restricted_probabilities": [
+        0.28790816409595954,
+        0.3452928183327998,
+        0.17096461980205163,
+        0.19583439776918893
+      ],
+      "gold": [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "correct": true,
+      "hazard": [
+        0.8744957447052002,
+        0.10052386671304703,
+        0.12732170522212982,
+        0.2511495351791382
+      ]
+    }
+  ]
+}

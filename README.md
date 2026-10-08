@@ -1,6 +1,6 @@
 # diffcider-mlx
 
-MLX inference for two pinned Qwen3 masked language models:
+MLX inference for pinned Qwen3 diffusion and decision models:
 
 - **S1:** `SEU-ZZH/Shared-YesNo-Qwen3-0.6B-S1` — single-pass candidate selection,
   binary judgments, and ordinal scoring.
@@ -53,6 +53,58 @@ MLX by **1.36× in FP32** and **1.49× in BF16**, with identical selected answer
 at every tested size. See the guide for probability drift and benchmark cache policy.
 Long, uneven batches can be slower than sequential inference because of padding;
 group similarly sized prompts when throughput matters.
+
+## Experimental AloDiffcider: ALoDLM generation and zero-shot decisions
+
+**`AloDiffcider` is experimental; its API and behavior may change.** It adds a
+separate causal recurrent backend for
+`amazon/ALoDLM-1.7B`. One loaded model supports greedy `generate` and experimental
+`decide` with letter or Yes/No readouts at depths 1–4. See the
+[ALoDLM guide](docs/alodlm.md) for usage, limits and reproducible comparisons.
+ALoDLM carries **CC BY-NC 4.0 and applicable WeDLM terms**; see
+[third-party notices](THIRD_PARTY.md). Its decision probabilities are uncalibrated.
+
+In the initial float32 comparison, all **6/6 generation outputs** and **240/240
+decision configurations** matched the pinned PyTorch reference. Generation was
+**1.63–2.03× faster** on this M1 Max. Zero-shot decision accuracy was only
+**20–33%** on the supported 30-case sample, versus **90%** for the trained S1
+baseline. Cached decision reads were faster in MLX, but fresh-prefix decisions
+were slower. The guide retains all measurements and the BF16 mismatches.
+
+## Browser-agent example
+
+[Diffcider Browser](docs/browser-demo.md) runs your fine-tuned
+`sgaseretto/diffcider-browser` with its LoRA, learned decision head and calibration.
+`SysoneDiffcider` uses the trained adapter for `decide` and the unchanged base for
+`generate`, sharing one resident MLX backbone. The optional Gradio demo shows live
+browser screenshots with numbered element boxes and a decision trace, with
+password-protected `--share`. It includes local Google Flights and Skyscanner
+mocks with airport suggestions, calendars, filters and fictional fares, plus
+three simpler reading-room tasks.
+Changing **Website** loads its suggested task and clears the old run. Use
+**Run automatically**, or **Inspect → Choose next → Execute choice**
+to examine each decision. Pause/resume, live box toggles, ranked targets, an action
+trail and JSON export are included. **Restart** keeps the edited prompt and settings.
+The generation slider selects **1–24 diffusion steps** (default 24); decision scoring
+stays one forward pass.
+
+```sh
+uv sync --extra browser-demo
+uv run playwright install chromium
+uv run diffcider-browser
+# Share this Mac's inference with another computer:
+uv run diffcider-browser --share
+```
+
+The float32 port matched all tested decision outcomes and all 45 generation
+tokens, with at most 4.71e-6 probability drift versus independent sysone/PyTorch.
+MLX was 1.13–1.16× faster for decisions and 1.23–1.34× for generation in these
+small tests. Three reading-room tasks completed with verified results. The new
+flight mocks exposed failures: **0/4 complete goals** across two runs per site.
+Replays of sampled flight states matched PyTorch's decisions and generated text,
+including malformed field values; maximum probability drift there was 1.06e-5.
+See the [guide](docs/browser-demo.md) for scope, raw results, standalone MLX
+export, installation, and later Hugging Face publication.
 
 ## Measured results
 

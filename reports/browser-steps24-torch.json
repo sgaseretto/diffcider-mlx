@@ -1,0 +1,97 @@
+{
+  "backend": "torch",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "repeats": 1,
+  "source_revision": "f8059b1a532f42ce62179e13cf0a0d61a5c626ea",
+  "dtype": "float32",
+  "sysone_revision": "55a8c9a38d1bdf8f42394295016b8e75a1277aff",
+  "decisions": [],
+  "generation": [
+    {
+      "name": "destination",
+      "prompt": "The user's goal: Find one-way flights from New York to Chicago on April 12 for one adult.\nThe page: united\nThe field: To (textbox)\nWhat should be typed into this field?",
+      "system": "You fill in web forms for a user. Answer with the exact text to type, nothing else.",
+      "settings": {
+        "max_new_tokens": 24,
+        "steps": 24,
+        "block_size": 32
+      },
+      "tokens": [
+        46175,
+        151645,
+        198,
+        151643,
+        151643,
+        151643,
+        151643,
+        151643,
+        151643,
+        151643,
+        151643,
+        151643,
+        151643,
+        151643,
+        151643,
+        151643,
+        151643,
+        151643,
+        151643,
+        151643,
+        151643,
+        151643,
+        151643,
+        151643
+      ],
+      "text": "Chicago",
+      "seconds": [
+        1.1801777919899905
+      ]
+    },
+    {
+      "name": "search",
+      "prompt": "The user's goal: Search for Ada Lovelace.\nThe page: Reading room\nThe field: Search (textbox)\nWhat should be typed into this field?",
+      "system": "You fill in web forms for a user. Answer with the exact text to type, nothing else.",
+      "settings": {
+        "max_new_tokens": 24,
+        "steps": 24,
+        "block_size": 32
+      },
+      "tokens": [
+        95347,
+        34293,
+        301,
+        578,
+        151645,
+        198,
+        151643,
+        151643,
+        151643,
+        151643,
+        151643,
+        151643,
+        151643,
+        151643,
+        151643,
+        151643,
+        151643,
+        151643,
+        151643,
+        151643,
+        151643,
+        151643,
+        151643,
+        151643
+      ],
+      "text": "Ada Lovelace",
+      "seconds": [
+        1.1707132079900475
+      ]
+    }
+  ],
+  "versions": {
+    "torch": "2.14.1",
+    "transformers": "5.19.0",
+    "peft": "0.21.2",
+    "sysone": "0.3.0"
+  }
+}

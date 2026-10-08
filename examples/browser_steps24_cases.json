@@ -1,0 +1,25 @@
+{
+  "decisions": [],
+  "generation": [
+    {
+      "name": "destination",
+      "prompt": "The user's goal: Find one-way flights from New York to Chicago on April 12 for one adult.\nThe page: united\nThe field: To (textbox)\nWhat should be typed into this field?",
+      "system": "You fill in web forms for a user. Answer with the exact text to type, nothing else.",
+      "settings": {
+        "max_new_tokens": 24,
+        "steps": 24,
+        "block_size": 32
+      }
+    },
+    {
+      "name": "search",
+      "prompt": "The user's goal: Search for Ada Lovelace.\nThe page: Reading room\nThe field: Search (textbox)\nWhat should be typed into this field?",
+      "system": "You fill in web forms for a user. Answer with the exact text to type, nothing else.",
+      "settings": {
+        "max_new_tokens": 24,
+        "steps": 24,
+        "block_size": 32
+      }
+    }
+  ]
+}

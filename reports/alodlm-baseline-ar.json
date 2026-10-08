@@ -1,0 +1,1078 @@
+{
+  "timestamp": "2026-10-08T01:31:44.405028+00:00",
+  "baseline": "alodlm-ar",
+  "dtype": "float32",
+  "backend": "mlx",
+  "checkpoint": [
+    "amazon/ALoDLM-1.7B",
+    "588c7dc1946e3e09fd496da0b0808bd26f46a758"
+  ],
+  "dataset_sha256": "179207541710c6f6005fb3871f250da2ad3cdfd856f5ada3ad1dbd3653fc251f",
+  "excluded": [
+    {
+      "case_id": "clinc:1f026654e4adbde0f52e2f5c733a16e6403328d2f489ecf2511575cb888e1d3e",
+      "options": 32,
+      "reason": "letter readout supports at most 26 options"
+    },
+    {
+      "case_id": "clinc:f2a3fa8a41e99776fa3315fb19f75263fafa7fe5b53e59e9f6b63c328ec29931",
+      "options": 120,
+      "reason": "letter readout supports at most 26 options"
+    },
+    {
+      "case_id": "clinc:89291ce378f9a0bbb464bedee7d202a83b782bdda0c1cc3301cca50eb75d35a7",
+      "options": 64,
+      "reason": "letter readout supports at most 26 options"
+    },
+    {
+      "case_id": "clinc:7a8c71d569e142bb420af0d85241a66f0c80b6f312c9198fd6b5a55ded364b16",
+      "options": 120,
+      "reason": "letter readout supports at most 26 options"
+    },
+    {
+      "case_id": "clinc:7faced8787ef674ba5e08affd5ac4f0acb47c265dd70b405300385330300ac35",
+      "options": 120,
+      "reason": "letter readout supports at most 26 options"
+    },
+    {
+      "case_id": "clinc:947c8f5c44ad4d8561725579aed1ba5a8dcda6b6f2f3918c698941488eba3ff3",
+      "options": 32,
+      "reason": "letter readout supports at most 26 options"
+    },
+    {
+      "case_id": "clinc:ab152d283f0aa8f079d61fd85df7e1b336e4e07e7077ced3a1d79eaa814493f0",
+      "options": 120,
+      "reason": "letter readout supports at most 26 options"
+    },
+    {
+      "case_id": "clinc:4d860e08ce45bd292adb177a886b6df2095b59d8324559b105cf5eb264abcbcd",
+      "options": 77,
+      "reason": "letter readout supports at most 26 options"
+    },
+    {
+      "case_id": "clinc:158a85b2a42db1a0b4b5e7d2d2ccba7cc82abfe1dec89c9688f9f60444732140",
+      "options": 64,
+      "reason": "letter readout supports at most 26 options"
+    },
+    {
+      "case_id": "clinc:62bd34074e858c47c4db4592bdc681d28a2f50d1b3829a0a80ef09c19be6161b",
+      "options": 120,
+      "reason": "letter readout supports at most 26 options"
+    },
+    {
+      "case_id": "clinc:8cbb6d2e6e958ad9ffcc6a5f7846b038bfa200802ab20cc5187d69dc93f68ac8",
+      "options": 120,
+      "reason": "letter readout supports at most 26 options"
+    },
+    {
+      "case_id": "clinc:53054412e1428f9302c86aec8f9f076b94f53df4d8a557f7728aeeca5eaf010c",
+      "options": 77,
+      "reason": "letter readout supports at most 26 options"
+    },
+    {
+      "case_id": "clinc:1034abf6c65ed152f7bded1d8c0c98584c4e3c8fb28b689cd3c2ff575b7b6f4a",
+      "options": 32,
+      "reason": "letter readout supports at most 26 options"
+    },
+    {
+      "case_id": "clinc:863dc5d9014ca7d99e0612c390b9c2d1f517b4592410fca2cc2d62d3e91745b6",
+      "options": 120,
+      "reason": "letter readout supports at most 26 options"
+    },
+    {
+      "case_id": "clinc:e7574496909047a05b8c7be983a701757841d9ce75da439ff770b339d731d431",
+      "options": 64,
+      "reason": "letter readout supports at most 26 options"
+    },
+    {
+      "case_id": "clinc:552777efd696568a0c64b3afd4cc3718e4862f8727ac61febfd1f88f6c5f05c8",
+      "options": 120,
+      "reason": "letter readout supports at most 26 options"
+    }
+  ],
+  "warmup": 1,
+  "repeats": 2,
+  "timing_scope": "Synchronized full-input model inference, no reusable prefix. Excludes tokenization, loading and probability normalization.",
+  "decisions": [
+    {
+      "case_id": "clinc:df6116dde2dd7f0afb2a2d8f291e0e0236a9b34afccf46c1c83f07c33c85f181",
+      "type": "choice",
+      "gold": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "probabilities": [
+        0.9900778673006807,
+        0.006752948207660974,
+        0.002649076407007637,
+        0.0005201080846504373
+      ],
+      "passes": 1,
+      "readout": "letters",
+      "prediction": 0,
+      "tokens": 87,
+      "input_sha256": "596bc6a61990c9d6fcd54d4d51f046057f6f368cda513dee4b89c82d5b2b85f3",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.062150832993211225,
+        0.061714792012935504
+      ]
+    },
+    {
+      "case_id": "snli:6fbae4becc4a6414b7edb5cee1d4360a7a5d59e6433cd7c462f6759cc07bf044",
+      "type": "noul",
+      "gold": [
+        0.0,
+        1.0
+      ],
+      "probabilities": [
+        0.9728666648367058,
+        0.02713333516329421
+      ],
+      "passes": 1,
+      "readout": "letters",
+      "prediction": 0,
+      "tokens": 132,
+      "input_sha256": "7eff0994d58f86cdc59330c925b395df0813c6aa327aa03edac94de5f998f0a1",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.09487804200034589,
+        0.09547250001924112
+      ]
+    },
+    {
+      "case_id": "synthetic_ordinal:shipment:0321:base",
+      "type": "score",
+      "gold": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "probabilities": [
+        0.9616124920112277,
+        0.016212585141096747,
+        0.022174922847675586
+      ],
+      "passes": 1,
+      "readout": "letters",
+      "prediction": 0,
+      "tokens": 225,
+      "input_sha256": "9793f20c2468270116b6e318fead5aa59f71a3fed09ffa1a8440cec23fe5d91d",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.14412075001746416,
+        0.14428137501818128
+      ]
+    },
+    {
+      "case_id": "clinc:f795f641320ef0c9964ac61e92e632168bfba09a2678a28afe2a522a1145987b",
+      "type": "choice",
+      "gold": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "probabilities": [
+        0.9752127557546891,
+        0.0014292538139479285,
+        0.005649844252111151,
+        0.00044139998371127653,
+        0.0022794911441733515,
+        0.0008880534424712318,
+        0.00809434813556483,
+        0.0016352724160349566,
+        0.0008029626346767399,
+        0.00020270085676717638,
+        0.000624467698057506,
+        0.0005409166954377036,
+        0.001360799785722123,
+        0.0002893471783585964,
+        0.00011720466491659018,
+        0.00043118154335958366
+      ],
+      "passes": 1,
+      "readout": "letters",
+      "prediction": 0,
+      "tokens": 152,
+      "input_sha256": "597fcc0af5e3399e7e8adeaec3277f3375664da81ab9445249e323de57987e99",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.09857395899598487,
+        0.0981166249839589
+      ]
+    },
+    {
+      "case_id": "snli:8d518897bc0a38c0df1aa8fec3e1a4c4faa9fced2b1e6e5a45fc207dbea4f88b",
+      "type": "noul",
+      "gold": [
+        1.0,
+        0.0
+      ],
+      "probabilities": [
+        0.965031875954157,
+        0.03496812404584305
+      ],
+      "passes": 1,
+      "readout": "letters",
+      "prediction": 0,
+      "tokens": 139,
+      "input_sha256": "8b3ac2ac7e81f503782165f56ae22de73be7fff52e8fc2b007b677ed0170bd5a",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.09644395799841732,
+        0.09672162498463877
+      ]
+    },
+    {
+      "case_id": "synthetic_ordinal:laboratory:0385:base",
+      "type": "score",
+      "gold": [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "probabilities": [
+        0.856941306726647,
+        0.027000841114672873,
+        0.030570848892545313,
+        0.08548700326613477
+      ],
+      "passes": 1,
+      "readout": "letters",
+      "prediction": 0,
+      "tokens": 303,
+      "input_sha256": "5cf87e5c7922b975026f4df6ec992484d32abbb41d1e85e73371507a037405e6",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.1683281250006985,
+        0.16886454200721346
+      ]
+    },
+    {
+      "case_id": "clinc:b2877e560c371b3776e318ad8e1bf9d5e98984f4804518f0bf5a2c4522252233",
+      "type": "choice",
+      "gold": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "probabilities": [
+        0.9928892115060911,
+        0.002030201778445486,
+        0.0008728021760660384,
+        0.0003170319786978508,
+        0.0007732919507117447,
+        0.0003528187120880165,
+        0.0003157685831823248,
+        0.0002904405995906307,
+        0.0007468210629128483,
+        0.00023608555492654908,
+        0.00011680241005055528,
+        0.0003470113774313498,
+        0.00015421521302719815,
+        0.0002393884120093978,
+        7.141281980340607e-05,
+        0.0002466958649655069
+      ],
+      "passes": 1,
+      "readout": "letters",
+      "prediction": 0,
+      "tokens": 159,
+      "input_sha256": "34ab61f4998e4c623ea841e4c8e3e4a847a0761148c5f43ab6fa2df635e272c1",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.0998372079920955,
+        0.10043441702146083
+      ]
+    },
+    {
+      "case_id": "snli:51eff04b4c4055ac68c2bffaef4e07b554e1f1ea407e7bfb4b4be9699d6762c0",
+      "type": "noul",
+      "gold": [
+        0.0,
+        1.0
+      ],
+      "probabilities": [
+        0.9850326387699626,
+        0.014967361230037338
+      ],
+      "passes": 1,
+      "readout": "letters",
+      "prediction": 0,
+      "tokens": 131,
+      "input_sha256": "a1a22705731fd790aeae6bec9909e0520bea662d6d465b2477901d1173d9d116",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.09663120901677758,
+        0.1011982090130914
+      ]
+    },
+    {
+      "case_id": "synthetic_ordinal:laboratory:0044:base",
+      "type": "score",
+      "gold": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "probabilities": [
+        0.8604388045887212,
+        0.024776937387028727,
+        0.02936783422081713,
+        0.08541642380343271
+      ],
+      "passes": 1,
+      "readout": "letters",
+      "prediction": 0,
+      "tokens": 301,
+      "input_sha256": "20e29e87af6767237d92cdab31ee17c00465655bb63a4922f16dccf6b22ed1ad",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.18092583399266005,
+        0.19559358299011365
+      ]
+    },
+    {
+      "case_id": "clinc:0d76d2c97b14a7205b30ed4f4c1d433ed9d0309f9e363ca10842f86f9bc47887",
+      "type": "choice",
+      "gold": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "probabilities": [
+        0.9738703127193133,
+        0.00424914323080388,
+        0.002292396050296241,
+        0.009522781804752864,
+        0.005683585674720069,
+        0.0022111493582685814,
+        0.00107929275898545,
+        0.0010913384028597884
+      ],
+      "passes": 1,
+      "readout": "letters",
+      "prediction": 0,
+      "tokens": 112,
+      "input_sha256": "0acfcc26a9b908f28e28c69d2e56c3d82ea7b0ccbce6925ab4071f663dd3c5c3",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.08447041700128466,
+        0.08907566699781455
+      ]
+    },
+    {
+      "case_id": "snli:bad5368c1024d26f28ce2dbb8ef48ac2a4ca1043668d54468b5e8616335a012b",
+      "type": "noul",
+      "gold": [
+        1.0,
+        0.0
+      ],
+      "probabilities": [
+        0.9846091283359976,
+        0.015390871664002442
+      ],
+      "passes": 1,
+      "readout": "letters",
+      "prediction": 0,
+      "tokens": 133,
+      "input_sha256": "12d246cc080b42955a8c112896e5271171dc7e626a009561a23abf62db9ba595",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.12409025002853014,
+        0.12090587499551475
+      ]
+    },
+    {
+      "case_id": "synthetic_ordinal:deployment:0287:base",
+      "type": "score",
+      "gold": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "probabilities": [
+        0.9193652536138828,
+        0.008109462864943944,
+        0.012952855187777832,
+        0.012756272613670619,
+        0.046816155719724896
+      ],
+      "passes": 1,
+      "readout": "letters",
+      "prediction": 0,
+      "tokens": 332,
+      "input_sha256": "da284e3d1b990bae8a912fc1fc9c5f11dd3d493c32f40e5655f902aa304ce100",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.2887300000002142,
+        0.3092328339989763
+      ]
+    },
+    {
+      "case_id": "clinc:ea250342bc80a98ca775888248a5672ec36ba4faa6bc405f74fc9d4d7fddceb2",
+      "type": "choice",
+      "gold": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "probabilities": [
+        0.9742903666855116,
+        0.003113223057074518,
+        0.0020974652882485116,
+        0.0010665977472991506,
+        0.0018741693036551533,
+        0.0059494896709872255,
+        0.0018962957785549775,
+        0.0030277213248394537,
+        0.0016372303950190827,
+        0.0006306658055006146,
+        0.0003474702684630551,
+        0.0007757207238848298,
+        0.00040040294410679394,
+        0.00029649479348998835,
+        0.0002112040800737959,
+        0.0023854821332912734
+      ],
+      "passes": 1,
+      "readout": "letters",
+      "prediction": 0,
+      "tokens": 170,
+      "input_sha256": "73db2cc85ada77f93f6755cd62f3d35424105cc2512ba8c85e80c53ea44c711a",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.17276479201973416,
+        0.1710097499890253
+      ]
+    },
+    {
+      "case_id": "snli:fc31995c85305304720c78dcabe2166c8da27c1558bbb5c442df9aab76752900",
+      "type": "noul",
+      "gold": [
+        0.0,
+        1.0
+      ],
+      "probabilities": [
+        0.9702412277921286,
+        0.029758772207871483
+      ],
+      "passes": 1,
+      "readout": "letters",
+      "prediction": 0,
+      "tokens": 131,
+      "input_sha256": "7fda57521d3d3b7c41b81ffe34d1ed8be426a49373272a461d3e264f0cb37b08",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.14904333298909478,
+        0.14452791700023226
+      ]
+    },
+    {
+      "case_id": "synthetic_ordinal:laboratory:0379:base",
+      "type": "score",
+      "gold": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "probabilities": [
+        0.871597355974152,
+        0.024233836623210016,
+        0.027945028076864584,
+        0.07622377932577346
+      ],
+      "passes": 1,
+      "readout": "letters",
+      "prediction": 0,
+      "tokens": 302,
+      "input_sha256": "11f1a649fb11922cbe1f410b6454aeeac71199be17e77bcbb95105698df75d47",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.23963591700885445,
+        0.22312379200593568
+      ]
+    },
+    {
+      "case_id": "clinc:5c6993afdda19769fc34d3dc53796d94afcad2e27ac934758489720092f09a1d",
+      "type": "choice",
+      "gold": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "probabilities": [
+        0.9893730354220698,
+        0.0027134736046279294,
+        0.0013974853483187395,
+        0.0005131915723376318,
+        0.000642421888061333,
+        0.00032564538966447517,
+        0.0003978878888871155,
+        0.0004177441574080601,
+        0.0009743695295305827,
+        0.0007398385217605981,
+        0.0005461921701045437,
+        0.0007469496491512951,
+        0.00032607657638625514,
+        0.00047552871437672235,
+        0.00011332787377220889,
+        0.00029683169354282
+      ],
+      "passes": 1,
+      "readout": "letters",
+      "prediction": 0,
+      "tokens": 153,
+      "input_sha256": "a856eaef673cffcb21c07de9598cae757baf12dacec42744871e9de56941c64b",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.1226582909876015,
+        0.11979479098226875
+      ]
+    },
+    {
+      "case_id": "snli:5df4ddcf3aa9950b9b974f17482712f82f38a398bfac19f071138f51dbecb645",
+      "type": "noul",
+      "gold": [
+        1.0,
+        0.0
+      ],
+      "probabilities": [
+        0.965827221953922,
+        0.034172778046077996
+      ],
+      "passes": 1,
+      "readout": "letters",
+      "prediction": 0,
+      "tokens": 130,
+      "input_sha256": "acf18c3c40c353abfca0cfe126c8d1390c25737f23c115bb33817bb408e25463",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.1184790410043206,
+        0.1160528750042431
+      ]
+    },
+    {
+      "case_id": "synthetic_ordinal:shipment:0269:base",
+      "type": "score",
+      "gold": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "probabilities": [
+        0.9761660008214263,
+        0.012803686749695793,
+        0.01103031242887785
+      ],
+      "passes": 1,
+      "readout": "letters",
+      "prediction": 0,
+      "tokens": 224,
+      "input_sha256": "abc439ce9a3af9025a2d7f577909db4a53d0db1b810a280cafde6eabe6fc8ea2",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.15188454199233092,
+        0.1488792920135893
+      ]
+    },
+    {
+      "case_id": "clinc:45040ee3a55f47c18e387c2a0d329737da9877d38a530d67c3a9c4eea3de778f",
+      "type": "choice",
+      "gold": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "probabilities": [
+        0.9611666637996613,
+        0.03144641776804382,
+        0.003242080142803838,
+        0.0007614232723386652,
+        0.0008527796378025623,
+        0.0007778428672349974,
+        0.0005453595814627749,
+        0.0012074329306520895
+      ],
+      "passes": 1,
+      "readout": "letters",
+      "prediction": 0,
+      "tokens": 121,
+      "input_sha256": "5b6668b14a65f02cf3f87cb09a679e9c2277e47fe35b4601667d7ec19f02315a",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.09069554199231789,
+        0.08894216601038352
+      ]
+    },
+    {
+      "case_id": "snli:5fc5f9c1e4da42e9207697dc1c31f18e16744a0df31ebff4715def9ef0737ec4",
+      "type": "noul",
+      "gold": [
+        0.0,
+        1.0
+      ],
+      "probabilities": [
+        0.9840015986118876,
+        0.015998401388112364
+      ],
+      "passes": 1,
+      "readout": "letters",
+      "prediction": 0,
+      "tokens": 125,
+      "input_sha256": "51644e55d19f7945a2f1490eb1b0ca94a0f22babc4152ec340b7a758d15d92fa",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.08545537499594502,
+        0.08963825000682846
+      ]
+    },
+    {
+      "case_id": "synthetic_ordinal:shipment:0232:base",
+      "type": "score",
+      "gold": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "probabilities": [
+        0.9527422930728129,
+        0.01743860480040569,
+        0.029819102126781433
+      ],
+      "passes": 1,
+      "readout": "letters",
+      "prediction": 0,
+      "tokens": 223,
+      "input_sha256": "1c12bb6510f7d87524100ee0c41352860aff65e3eec624360ecb1e9c49b9f2f7",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.16701779200229794,
+        0.17954595800256357
+      ]
+    },
+    {
+      "case_id": "clinc:6ecc8bacd297bf44cf01870e588fe0ef994c41d6ac0e33c63e20277665567144",
+      "type": "choice",
+      "gold": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "probabilities": [
+        0.9910869337258486,
+        0.0014827132180454253,
+        0.001415619231415787,
+        0.0005227506627194223,
+        0.0006992512234076634,
+        0.0005054585963311945,
+        0.0006209916796962715,
+        0.0007021875451134305,
+        0.0006078430791261253,
+        0.00031746066453155,
+        0.0003535586906829247,
+        0.0005190326707687491,
+        0.0004920724288550356,
+        0.00030951430241500595,
+        0.00011594019796188311,
+        0.00024867208308073307
+      ],
+      "passes": 1,
+      "readout": "letters",
+      "prediction": 0,
+      "tokens": 156,
+      "input_sha256": "4f34d093dcf70846a1690d3e01929b560bcb7dea47a053304d57b623b8adc461",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.12490175000857562,
+        0.13201079200371169
+      ]
+    },
+    {
+      "case_id": "snli:9dcc1dc898aef84e4b55205cbed97a5d7553eee46ec91df2713589c5df9b0809",
+      "type": "noul",
+      "gold": [
+        1.0,
+        0.0
+      ],
+      "probabilities": [
+        0.987667454637905,
+        0.012332545362094978
+      ],
+      "passes": 1,
+      "readout": "letters",
+      "prediction": 0,
+      "tokens": 120,
+      "input_sha256": "861e8c3e33897b04dc6d2203a82b97a8194c917e844cb8d322ab515e4735e633",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.09508699999423698,
+        0.09636674998910166
+      ]
+    },
+    {
+      "case_id": "synthetic_ordinal:deployment:0194:base",
+      "type": "score",
+      "gold": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "probabilities": [
+        0.8532785732525943,
+        0.007586256629433099,
+        0.01604764293483721,
+        0.017614368852356697,
+        0.10547315833077871
+      ],
+      "passes": 1,
+      "readout": "letters",
+      "prediction": 0,
+      "tokens": 331,
+      "input_sha256": "c9323b4952a0b87420d6c570b80be191db0b170b823f4bf97de94df1156787b8",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.24871737498324364,
+        0.251985707989661
+      ]
+    },
+    {
+      "case_id": "clinc:14f82c0024469fc0ac7a15f528f4891635a72b09f920f944bfdfde9dc212c766",
+      "type": "choice",
+      "gold": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "probabilities": [
+        0.9764851012715932,
+        0.01568942048388028,
+        0.003480293973161076,
+        0.0014937954756466816,
+        0.0011252615402588691,
+        0.0006453947130786387,
+        0.000556632235762115,
+        0.0005241003066191405
+      ],
+      "passes": 1,
+      "readout": "letters",
+      "prediction": 0,
+      "tokens": 110,
+      "input_sha256": "58a1577f1a1a03a8cfa2e54135c7e3fa971854fea53a24b6e0c6fce7f14d3267",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.09451512500527315,
+        0.09606700000585988
+      ]
+    },
+    {
+      "case_id": "snli:56dfb9db85f7e302031f25e03a33033ec5d8717064483c701a5855932d1819e0",
+      "type": "noul",
+      "gold": [
+        0.0,
+        1.0
+      ],
+      "probabilities": [
+        0.9460777894730147,
+        0.05392221052698524
+      ],
+      "passes": 1,
+      "readout": "letters",
+      "prediction": 0,
+      "tokens": 123,
+      "input_sha256": "b08752d77909cdb70191ff0d68399f81a630dd0b40f691b478566162b4e80328",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.10150629200506955,
+        0.10171874999650754
+      ]
+    },
+    {
+      "case_id": "synthetic_ordinal:deployment:0035:base",
+      "type": "score",
+      "gold": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "probabilities": [
+        0.9188784755676676,
+        0.008597082340162756,
+        0.012869528749209496,
+        0.012782974971752023,
+        0.04687193837120837
+      ],
+      "passes": 1,
+      "readout": "letters",
+      "prediction": 0,
+      "tokens": 332,
+      "input_sha256": "578d277270102b2ea3080e32fc491b9b25a17b3d3bc13276020d7b08aae9a7b0",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.25421016599284485,
+        0.2577629169973079
+      ]
+    },
+    {
+      "case_id": "clinc:4709dde423fbda07fe5b1b86b31a413ec598dcb5ada79e43a52911138a1c07ad",
+      "type": "choice",
+      "gold": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "probabilities": [
+        0.977850538622601,
+        0.0061781632082745196,
+        0.0017812922857989558,
+        0.0042733140438207425,
+        0.0030285981909699664,
+        0.0007569286224282837,
+        0.0015804886000263141,
+        0.004550676426080173
+      ],
+      "passes": 1,
+      "readout": "letters",
+      "prediction": 0,
+      "tokens": 127,
+      "input_sha256": "256bf118d322b9d36b0d8fff31ffa2954245a9937687a14d12630c4de1e23b5e",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.09898237499874085,
+        0.10201629099901766
+      ]
+    },
+    {
+      "case_id": "snli:d057a0771f3826c8639b428bbada1edd6dcbddf4ffca9b47492611097341029a",
+      "type": "noul",
+      "gold": [
+        1.0,
+        0.0
+      ],
+      "probabilities": [
+        0.9633185559250628,
+        0.03668144407493724
+      ],
+      "passes": 1,
+      "readout": "letters",
+      "prediction": 0,
+      "tokens": 129,
+      "input_sha256": "a1c1647281453a594612b817a2190a7881cde5f489cf50f2f12e370a26786d1d",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.12404008299927227,
+        0.136297791992547
+      ]
+    },
+    {
+      "case_id": "synthetic_ordinal:deployment:0398:base",
+      "type": "score",
+      "gold": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "probabilities": [
+        0.9146737376216387,
+        0.007810505353578137,
+        0.013646597995352179,
+        0.013647860451515326,
+        0.05022129857791564
+      ],
+      "passes": 1,
+      "readout": "letters",
+      "prediction": 0,
+      "tokens": 332,
+      "input_sha256": "ef2683ca3d1c192df48baa3716a6e91ffce38f2d6772c54f1774ee30e9dc630a",
+      "prefill_samples": [
+        0.0
+      ],
+      "read_samples": [
+        0.2810823750041891,
+        0.25244241699692793
+      ]
+    }
+  ],
+  "quality": {
+    "letters/depth1": {
+      "count": 30,
+      "accuracy": 0.26666666666666666,
+      "by_type": {
+        "choice": {
+          "count": 10,
+          "accuracy": 0
+        },
+        "noul": {
+          "count": 10,
+          "accuracy": 0.5
+        },
+        "score": {
+          "count": 10,
+          "accuracy": 0.3
+        }
+      },
+      "nll": 3.7382764492428233,
+      "brier": 1.3762345760920054,
+      "ece15": 0.6870890412116524,
+      "score_expected_value_mae": 1.4844258852850039,
+      "mean_prefill_seconds": 0.0,
+      "mean_read_seconds": 0.142494216717508
+    }
+  }
+}

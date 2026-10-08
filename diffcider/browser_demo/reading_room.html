@@ -1,0 +1,30 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width">
+<title>Reading room</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f6f5ef;color:#19382f;font:18px/1.6 system-ui,sans-serif}
+main{max-width:900px;margin:64px auto;padding:40px}header{border-bottom:1px solid #ced4c9;padding-bottom:24px}
+small{letter-spacing:.16em;text-transform:uppercase;color:#63776e}h1{font:48px Georgia,serif;margin:12px 0}
+form{display:flex;gap:12px;align-items:end;margin:32px 0}label{flex:1;font-size:15px;font-weight:600}
+input{display:block;width:100%;padding:15px;border:1px solid #9baea1;border-radius:6px;font-size:18px;background:white;margin-top:8px}
+button{background:#244e40;color:white;border:0;padding:17px 28px;border-radius:6px;font-size:17px;cursor:pointer}
+a{color:#245e48}article{background:white;border:1px solid #dbe0d6;border-radius:8px;padding:28px;margin-top:24px}
+</style><main><header><small>Reading room / Computing pioneers</small><h1>Find a story worth reading.</h1><p>Search our collection, then open an article.</p></header>
+<form><label for="search">Search<input id="search" name="search" type="search" required placeholder="Search people" autocomplete="off"></label><button>Search</button></form>
+<section id="results" aria-live="polite"><p>Our collection includes Ada Lovelace, Grace Hopper, and Alan Turing.</p></section></main>
+<script>
+const articles={
+ 'Ada Lovelace':'Ada Lovelace wrote notes on Charles Babbage’s Analytical Engine. Her work described an algorithm for the machine and explored how computing might reach beyond arithmetic.',
+ 'Grace Hopper':'Grace Hopper helped develop early compilers and contributed to the ideas behind COBOL. She championed programming languages that people could read and write.',
+ 'Alan Turing':'Alan Turing introduced a mathematical model of computation. His work helped establish computer science and shaped early discussions of machine intelligence.'};
+const form=document.querySelector('form'), results=document.querySelector('#results');
+form.addEventListener('submit',e=>{e.preventDefault(); const q=document.querySelector('input').value.trim();
+ results.replaceChildren(); const heading=document.createElement('h2');heading.textContent='Search results for “'+q+'”';results.append(heading);
+ const matches=Object.keys(articles).filter(n=>q&&n.toLowerCase().includes(q.toLowerCase()));
+ for(const name of matches){const card=document.createElement('article'),a=document.createElement('a');a.href='#'+encodeURIComponent(name);a.textContent=name;
+ a.onclick=e=>{e.preventDefault();document.title=name+' | Reading room';document.querySelector('main').replaceChildren();
+ const article=document.createElement('article');article.dataset.article=name;
+ const h=document.createElement('h1');h.textContent=name;const p=document.createElement('p');p.textContent=articles[name];
+ article.append(h,p);document.querySelector('main').append(article);history.replaceState(null,'','#'+encodeURIComponent(name));};card.append(a);results.append(card);}
+ if(!matches.length){const p=document.createElement('p');p.textContent='No articles found. Try a person’s full name.';results.append(p);}
+});
+</script></html>

@@ -1,0 +1,14 @@
+{
+  "repository": "https://github.com/amazon-science/ALoDLM",
+  "revision": "1da9ddafeca02425480230b9bb7091fdef5672b7",
+  "files": {
+    "__init__.py": "6fe2e6cd65deb51b48f55d0abde53667a166107cb194fd0ed4b440f118773913",
+    "attention.py": "412b6da6e5f95c29c40ee2dd4aa264e25c21d6b84ea6626aed833871585fe95d",
+    "batch.py": "28e36c0eb6c4e504deff9dcbb4e8e0e642ebc835876433af330e914ffa995345",
+    "config.py": "2a2b606f794c46299bf2604b2a9ce8ebe4a0b5e29f9fbba804d16bbe4980c035",
+    "credit.py": "2246aea68d6a521e7207fbae2a0706167530c02565a5a26f453f17d2733fa646",
+    "inference.py": "86234274ac90bf328f45c95c3c5d056d5cb1e1df11ba7eb28c10b5805e194924",
+    "loss.py": "13caaf7113402142d7577cafde85b22644f80423f978079816db60e97abfb4ca",
+    "model.py": "531bb9174e1678ab3eec246f357b32235b7c9c5103112c987882de145285d6f8"
+  }
+}
